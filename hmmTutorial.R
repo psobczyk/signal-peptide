@@ -75,7 +75,7 @@ setMethod("setpars","coinToss",
             return(object)
           }
 )
-setMethod("fit","exgaus",
+setMethod("fit","coinToss",
           function(object,w) {
             if(missing(w)) w <- NULL
             y <- object@y
@@ -89,9 +89,12 @@ setMethod("fit","exgaus",
             object
           }
 )
-setMethod("predict","exgaus",
+setMethod("predict","coinToss",
           function(object) {
-            ret <- object@parameters$mu
+            if(object@parameters$heads>0.5){
+              ret <- 1
+            }
+            else ret <- 0
             return(ret)
           }
 )
@@ -103,10 +106,27 @@ summary(coinModel)
 str(coinModel)
 coinModel@parameters
 
-fm <- fit(coinModel, emc=em.control(rand=FALSE))
-summary(fm)
+observations <- c(0,0,1,1,1,0,0,0,1)
 
-data(speed)
-summary(speed)
-speed$corr
-glm(speed$rt~1)
+rModels <- list(
+  list(
+    coinToss(observations,pstart=c(1),fixed=c(TRUE))
+  ),
+  list(
+    coinToss(observations,pstart=c(0), fixed=c(TRUE)))
+)
+rModels[[1]][[1]]@fixed
+#transition probs
+transition <- list()
+transition[[1]] <- transInit(~1, nstates=2, family=multinomial("identity"), pstart=c(0.2, 0.8))
+transition[[2]] <- transInit(~1,nstates=2, family=multinomial("identity"), pstart=c(0.7,0.3))
+transition
+instart=c(0.5,0.5)
+
+inMod <- transInit(~1,ns=2,ps=instart,family=multinomial("identity"), data=data.frame(1))
+mod <- makeDepmix(response=rModels,transition=transition,prior=inMod,ntimes=c(length(observations)))
+
+fit(mod)
+class(mod)
+
+posterior(mod)
