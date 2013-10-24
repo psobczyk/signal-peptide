@@ -1,31 +1,32 @@
-#modelling using HMM
+#signal peptide state
 
 require(depmixS4)
 
-#ok, spróbujemy stworzyć prosty model dwustanowy - rzuty moneta
-# musi być w formie response tzn musi implementowac metody dens, predict, (?fit)
+#dwustanowu model samopoczucia
+#nasze obserwacje są w jednej z 4 grup - np. pod wzgledem hydrofobości
 
-setClass("coinToss",contains="response")
-setGeneric("coinToss", function(y, pstart = NULL, fixed = NULL, ...) standardGeneric("coinToss"))
+setClass("signal",contains="response")
+setGeneric("signal", function(y, pstart = NULL, fixed = NULL, ...) standardGeneric("signal"))
 
-setMethod("coinToss",
+setMethod("signal",
           signature(y="ANY"),
           function(y,pstart=NULL,fixed=NULL, ...) {
             y <- matrix(y,length(y))
             x <- matrix(1)
             parameters <- list()
-            npar <- 1
+            npar <- 4 
             if(is.null(fixed)) fixed <- as.logical(rep(0,npar))
             if(!is.null(pstart)) {
               if(length(pstart)!=npar) stop("length of ’pstart’ must be ",npar)
-              parameters$heads <- pstart[1]
-              #parameters$sigma <- log(pstart[2])
-              #parameters$nu <- log(pstart[3])
+              parameters$group1 <- pstart[1]
+              parameters$group2 <- pstart[2]
+              parameters$group3 <- pstart[3]
+              parameters$group4 <- pstart[4]
             }
             mod <- new("coinToss",parameters=parameters,fixed=fixed,x=x,y=y,npar=npar)
             mod
           }
-    )
+)
 
 setMethod("show","coinToss",
           function(object) {
@@ -38,7 +39,7 @@ setMethod("dens","coinToss",
           function(object,log=FALSE) {
             object@parameters$heads^object@y*(1-object@parameters$heads)^(1-object@y)
           }
-        )
+)
 setMethod("getpars","response",
           function(object,which="pars",...) {
             switch(which,
@@ -53,7 +54,7 @@ setMethod("getpars","response",
             )
             return(pars)
           }
-        )
+)
 
 setMethod("setpars","coinToss",
           function(object, values, which="pars", ...) {
