@@ -103,23 +103,24 @@ coinModel@parameters
 
 rModels <- list(
   list(
-    coinToss(observations,pstart=c(1),fixed=c(TRUE))
+    coinToss(observations,pstart=c(0.9),fixed=c(TRUE))
   ),
   list(
-    coinToss(observations,pstart=c(0), fixed=c(TRUE)))
+    coinToss(observations,pstart=c(0.1), fixed=c(TRUE)))
 )
 rModels[[1]][[1]]@fixed
 #transition probs
 transition <- list()
-transition[[1]] <- transInit(~1, nstates=2, family=multinomial("identity"), pstart=c(0.2, 0.8))
-transition[[2]] <- transInit(~1,nstates=2, family=multinomial("identity"), pstart=c(0.7,0.3))
-transition
+transition[[1]] <- transInit(~1, nstates=2, family=multinomial("identity"), pstart=c(0.2, 0.8), fixed=c(TRUE,TRUE))
+transition[[2]] <- transInit(~1,nstates=2, family=multinomial("identity"), pstart=c(0.7,0.3),fixed=c(TRUE,TRUE))
+transition[[1]]@parameters
+transition[[2]]@parameters
+
 instart=c(0.5,0.5)
-
-inMod <- transInit(~1,ns=2,ps=instart,family=multinomial("identity"), data=data.frame(1))
+inMod <- transInit(~1,ns=2,ps=instart,family=multinomial("identity"), data=data.frame(1), fixed=c(TRUE, TRUE))
 mod <- makeDepmix(response=rModels,transition=transition,prior=inMod,ntimes=c(length(observations)))
-
-fitted.mod <- fit(mod,  emc=em.control(rand=FALSE))
-class(fitted.mod)
-
+mod@transition
+fitted.mod <- fit(mod,emc=em.control(rand=FALSE))
+fitted.mod@transition
+fitted.mod@homogeneous
 posterior(fitted.mod)

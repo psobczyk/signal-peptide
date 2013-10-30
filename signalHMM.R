@@ -7,11 +7,11 @@ source("signalClass.R")
 
 #tu muszą zostać wczytane dane
 numStates <- 4
-
-state1 <- c(0.1, 0.4, 0.2, 0.3)
-state2 <- c(0.1, 0.1, 0.2, 0.6)
-state3 <- c(0.1, 0.4, 0.2, 0.3)
-state4 <- c(0.1, 0.4, 0.2, 0.3)
+#liczby są zupełnie z kosmosu
+state1 <- c(0.1, 0.4, 0.2, 0.3) #n-region
+state2 <- c(0.1, 0.1, 0.2, 0.6) #h-region
+state3 <- c(0.1, 0.4, 0.2, 0.3) #c-region
+state4 <- c(0.1, 0.4, 0.2, 0.3) #end
 
 rModels <- list(
   list(

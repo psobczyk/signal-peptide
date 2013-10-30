@@ -45,3 +45,6 @@ plot(1:15, wss, type="b", xlab="Number of Clusters", ylab="Within groups sum of 
 
 fit <- kmeans(m, centers=4)
 fit$centers
+
+require(pvclust)
+pvclust(m)
