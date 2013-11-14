@@ -1,6 +1,6 @@
 #skrypt
 pcname <- Sys.info()['nodename'] 
-if(pcname="piotr-tobit")
+if(pcname=="piotr-tobit")
   setwd("~/Dropbox/doktorat/sekwencje_sygnalowe")
 
 #wczytanie danych
