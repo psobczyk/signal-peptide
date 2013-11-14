@@ -1,5 +1,4 @@
 #program do wczytania danych
-setwd("~/Dropbox//Doktorat//sekwencje_sygnalowe")
 require("seqinr", character.only = TRUE)
 # aminoacid groups --------------------------------------
 aa1 = list(nonpolar.aliphatic = c("G", "A", "P", "V", "L", "I", "M"), 
