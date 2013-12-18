@@ -21,9 +21,9 @@ for(i in 1:3644){
 
 #oszacowanie parametrow rozkladow wykladniczych
 #library("fitdistrplus") 
-#fitdist(lengths[,1], "exp", method ="mle")
-#fitdist(lengths[,2], "exp", method ="mle")
-#fitdist(lengths[,3], "exp", method ="mle")
+fitdist(lengths[,1], "exp", method ="mle")
+fitdist(lengths[,2], "exp", method ="mle")
+fitdist(lengths[,3], "exp", method ="mle")
 
 aa5 = list(positively.charged=c("K", "R", "H"),
            hydrofobic=c("V","I","L","M","F","W","C"),
