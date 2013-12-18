@@ -20,10 +20,10 @@ for(i in 1:3644){
 }
 
 #oszacowanie parametrow rozkladow wykladniczych
-library("fitdistrplus") 
-fitdist(lengths[,1], "exp", method ="mle")
-fitdist(lengths[,2], "exp", method ="mle")
-fitdist(lengths[,3], "exp", method ="mle")
+#library("fitdistrplus") 
+#fitdist(lengths[,1], "exp", method ="mle")
+#fitdist(lengths[,2], "exp", method ="mle")
+#fitdist(lengths[,3], "exp", method ="mle")
 
 aa5 = list(positively.charged=c("K", "R", "H"),
            hydrofobic=c("V","I","L","M","F","W","C"),
@@ -36,3 +36,7 @@ t2 <- table(degenerate(h_region, aa5))
 t2/sum(t2)
 t3 <- table(degenerate(c_region, aa5))
 t3/sum(t3)
+
+#chisq.test(rbind(t1,t2))
+#chisq.test(rbind(t1,t3))
+#chisq.test(rbind(t2,t3))
