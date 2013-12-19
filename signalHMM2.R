@@ -58,7 +58,7 @@ pars
 free <- c(0,0,0,rep(1,21))
 fitted <- fit(mod, fixed=!free)
 fitted@response
-posterior(fitted)
+posterior(fitted)[,1]
 all_nhc[numer_probki,]
 summary(fitted)
 

@@ -11,12 +11,14 @@ source("get_sig.R")
 n_region <- NULL
 h_region <- NULL
 c_region <- NULL
+reszta <- NULL
 analized_sequences <- speuk[with_sig]
 
 for(i in 1:3644){
   n_region <- c(n_region, analized_sequences[[i]][1:lengths[i,1]]) 
   h_region <- c(h_region, analized_sequences[[i]][all_nhc[i,2]:(all_nhc[i,3]-1)])
   c_region <- c(c_region, analized_sequences[[i]][all_nhc[i,3]:(all_nhc[i,4]-1)])
+  reszta <- c(reszta, analized_sequences[[i]][all_nhc[i,4]:(length(analized_sequences[[i]]))])
 }
 
 #oszacowanie parametrow rozkladow wykladniczych
@@ -36,7 +38,23 @@ t2 <- table(degenerate(h_region, aa5))
 t2/sum(t2)
 t3 <- table(degenerate(c_region, aa5))
 t3/sum(t3)
+t4 <- table(degenerate(reszta, aa5))
+t4/sum(t4)
 
-#chisq.test(rbind(t1,t2))
-#chisq.test(rbind(t1,t3))
-#chisq.test(rbind(t2,t3))
+#uruchamiamy ukryte łańcuchy
+require(depmixS4)
+source("run_model.R")
+
+procent_rozpoznania <- NULL
+testowane_bialka <- sample(1:length(analized_sequences),100, replace=FALSE)
+for(numer_probki in testowane_bialka){
+  probka <- as.numeric(degenerate(analized_sequences[[numer_probki]], aa5)[1:(all_nhc[numer_probki,4]+30)])
+  fitted.model <- uruchom_model(probka)
+  fitted.model <- uruchom_model(probka)
+  viterbi_path <- fitted.model@posterior[1:all_nhc[numer_probki,4],1]
+  expected <- c(rep(1,all_nhc[numer_probki,2]-1),rep(2,all_nhc[numer_probki,3]-all_nhc[numer_probki,2]),rep(3,all_nhc[numer_probki,4]-all_nhc[numer_probki,3]+1))
+  procent_rozpoznania <- c(procent_rozpoznania, sum(viterbi_path==expected)/length(viterbi_path))
+}
+
+#bardzo prosta statystyka opisowa ;)
+mean(procent_rozpoznania)
