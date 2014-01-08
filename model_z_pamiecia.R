@@ -1,9 +1,15 @@
 #adding memory to model
 source("main.R")
 
+encoding <- function(x){
+  a <- x%/%10
+  b <- x%%10
+  b+4*(a-1)
+}
+
 make_transition_matrix <- function(region, aa_groups){
   b <- degenerate(region, aa_groups)
-  tabela <- table(apply(cbind(b[-length(b)],b[-1]), 1, FUN=function(x) as.numeric(paste(x[1], x[2], sep=""))))
+  tabela <- table(apply(cbind(b[-length(b)],b[-1]), 1, FUN=function(x) encoding(as.numeric(paste(x[1], x[2], sep="")))))
   for(i in 0:3){
     suma <- sum(tabela[(1+i*4):((i+1)*4)])
     for(j in 1:4){
@@ -23,8 +29,8 @@ procent_rozpoznania2 <- NULL
 n <- 10
 testowane_bialka <- sample(1:length(analized_sequences),n, replace=FALSE)
 for(numer_probki in testowane_bialka){
-  probka <- as.numeric(degenerate(analized_sequences[[numer_probki]], aa5)[1:(all_nhc[numer_probki,4]+30)])
-  probka <- apply(cbind(probka[-length(probka)],probka[-1]), 1, FUN=function(x) as.numeric(paste(x[1], x[2], sep="")))
+  probka <- (degenerate(analized_sequences[[numer_probki]], aa5)[1:(all_nhc[numer_probki,4]+30)])
+  probka <- apply(cbind(probka[-length(probka)],probka[-1]), 1, FUN=function(x) encoding(as.numeric((paste(x[1], x[2], sep="")))))
   fitted.model <- uruchom_model2(probka)
   viterbi_path <- fitted.model@posterior[1:all_nhc[numer_probki,4],1]
   expected <- c(rep(1,all_nhc[numer_probki,2]-1),rep(2,all_nhc[numer_probki,3]-all_nhc[numer_probki,2]),rep(3,all_nhc[numer_probki,4]-all_nhc[numer_probki,3]+1))
@@ -35,3 +41,5 @@ for(numer_probki in testowane_bialka){
 mean(procent_rozpoznania2)
 
 rbind(expected, viterbi_path)
+
+cbind(probka, wynik[-1,], fitted.model@posterior)
