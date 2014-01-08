@@ -42,4 +42,4 @@ mean(procent_rozpoznania2)
 
 rbind(expected, viterbi_path)
 
-cbind(probka, wynik[-1,], fitted.model@posterior)
+cbind(probka, fitted.model@posterior)

@@ -19,4 +19,4 @@ for(numer_probki in testowane_bialka){
 #bardzo prosta statystyka opisowa ;)
 mean(procent_rozpoznania)
 
-
+wynik <- cbind(probka, fitted.model@posterior)
