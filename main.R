@@ -23,9 +23,9 @@ for(i in 1:3644){
 
 #oszacowanie parametrow rozkladow wykladniczych
 #library("fitdistrplus") 
-fitdist(lengths[,1], "exp", method ="mle")
-fitdist(lengths[,2], "exp", method ="mle")
-fitdist(lengths[,3], "exp", method ="mle")
+#fitdist(lengths[,1], "exp", method ="mle")
+#fitdist(lengths[,2], "exp", method ="mle")
+#fitdist(lengths[,3], "exp", method ="mle")
 
 aa5 = list(positively.charged=c("K", "R", "H"),
            hydrofobic=c("V","I","L","M","F","W","C"),
@@ -41,20 +41,3 @@ t3/sum(t3)
 t4 <- table(degenerate(reszta, aa5))
 t4/sum(t4)
 
-#uruchamiamy ukryte łańcuchy
-require(depmixS4)
-source("run_model.R")
-
-procent_rozpoznania <- NULL
-testowane_bialka <- sample(1:length(analized_sequences),100, replace=FALSE)
-for(numer_probki in testowane_bialka){
-  probka <- as.numeric(degenerate(analized_sequences[[numer_probki]], aa5)[1:(all_nhc[numer_probki,4]+30)])
-  fitted.model <- uruchom_model(probka)
-  fitted.model <- uruchom_model(probka)
-  viterbi_path <- fitted.model@posterior[1:all_nhc[numer_probki,4],1]
-  expected <- c(rep(1,all_nhc[numer_probki,2]-1),rep(2,all_nhc[numer_probki,3]-all_nhc[numer_probki,2]),rep(3,all_nhc[numer_probki,4]-all_nhc[numer_probki,3]+1))
-  procent_rozpoznania <- c(procent_rozpoznania, sum(viterbi_path==expected)/length(viterbi_path))
-}
-
-#bardzo prosta statystyka opisowa ;)
-mean(procent_rozpoznania)
