@@ -6,7 +6,7 @@ groups <- c("aa1", "aa2", "aa3", "aa4")
 
 aux <- function(x,y){
   dists <- distribution(eval(as.name(x)),eval(as.name(y)))
-  chisq.test(dists[[1]], dists[[2]])$p.value
+  chisq.test(rbind(dists[[1]], dists[[2]]))$p.value
 } 
 result <- NULL
 result[1] <- aux("spplant", "aa1")
