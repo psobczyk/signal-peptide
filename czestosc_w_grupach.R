@@ -62,3 +62,11 @@ distribution <- function(rawSeqs, aagroups){
   #print(unlist(learningPositive))
   list(con(unlist(learningPositive),length(aagroups)), con(unlist(learningNegative),length(aagroups)))
 }
+
+degenerate <- function(seq, aa_group) {
+  for (i in 1L:length(aa_group)) {
+    seq[seq %in% aa_group[[i]]] <- i
+  }
+  seq 
+}
+

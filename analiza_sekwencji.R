@@ -48,8 +48,72 @@ aa1 = list(nonpolar.aliphatic = c("G", "A", "P", "V", "L", "I", "M"),
 
 deg_seq <- degenerate(as.character(seq), aa1)
 deg_seq <- factor(deg_seq, level = as.character(1L:length(aa1)))
-calc_transit(deg_seq, as.character(1L:length(aa1)))
+tmp = calc_transit(deg_seq, as.character(1L:length(aa1)))[[1]]
+bar_names <- as.vector(sapply(1:5, function(x) paste0(1:5, x)))
+
+signals_length <- t(vapply(speuk, function(seq) attr(seq, "sig"), c(0, 0)))
+plot(density(signals_length[signals_length[,1] == 1,2]), main = "")
+
+deg_levels <- as.character(1L:length(aa1))
+signals1 <- vapply(speuk[signals_length[,1] == 1], function(seq) {
+  deg_seq <- degenerate(seq[attr(seq, "sig")[1]:attr(seq, "sig")[2]], aa1)
+  deg_seq <- factor(deg_seq, level = deg_levels)
+  as.vector(calc_transit_by(deg_seq, 1, deg_levels))
+}, rep(0, length(aa1)^2))
+
+nonsignals1 <- vapply(speuk[signals_length[,1] == 0], function(seq) {
+  deg_seq <- degenerate(seq[1:68], aa1)
+  deg_seq <- factor(deg_seq, level = deg_levels)
+  as.vector(calc_transit_by(deg_seq, 1, deg_levels))
+}, rep(0, length(aa1)^2))
 
 
+barplot(rbind(rowMeans(signals1), rowMeans(nonsignals1)), beside = TRUE, col = c("blue", "red"),
+        names.arg = bar_names)
+
+signals2 <- vapply(speuk[signals_length[,1] == 1], function(seq) {
+  deg_seq <- degenerate(seq[attr(seq, "sig")[1]:attr(seq, "sig")[2]], aa1)
+  deg_seq <- factor(deg_seq, level = deg_levels)
+  as.vector(calc_transit_by(deg_seq, 2, deg_levels))
+}, rep(0, length(aa1)^2))
+
+nonsignals2 <- vapply(speuk[signals_length[,1] == 0], function(seq) {
+  deg_seq <- degenerate(seq[1:68], aa1)
+  deg_seq <- factor(deg_seq, level = deg_levels)
+  as.vector(calc_transit_by(deg_seq, 2, deg_levels))
+}, rep(0, length(aa1)^2))
+
+barplot(rbind(rowMeans(signals2), rowMeans(nonsignals2)), beside = TRUE, col = c("blue", "red"), 
+        names.arg = bar_names)
+
+signals3 <- vapply(speuk[signals_length[,1] == 1], function(seq) {
+  deg_seq <- degenerate(seq[attr(seq, "sig")[1]:attr(seq, "sig")[2]], aa1)
+  deg_seq <- factor(deg_seq, level = deg_levels)
+  as.vector(calc_transit_by(deg_seq, 3, deg_levels))
+}, rep(0, length(aa1)^2))
+
+nonsignals3 <- vapply(speuk[signals_length[,1] == 0], function(seq) {
+  deg_seq <- degenerate(seq[1:68], aa1)
+  deg_seq <- factor(deg_seq, level = deg_levels)
+  as.vector(calc_transit_by(deg_seq, 3, deg_levels))
+}, rep(0, length(aa1)^2))
+
+barplot(rbind(rowMeans(signals3), rowMeans(nonsignals3)), beside = TRUE, col = c("blue", "red"), 
+        names.arg = bar_names)
+
+signals4 <- vapply(speuk[signals_length[,1] == 1], function(seq) {
+  deg_seq <- degenerate(seq[attr(seq, "sig")[1]:attr(seq, "sig")[2]], aa1)
+  deg_seq <- factor(deg_seq, level = deg_levels)
+  as.vector(calc_transit_by(deg_seq, 4, deg_levels))
+}, rep(0, length(aa1)^2))
+
+nonsignals4 <- vapply(speuk[signals_length[,1] == 0], function(seq) {
+  deg_seq <- degenerate(seq[1:68], aa1)
+  deg_seq <- factor(deg_seq, level = deg_levels)
+  as.vector(calc_transit_by(deg_seq, 4, deg_levels))
+}, rep(0, length(aa1)^2))
+
+barplot(rbind(rowMeans(signals4), rowMeans(nonsignals4)), beside = TRUE, col = c("blue", "red"), 
+        names.arg = bar_names)
 
 

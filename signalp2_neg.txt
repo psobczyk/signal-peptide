@@ -1,0 +1,1602 @@
+SignalP V2.0 World Wide Web Server
+
+Explanation of the output
+SignalP predictions
+
+Using hidden Markov models (HMM) trained on eukaryotes
+
+>sp_Q9LD95_SIGF_ARATH
+SignalP-HMM result: 
+>sp_Q9LD95_SIGF_ARATH
+Prediction: Non-secretory protein
+Signal peptide probability: 0.001
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. 20 and 21
+
+>sp_Q6EWH2_FYNA_DANRE
+SignalP-HMM result: 
+>sp_Q6EWH2_FYNA_DANRE
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_Q1K6I4_THI4_NEUCR
+SignalP-HMM result: 
+>sp_Q1K6I4_THI4_NEUCR
+Prediction: Non-secretory protein
+Signal peptide probability: 0.003
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.001 between pos. 24 and 25
+
+>sp_Q9PTD5_MTFR1_CHICK
+SignalP-HMM result: 
+>sp_Q9PTD5_MTFR1_CHICK
+Prediction: Non-secretory protein
+Signal peptide probability: 0.008
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.004 between pos. 26 and 27
+
+>sp_Q8GZ53_SOT14_ARATH
+SignalP-HMM result: 
+>sp_Q8GZ53_SOT14_ARATH
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. 15 and 16
+
+>sp_P0DH97_CALM2_ARATH
+SignalP-HMM result: 
+>sp_P0DH97_CALM2_ARATH
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_F1QGH9_PS11B_DANRE
+SignalP-HMM result: 
+>sp_F1QGH9_PS11B_DANRE
+Prediction: Non-secretory protein
+Signal peptide probability: 0.005
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.003 between pos. 14 and 15
+
+>sp_Q8LGD1_SP1L5_ARATH
+SignalP-HMM result: 
+>sp_Q8LGD1_SP1L5_ARATH
+Prediction: Non-secretory protein
+Signal peptide probability: 0.010
+Signal anchor probability: 0.002
+Max cleavage site probability: 0.007 between pos. 19 and 20
+
+>sp_Q6X1C0_GLT2_CROSA
+SignalP-HMM result: 
+>sp_Q6X1C0_GLT2_CROSA
+Prediction: Non-secretory protein
+Signal peptide probability: 0.237
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.201 between pos. 18 and 19
+
+>sp_P0DJE6_LITD_LATHA
+SignalP-HMM result: 
+>sp_P0DJE6_LITD_LATHA
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_E9HCD7_NNRE_DAPPU
+SignalP-HMM result: 
+>sp_E9HCD7_NNRE_DAPPU
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. 43 and 44
+
+>sp_Q2V4B2_PQL3_ARATH
+SignalP-HMM result: 
+>sp_Q2V4B2_PQL3_ARATH
+Prediction: Non-secretory protein
+Signal peptide probability: 0.002
+Signal anchor probability: 0.076
+Max cleavage site probability: 0.001 between pos. 20 and 21
+
+>sp_Q5Q0B3_FLP1_ARATH
+SignalP-HMM result: 
+>sp_Q5Q0B3_FLP1_ARATH
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. 25 and 26
+
+>sp_G2TRM2_YI82_SCHPO
+SignalP-HMM result: 
+>sp_G2TRM2_YI82_SCHPO
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_A5D6V4_TM17B_DANRE
+SignalP-HMM result: 
+>sp_A5D6V4_TM17B_DANRE
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.002
+Max cleavage site probability: 0.000 between pos. 25 and 26
+
+>sp_Q9LHQ6_OCT4_ARATH
+SignalP-HMM result: 
+>sp_Q9LHQ6_OCT4_ARATH
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_A2RV70_ZN326_XENLA
+SignalP-HMM result: 
+>sp_A2RV70_ZN326_XENLA
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_Q4V7Z1_POC1B_XENLA
+SignalP-HMM result: 
+>sp_Q4V7Z1_POC1B_XENLA
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_Q9FKP2_CCX2_ARATH
+SignalP-HMM result: 
+>sp_Q9FKP2_CCX2_ARATH
+Prediction: Signal anchor
+Signal peptide probability: 0.229
+Signal anchor probability: 0.771
+Max cleavage site probability: 0.082 between pos. 35 and 36
+
+>sp_D6C4J2_CLEB_CONCL
+SignalP-HMM result: 
+>sp_D6C4J2_CLEB_CONCL
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. 14 and 15
+
+>sp_P0DH95_CALM1_ARATH
+SignalP-HMM result: 
+>sp_P0DH95_CALM1_ARATH
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_B3EWN3_HTX2_HAPLI
+SignalP-HMM result: 
+>sp_B3EWN3_HTX2_HAPLI
+Prediction: Non-secretory protein
+Signal peptide probability: 0.010
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.008 between pos. 16 and 17
+
+>sp_B3EWH0_TXPR2_GEOA2
+SignalP-HMM result: 
+>sp_B3EWH0_TXPR2_GEOA2
+Prediction: Non-secretory protein
+Signal peptide probability: 0.001
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. 21 and 22
+
+>sp_F8WQD0_SHS1_ASTTA
+SignalP-HMM result: 
+>sp_F8WQD0_SHS1_ASTTA
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_G2TRJ8_CMC4_SCHPO
+SignalP-HMM result: 
+>sp_G2TRJ8_CMC4_SCHPO
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_P0DI40_CASP2_VIGUN
+SignalP-HMM result: 
+>sp_P0DI40_CASP2_VIGUN
+Prediction: Non-secretory protein
+Signal peptide probability: 0.015
+Signal anchor probability: 0.004
+Max cleavage site probability: 0.003 between pos. 50 and 51
+
+>sp_Q2HJE4_UBP15_BOVIN
+SignalP-HMM result: 
+>sp_Q2HJE4_UBP15_BOVIN
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_P0DJH8_SCX1_BUTMA
+SignalP-HMM result: 
+>sp_P0DJH8_SCX1_BUTMA
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_D4A3K5_H11_RAT
+SignalP-HMM result: 
+>sp_D4A3K5_H11_RAT
+Prediction: Non-secretory protein
+Signal peptide probability: 0.001
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. 52 and 53
+
+>sp_F4JEP5_MSH5_ARATH
+SignalP-HMM result: 
+>sp_F4JEP5_MSH5_ARATH
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_B4YPV4_AP1C_BRAOA
+SignalP-HMM result: 
+>sp_B4YPV4_AP1C_BRAOA
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. 49 and 50
+
+>sp_P0DJB8_CU6A_CONCL
+SignalP-HMM result: 
+>sp_P0DJB8_CU6A_CONCL
+Prediction: Non-secretory protein
+Signal peptide probability: 0.008
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.003 between pos. 21 and 22
+
+>sp_Q8VWZ7_C76B6_CATRO
+SignalP-HMM result: 
+>sp_Q8VWZ7_C76B6_CATRO
+Prediction: Signal peptide
+Signal peptide probability: 0.982
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.539 between pos. 21 and 22
+
+>sp_A8E7D2_BN3D2_DANRE
+SignalP-HMM result: 
+>sp_A8E7D2_BN3D2_DANRE
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_P0DJH5_VM3DM_DABSI
+SignalP-HMM result: 
+>sp_P0DJH5_VM3DM_DABSI
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_Q9SAK7_OCT5_ARATH
+SignalP-HMM result: 
+>sp_Q9SAK7_OCT5_ARATH
+Prediction: Non-secretory protein
+Signal peptide probability: 0.001
+Signal anchor probability: 0.136
+Max cleavage site probability: 0.001 between pos. 16 and 17
+
+>sp_Q96PG8_BBC3B_HUMAN
+SignalP-HMM result: 
+>sp_Q96PG8_BBC3B_HUMAN
+Prediction: Non-secretory protein
+Signal peptide probability: 0.126
+Signal anchor probability: 0.001
+Max cleavage site probability: 0.048 between pos. 20 and 21
+
+>sp_Q9SGE2_SMR2_ARATH
+SignalP-HMM result: 
+>sp_Q9SGE2_SMR2_ARATH
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_P0DI27_CSPL6_PTEAA
+SignalP-HMM result: 
+>sp_P0DI27_CSPL6_PTEAA
+Prediction: Non-secretory protein
+Signal peptide probability: 0.038
+Signal anchor probability: 0.052
+Max cleavage site probability: 0.032 between pos. 18 and 19
+
+>sp_G2TRM3_YAOJ_SCHPO
+SignalP-HMM result: 
+>sp_G2TRM3_YAOJ_SCHPO
+Prediction: Non-secretory protein
+Signal peptide probability: 0.002
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.001 between pos. 30 and 31
+
+>sp_A9JSB3_APC15_XENTR
+SignalP-HMM result: 
+>sp_A9JSB3_APC15_XENTR
+Prediction: Non-secretory protein
+Signal peptide probability: 0.061
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.043 between pos. 15 and 16
+
+>sp_Q5Z922_S40A1_ORYSJ
+SignalP-HMM result: 
+>sp_Q5Z922_S40A1_ORYSJ
+Prediction: Non-secretory protein
+Signal peptide probability: 0.020
+Signal anchor probability: 0.133
+Max cleavage site probability: 0.013 between pos. 17 and 18
+
+>sp_Q5XI33_CIDEC_RAT
+SignalP-HMM result: 
+>sp_Q5XI33_CIDEC_RAT
+Prediction: Non-secretory protein
+Signal peptide probability: 0.133
+Signal anchor probability: 0.045
+Max cleavage site probability: 0.069 between pos. 33 and 34
+
+>sp_F4JP48_MSH4_ARATH
+SignalP-HMM result: 
+>sp_F4JP48_MSH4_ARATH
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. 20 and 21
+
+>sp_B0F481_BIODA_ARATH
+SignalP-HMM result: 
+>sp_B0F481_BIODA_ARATH
+Prediction: Signal anchor
+Signal peptide probability: 0.005
+Signal anchor probability: 0.672
+Max cleavage site probability: 0.002 between pos. 49 and 50
+
+>sp_O23144_PPI1_ARATH
+SignalP-HMM result: 
+>sp_O23144_PPI1_ARATH
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. 15 and 16
+
+>sp_Q6K478_CSPLQ_ORYSJ
+SignalP-HMM result: 
+>sp_Q6K478_CSPLQ_ORYSJ
+Prediction: Signal peptide
+Signal peptide probability: 0.688
+Signal anchor probability: 0.125
+Max cleavage site probability: 0.320 between pos. 34 and 35
+
+>sp_Q9SJW3_SPR1_ARATH
+SignalP-HMM result: 
+>sp_Q9SJW3_SPR1_ARATH
+Prediction: Non-secretory protein
+Signal peptide probability: 0.001
+Signal anchor probability: 0.009
+Max cleavage site probability: 0.001 between pos. 19 and 20
+
+>sp_Q42440_PAI1_ARATH
+SignalP-HMM result: 
+>sp_Q42440_PAI1_ARATH
+Prediction: Non-secretory protein
+Signal peptide probability: 0.001
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.001 between pos. 21 and 22
+
+>sp_P0DI72_CSPL1_CHLAT
+SignalP-HMM result: 
+>sp_P0DI72_CSPL1_CHLAT
+Prediction: Signal anchor
+Signal peptide probability: 0.166
+Signal anchor probability: 0.833
+Max cleavage site probability: 0.076 between pos. 30 and 31
+
+>sp_O64834_CRPM3_ARATH
+SignalP-HMM result: 
+>sp_O64834_CRPM3_ARATH
+Prediction: Non-secretory protein
+Signal peptide probability: 0.001
+Signal anchor probability: 0.123
+Max cleavage site probability: 0.000 between pos. 39 and 40
+
+>sp_F1MBP6_KLHL3_BOVIN
+SignalP-HMM result: 
+>sp_F1MBP6_KLHL3_BOVIN
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_Q8LGE9_CSTR1_ARATH
+SignalP-HMM result: 
+>sp_Q8LGE9_CSTR1_ARATH
+Prediction: Signal peptide
+Signal peptide probability: 0.998
+Signal anchor probability: 0.002
+Max cleavage site probability: 0.562 between pos. 21 and 22
+
+>sp_Q9DA15_THEGL_MOUSE
+SignalP-HMM result: 
+>sp_Q9DA15_THEGL_MOUSE
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. 18 and 19
+
+>sp_C5H5D1_VM31_CRODC
+SignalP-HMM result: 
+>sp_C5H5D1_VM31_CRODC
+Prediction: Non-secretory protein
+Signal peptide probability: 0.001
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. 27 and 28
+
+>sp_Q8L5A7_SOT15_ARATH
+SignalP-HMM result: 
+>sp_Q8L5A7_SOT15_ARATH
+Prediction: Non-secretory protein
+Signal peptide probability: 0.021
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.012 between pos. 21 and 22
+
+>sp_A4ZZ93_DHYSL_LEIDO
+SignalP-HMM result: 
+>sp_A4ZZ93_DHYSL_LEIDO
+Prediction: Non-secretory protein
+Signal peptide probability: 0.005
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.004 between pos. 53 and 54
+
+>sp_F7CYY5_IMDH2_XENTR
+SignalP-HMM result: 
+>sp_F7CYY5_IMDH2_XENTR
+Prediction: Non-secretory protein
+Signal peptide probability: 0.001
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.001 between pos. 20 and 21
+
+>sp_P0DKL7_PA2BA_VIPRE
+SignalP-HMM result: 
+>sp_P0DKL7_PA2BA_VIPRE
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. 15 and 16
+
+>sp_Q9FDX9_GG1_ARATH
+SignalP-HMM result: 
+>sp_Q9FDX9_GG1_ARATH
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_B3EWK3_FAR7_DELRA
+SignalP-HMM result: 
+>sp_B3EWK3_FAR7_DELRA
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_Q6NTY8_CE41A_XENLA
+SignalP-HMM result: 
+>sp_Q6NTY8_CE41A_XENLA
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_B3A0Q6_CAH2_LOTGI
+SignalP-HMM result: 
+>sp_B3A0Q6_CAH2_LOTGI
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.016
+Max cleavage site probability: 0.000 between pos. 18 and 19
+
+>sp_Q9FLG8_SPNS2_ARATH
+SignalP-HMM result: 
+>sp_Q9FLG8_SPNS2_ARATH
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.002
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_P86996_PPK4_NAMOO
+SignalP-HMM result: 
+>sp_P86996_PPK4_NAMOO
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_G3V0H7_SO1B7_HUMAN
+SignalP-HMM result: 
+>sp_G3V0H7_SO1B7_HUMAN
+Prediction: Non-secretory protein
+Signal peptide probability: 0.002
+Signal anchor probability: 0.162
+Max cleavage site probability: 0.001 between pos. 24 and 25
+
+>sp_Q5I7G2_RXR_LYMST
+SignalP-HMM result: 
+>sp_Q5I7G2_RXR_LYMST
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. 29 and 30
+
+>sp_Q9SQ68_COR13_PAPSO
+SignalP-HMM result: 
+>sp_Q9SQ68_COR13_PAPSO
+Prediction: Non-secretory protein
+Signal peptide probability: 0.031
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.013 between pos. 23 and 24
+
+>sp_Q8VZF1_AEE7_ARATH
+SignalP-HMM result: 
+>sp_Q8VZF1_AEE7_ARATH
+Prediction: Non-secretory protein
+Signal peptide probability: 0.009
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.003 between pos. 31 and 32
+
+>sp_Q8L5K4_GTPS_CITLI
+SignalP-HMM result: 
+>sp_Q8L5K4_GTPS_CITLI
+Prediction: Non-secretory protein
+Signal peptide probability: 0.464
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.101 between pos. 18 and 19
+
+>sp_G5EEH9_NUP98_CAEEL
+SignalP-HMM result: 
+>sp_G5EEH9_NUP98_CAEEL
+Prediction: Non-secretory protein
+Signal peptide probability: 0.029
+Signal anchor probability: 0.001
+Max cleavage site probability: 0.013 between pos. 24 and 25
+
+>sp_Q66GR6_WHY3_ARATH
+SignalP-HMM result: 
+>sp_Q66GR6_WHY3_ARATH
+Prediction: Non-secretory protein
+Signal peptide probability: 0.024
+Signal anchor probability: 0.002
+Max cleavage site probability: 0.015 between pos. 40 and 41
+
+>sp_Q2KHY9_PTSS1_BOVIN
+SignalP-HMM result: 
+>sp_Q2KHY9_PTSS1_BOVIN
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.084
+Max cleavage site probability: 0.000 between pos. 13 and 14
+
+>sp_D2Y4A0_COG1F_CONCL
+SignalP-HMM result: 
+>sp_D2Y4A0_COG1F_CONCL
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.305
+Max cleavage site probability: 0.000 between pos. 25 and 26
+
+>sp_F4IMK2_MES6_ARATH
+SignalP-HMM result: 
+>sp_F4IMK2_MES6_ARATH
+Prediction: Non-secretory protein
+Signal peptide probability: 0.233
+Signal anchor probability: 0.012
+Max cleavage site probability: 0.225 between pos. 21 and 22
+
+>sp_F1QDI9_MCM9_DANRE
+SignalP-HMM result: 
+>sp_F1QDI9_MCM9_DANRE
+Prediction: Non-secretory protein
+Signal peptide probability: 0.014
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.008 between pos. 19 and 20
+
+>sp_Q55CV0_NNRE_DICDI
+SignalP-HMM result: 
+>sp_Q55CV0_NNRE_DICDI
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. 25 and 26
+
+>sp_P86997_PVK2_NAMOO
+SignalP-HMM result: 
+>sp_P86997_PVK2_NAMOO
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. 12 and 13
+
+>sp_B3EWG2_LACC_LEPMG
+SignalP-HMM result: 
+>sp_B3EWG2_LACC_LEPMG
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_B3EWI9_OXLA_BOTMT
+SignalP-HMM result: 
+>sp_B3EWI9_OXLA_BOTMT
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_A6P7H6_FGF13_XENLA
+SignalP-HMM result: 
+>sp_A6P7H6_FGF13_XENLA
+Prediction: Non-secretory protein
+Signal peptide probability: 0.028
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.014 between pos. 16 and 17
+
+>sp_P0CS87_YP41_SCHPO
+SignalP-HMM result: 
+>sp_P0CS87_YP41_SCHPO
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_P0DKM9_TU11_LOPAL
+SignalP-HMM result: 
+>sp_P0DKM9_TU11_LOPAL
+Prediction: Non-secretory protein
+Signal peptide probability: 0.006
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.003 between pos. 17 and 18
+
+>sp_Q8C6G1_CU002_MOUSE
+SignalP-HMM result: 
+>sp_Q8C6G1_CU002_MOUSE
+Prediction: Non-secretory protein
+Signal peptide probability: 0.001
+Signal anchor probability: 0.003
+Max cleavage site probability: 0.001 between pos. 36 and 37
+
+>sp_D4A9I3_FLOWR_RAT
+SignalP-HMM result: 
+>sp_D4A9I3_FLOWR_RAT
+Prediction: Signal peptide
+Signal peptide probability: 0.612
+Signal anchor probability: 0.265
+Max cleavage site probability: 0.180 between pos. 41 and 42
+
+>sp_B0BNM1_NNRE_RAT
+SignalP-HMM result: 
+>sp_B0BNM1_NNRE_RAT
+Prediction: Signal peptide
+Signal peptide probability: 0.998
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.603 between pos. 25 and 26
+
+>sp_P0DJF4_VSPAL_CRYAB
+SignalP-HMM result: 
+>sp_P0DJF4_VSPAL_CRYAB
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_A8XY47_UVSSA_CAEBR
+SignalP-HMM result: 
+>sp_A8XY47_UVSSA_CAEBR
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_O48529_STR9_ARATH
+SignalP-HMM result: 
+>sp_O48529_STR9_ARATH
+Prediction: Non-secretory protein
+Signal peptide probability: 0.015
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.008 between pos. 20 and 21
+
+>sp_O23171_MES9_ARATH
+SignalP-HMM result: 
+>sp_O23171_MES9_ARATH
+Prediction: Non-secretory protein
+Signal peptide probability: 0.157
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.153 between pos. 16 and 17
+
+>sp_D3ZQX4_APC15_RAT
+SignalP-HMM result: 
+>sp_D3ZQX4_APC15_RAT
+Prediction: Non-secretory protein
+Signal peptide probability: 0.460
+Signal anchor probability: 0.013
+Max cleavage site probability: 0.226 between pos. 21 and 22
+
+>sp_G2TRQ6_TAM11_SCHPO
+SignalP-HMM result: 
+>sp_G2TRQ6_TAM11_SCHPO
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_F1RDG9_FYNB_DANRE
+SignalP-HMM result: 
+>sp_F1RDG9_FYNB_DANRE
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_E7FCN8_INTU_DANRE
+SignalP-HMM result: 
+>sp_E7FCN8_INTU_DANRE
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. 26 and 27
+
+>sp_O04034_CCX5_ARATH
+SignalP-HMM result: 
+>sp_O04034_CCX5_ARATH
+Prediction: Signal anchor
+Signal peptide probability: 0.261
+Signal anchor probability: 0.736
+Max cleavage site probability: 0.149 between pos. 31 and 32
+
+>sp_E1BP74_MARF1_BOVIN
+SignalP-HMM result: 
+>sp_E1BP74_MARF1_BOVIN
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. 23 and 24
+
+>sp_P0DKR0_VM3_BOTMO
+SignalP-HMM result: 
+>sp_P0DKR0_VM3_BOTMO
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. 19 and 20
+
+>sp_F6RRD7_RPAP2_BOVIN
+SignalP-HMM result: 
+>sp_F6RRD7_RPAP2_BOVIN
+Prediction: Non-secretory protein
+Signal peptide probability: 0.001
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. 19 and 20
+
+>sp_B2ACC7_HETS_PODAN
+SignalP-HMM result: 
+>sp_B2ACC7_HETS_PODAN
+Prediction: Signal peptide
+Signal peptide probability: 0.541
+Signal anchor probability: 0.110
+Max cleavage site probability: 0.327 between pos. 23 and 24
+
+>sp_B5BP45_YP51_SCHPO
+SignalP-HMM result: 
+>sp_B5BP45_YP51_SCHPO
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_Q03689_HETS_PODAS
+SignalP-HMM result: 
+>sp_Q03689_HETS_PODAS
+Prediction: Non-secretory protein
+Signal peptide probability: 0.250
+Signal anchor probability: 0.007
+Max cleavage site probability: 0.111 between pos. 24 and 25
+
+>sp_P0DI29_CSPL1_TRIPD
+SignalP-HMM result: 
+>sp_P0DI29_CSPL1_TRIPD
+Prediction: Non-secretory protein
+Signal peptide probability: 0.003
+Signal anchor probability: 0.024
+Max cleavage site probability: 0.003 between pos. 64 and 65
+
+>sp_E7FDE0_TM138_DANRE
+SignalP-HMM result: 
+>sp_E7FDE0_TM138_DANRE
+Prediction: Signal peptide
+Signal peptide probability: 0.824
+Signal anchor probability: 0.130
+Max cleavage site probability: 0.255 between pos. 28 and 29
+
+>sp_P0DI13_SA1B2_ARATH
+SignalP-HMM result: 
+>sp_P0DI13_SA1B2_ARATH
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.010
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_B3EWH4_NLTP_PEGHA
+SignalP-HMM result: 
+>sp_B3EWH4_NLTP_PEGHA
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. 13 and 14
+
+>sp_B1AT66_MOT7_MOUSE
+SignalP-HMM result: 
+>sp_B1AT66_MOT7_MOUSE
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. 64 and 65
+
+>sp_E3XA68_NNRE_ANODA
+SignalP-HMM result: 
+>sp_E3XA68_NNRE_ANODA
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_G5EEM5_ZYG9_CAEEL
+SignalP-HMM result: 
+>sp_G5EEM5_ZYG9_CAEEL
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_P0DI22_CSPL1_PTEAA
+SignalP-HMM result: 
+>sp_P0DI22_CSPL1_PTEAA
+Prediction: Signal anchor
+Signal peptide probability: 0.004
+Signal anchor probability: 0.618
+Max cleavage site probability: 0.001 between pos. 53 and 54
+
+>sp_Q9LUG9_MD33A_ARATH
+SignalP-HMM result: 
+>sp_Q9LUG9_MD33A_ARATH
+Prediction: Non-secretory protein
+Signal peptide probability: 0.002
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.002 between pos. 20 and 21
+
+>sp_G3N1S4_MCIN_BOVIN
+SignalP-HMM result: 
+>sp_G3N1S4_MCIN_BOVIN
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. 15 and 16
+
+>sp_P0DI37_CSPL2_BRADI
+SignalP-HMM result: 
+>sp_P0DI37_CSPL2_BRADI
+Prediction: Non-secretory protein
+Signal peptide probability: 0.007
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.003 between pos. 23 and 24
+
+>sp_D7LIR2_CSPLI_ARALL
+SignalP-HMM result: 
+>sp_D7LIR2_CSPLI_ARALL
+Prediction: Non-secretory protein
+Signal peptide probability: 0.001
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. 32 and 33
+
+>sp_E0CYC6_NAT8B_MOUSE
+SignalP-HMM result: 
+>sp_E0CYC6_NAT8B_MOUSE
+Prediction: Signal anchor
+Signal peptide probability: 0.000
+Signal anchor probability: 0.800
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_Q8W3U4_HRT2_HEVBR
+SignalP-HMM result: 
+>sp_Q8W3U4_HRT2_HEVBR
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.004
+Max cleavage site probability: 0.000 between pos. 37 and 38
+
+>sp_F6V515_MTAP_XENTR
+SignalP-HMM result: 
+>sp_F6V515_MTAP_XENTR
+Prediction: Non-secretory protein
+Signal peptide probability: 0.045
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.023 between pos. 16 and 17
+
+>sp_Q0WP36_MOT2_ARATH
+SignalP-HMM result: 
+>sp_Q0WP36_MOT2_ARATH
+Prediction: Signal anchor
+Signal peptide probability: 0.000
+Signal anchor probability: 0.980
+Max cleavage site probability: 0.000 between pos. 55 and 56
+
+>sp_F1QBY1_NIPLB_DANRE
+SignalP-HMM result: 
+>sp_F1QBY1_NIPLB_DANRE
+Prediction: Non-secretory protein
+Signal peptide probability: 0.052
+Signal anchor probability: 0.007
+Max cleavage site probability: 0.022 between pos. 25 and 26
+
+>sp_Q9ZQP1_DSP8_ARATH
+SignalP-HMM result: 
+>sp_Q9ZQP1_DSP8_ARATH
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_Q2R3K3_LCB2A_ORYSJ
+SignalP-HMM result: 
+>sp_Q2R3K3_LCB2A_ORYSJ
+Prediction: Signal peptide
+Signal peptide probability: 0.707
+Signal anchor probability: 0.241
+Max cleavage site probability: 0.425 between pos. 23 and 24
+
+>sp_D4A7T3_BRDT_RAT
+SignalP-HMM result: 
+>sp_D4A7T3_BRDT_RAT
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. 21 and 22
+
+>sp_Q9LDH1_SIB1_ARATH
+SignalP-HMM result: 
+>sp_Q9LDH1_SIB1_ARATH
+Prediction: Non-secretory protein
+Signal peptide probability: 0.004
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.001 between pos. 19 and 20
+
+>sp_Q5RJU3_CC103_XENTR
+SignalP-HMM result: 
+>sp_Q5RJU3_CC103_XENTR
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_B5A434_MTPS1_SANAL
+SignalP-HMM result: 
+>sp_B5A434_MTPS1_SANAL
+Prediction: Non-secretory protein
+Signal peptide probability: 0.079
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.045 between pos. 18 and 19
+
+>sp_Q4R7V1_CEP70_MACFA
+SignalP-HMM result: 
+>sp_Q4R7V1_CEP70_MACFA
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_B3STU3_CHAC1_RAT
+SignalP-HMM result: 
+>sp_B3STU3_CHAC1_RAT
+Prediction: Non-secretory protein
+Signal peptide probability: 0.002
+Signal anchor probability: 0.024
+Max cleavage site probability: 0.001 between pos. 21 and 22
+
+>sp_O64759_CAAT5_ARATH
+SignalP-HMM result: 
+>sp_O64759_CAAT5_ARATH
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. 33 and 34
+
+>sp_Q93VH2_BBD2_ARATH
+SignalP-HMM result: 
+>sp_Q93VH2_BBD2_ARATH
+Prediction: Signal peptide
+Signal peptide probability: 0.708
+Signal anchor probability: 0.007
+Max cleavage site probability: 0.330 between pos. 30 and 31
+
+>sp_P0DI70_CSPL2_GINBI
+SignalP-HMM result: 
+>sp_P0DI70_CSPL2_GINBI
+Prediction: Non-secretory protein
+Signal peptide probability: 0.001
+Signal anchor probability: 0.174
+Max cleavage site probability: 0.000 between pos. 58 and 59
+
+>sp_Q9XGZ0_MAOP3_ARATH
+SignalP-HMM result: 
+>sp_Q9XGZ0_MAOP3_ARATH
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_Q86LG1_PPK28_DROME
+SignalP-HMM result: 
+>sp_Q86LG1_PPK28_DROME
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_E3K7C3_MTAP1_PUCGT
+SignalP-HMM result: 
+>sp_E3K7C3_MTAP1_PUCGT
+Prediction: Non-secretory protein
+Signal peptide probability: 0.053
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.030 between pos. 21 and 22
+
+>sp_Q8C0T0_XKR8_MOUSE
+SignalP-HMM result: 
+>sp_Q8C0T0_XKR8_MOUSE
+Prediction: Signal peptide
+Signal peptide probability: 0.645
+Signal anchor probability: 0.307
+Max cleavage site probability: 0.374 between pos. 33 and 34
+
+>sp_Q812E9_GPM6A_RAT
+SignalP-HMM result: 
+>sp_Q812E9_GPM6A_RAT
+Prediction: Signal anchor
+Signal peptide probability: 0.000
+Signal anchor probability: 0.884
+Max cleavage site probability: 0.000 between pos. 43 and 44
+
+>sp_Q9FNB0_CHLH_ARATH
+SignalP-HMM result: 
+>sp_Q9FNB0_CHLH_ARATH
+Prediction: Signal peptide
+Signal peptide probability: 0.515
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.494 between pos. 16 and 17
+
+>sp_P0DKQ1_CM3F_CONCN
+SignalP-HMM result: 
+>sp_P0DKQ1_CM3F_CONCN
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_B3EWM5_TRP1_DELRA
+SignalP-HMM result: 
+>sp_B3EWM5_TRP1_DELRA
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_Q9S7G6_PNP2_ARATH
+SignalP-HMM result: 
+>sp_Q9S7G6_PNP2_ARATH
+Prediction: Non-secretory protein
+Signal peptide probability: 0.406
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.237 between pos. 23 and 24
+
+>sp_E1BEA8_TBX6_BOVIN
+SignalP-HMM result: 
+>sp_E1BEA8_TBX6_BOVIN
+Prediction: Non-secretory protein
+Signal peptide probability: 0.001
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. 26 and 27
+
+>sp_G2TRP2_NEW15_SCHPO
+SignalP-HMM result: 
+>sp_G2TRP2_NEW15_SCHPO
+Prediction: Non-secretory protein
+Signal peptide probability: 0.007
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.003 between pos. 20 and 21
+
+>sp_Q9XFJ8_TATA_MAIZE
+SignalP-HMM result: 
+>sp_Q9XFJ8_TATA_MAIZE
+Prediction: Signal peptide
+Signal peptide probability: 0.986
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.338 between pos. 20 and 21
+
+>sp_Q94A65_STR14_ARATH
+SignalP-HMM result: 
+>sp_Q94A65_STR14_ARATH
+Prediction: Non-secretory protein
+Signal peptide probability: 0.142
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.062 between pos. 17 and 18
+
+>sp_P0DJJ3_SGIP1_RAT
+SignalP-HMM result: 
+>sp_P0DJJ3_SGIP1_RAT
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_Q18446_BL1S5_CAEEL
+SignalP-HMM result: 
+>sp_Q18446_BL1S5_CAEEL
+Prediction: Non-secretory protein
+Signal peptide probability: 0.002
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.001 between pos. 27 and 28
+
+>sp_P0DJB9_CU6C_CONCL
+SignalP-HMM result: 
+>sp_P0DJB9_CU6C_CONCL
+Prediction: Non-secretory protein
+Signal peptide probability: 0.075
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.057 between pos. 17 and 18
+
+>sp_Q6ZH29_GATP4_ORYSJ
+SignalP-HMM result: 
+>sp_Q6ZH29_GATP4_ORYSJ
+Prediction: Non-secretory protein
+Signal peptide probability: 0.037
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.018 between pos. 21 and 22
+
+>sp_Q9LR73_3AT2_ARATH
+SignalP-HMM result: 
+>sp_Q9LR73_3AT2_ARATH
+Prediction: Non-secretory protein
+Signal peptide probability: 0.002
+Signal anchor probability: 0.002
+Max cleavage site probability: 0.001 between pos. 41 and 42
+
+>sp_Q3UHB8_CC177_MOUSE
+SignalP-HMM result: 
+>sp_Q3UHB8_CC177_MOUSE
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_G2TRR2_YG8H_SCHPO
+SignalP-HMM result: 
+>sp_G2TRR2_YG8H_SCHPO
+Prediction: Signal anchor
+Signal peptide probability: 0.130
+Signal anchor probability: 0.870
+Max cleavage site probability: 0.070 between pos. 35 and 36
+
+>sp_A7Z064_HMDH_BOVIN
+SignalP-HMM result: 
+>sp_A7Z064_HMDH_BOVIN
+Prediction: Signal anchor
+Signal peptide probability: 0.097
+Signal anchor probability: 0.799
+Max cleavage site probability: 0.018 between pos. 23 and 24
+
+>sp_B0BN49_RBMX2_RAT
+SignalP-HMM result: 
+>sp_B0BN49_RBMX2_RAT
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_P0DJG3_SVP1_BOTAN
+SignalP-HMM result: 
+>sp_P0DJG3_SVP1_BOTAN
+Prediction: Non-secretory protein
+Signal peptide probability: 0.001
+Signal anchor probability: 0.228
+Max cleavage site probability: 0.000 between pos. 39 and 40
+
+>sp_Q8L706_SYT5_ARATH
+SignalP-HMM result: 
+>sp_Q8L706_SYT5_ARATH
+Prediction: Signal anchor
+Signal peptide probability: 0.370
+Signal anchor probability: 0.613
+Max cleavage site probability: 0.139 between pos. 20 and 21
+
+>sp_F4HVX7_CERL1_ARATH
+SignalP-HMM result: 
+>sp_F4HVX7_CERL1_ARATH
+Prediction: Signal peptide
+Signal peptide probability: 0.974
+Signal anchor probability: 0.008
+Max cleavage site probability: 0.786 between pos. 38 and 39
+
+>sp_A2XWA9_SRR_ORYSI
+SignalP-HMM result: 
+>sp_A2XWA9_SRR_ORYSI
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. 18 and 19
+
+>sp_Q6NNN0_RADL3_ARATH
+SignalP-HMM result: 
+>sp_Q6NNN0_RADL3_ARATH
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. 15 and 16
+
+>sp_Q9FMF8_DIT22_ARATH
+SignalP-HMM result: 
+>sp_Q9FMF8_DIT22_ARATH
+Prediction: Signal peptide
+Signal peptide probability: 0.520
+Signal anchor probability: 0.002
+Max cleavage site probability: 0.212 between pos. 23 and 24
+
+>sp_F1N8V3_PHAR4_CHICK
+SignalP-HMM result: 
+>sp_F1N8V3_PHAR4_CHICK
+Prediction: Non-secretory protein
+Signal peptide probability: 0.001
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. 16 and 17
+
+>sp_D4AB98_AF1L1_RAT
+SignalP-HMM result: 
+>sp_D4AB98_AF1L1_RAT
+Prediction: Non-secretory protein
+Signal peptide probability: 0.001
+Signal anchor probability: 0.001
+Max cleavage site probability: 0.000 between pos. 19 and 20
+
+>sp_Q6VMN7_ALD1_ORYSJ
+SignalP-HMM result: 
+>sp_Q6VMN7_ALD1_ORYSJ
+Prediction: Non-secretory protein
+Signal peptide probability: 0.002
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.001 between pos. 27 and 28
+
+>sp_P0DJH9_RD3L_HUMAN
+SignalP-HMM result: 
+>sp_P0DJH9_RD3L_HUMAN
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. 14 and 15
+
+>sp_Q9JJK1_GPM6B_RAT
+SignalP-HMM result: 
+>sp_Q9JJK1_GPM6B_RAT
+Prediction: Signal anchor
+Signal peptide probability: 0.000
+Signal anchor probability: 0.957
+Max cleavage site probability: 0.000 between pos. 60 and 61
+
+>sp_Q84KL6_PT1_PINTA
+SignalP-HMM result: 
+>sp_Q84KL6_PT1_PINTA
+Prediction: Non-secretory protein
+Signal peptide probability: 0.080
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.037 between pos. 16 and 17
+
+>sp_A8X2U9_SBP_CAEBR
+SignalP-HMM result: 
+>sp_A8X2U9_SBP_CAEBR
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. 15 and 16
+
+>sp_Q9SKZ5_FBT1_ARATH
+SignalP-HMM result: 
+>sp_Q9SKZ5_FBT1_ARATH
+Prediction: Non-secretory protein
+Signal peptide probability: 0.168
+Signal anchor probability: 0.002
+Max cleavage site probability: 0.065 between pos. 20 and 21
+
+>sp_Q9FKW8_STR18_ARATH
+SignalP-HMM result: 
+>sp_Q9FKW8_STR18_ARATH
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. 16 and 17
+
+>sp_F1N3B8_OAS2_BOVIN
+SignalP-HMM result: 
+>sp_F1N3B8_OAS2_BOVIN
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_P0DJB2_CO165_CONCL
+SignalP-HMM result: 
+>sp_P0DJB2_CO165_CONCL
+Prediction: Non-secretory protein
+Signal peptide probability: 0.011
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.007 between pos. 21 and 22
+
+>sp_Q6RET3_PPOA_EMEND
+SignalP-HMM result: 
+>sp_Q6RET3_PPOA_EMEND
+Prediction: Non-secretory protein
+Signal peptide probability: 0.001
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.001 between pos. 25 and 26
+
+>sp_F7DKV7_SIR5_XENTR
+SignalP-HMM result: 
+>sp_F7DKV7_SIR5_XENTR
+Prediction: Non-secretory protein
+Signal peptide probability: 0.007
+Signal anchor probability: 0.006
+Max cleavage site probability: 0.005 between pos. 24 and 25
+
+>sp_O48916_FAH1_ARATH
+SignalP-HMM result: 
+>sp_O48916_FAH1_ARATH
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.099
+Max cleavage site probability: 0.000 between pos. 24 and 25
+
+>sp_D7KWY6_AP1_ARALL
+SignalP-HMM result: 
+>sp_D7KWY6_AP1_ARALL
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. 49 and 50
+
+>sp_A8X354_NNRD_CAEBR
+SignalP-HMM result: 
+>sp_A8X354_NNRD_CAEBR
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. 35 and 36
+
+>sp_Q9ZNX9_SIGE_ARATH
+SignalP-HMM result: 
+>sp_Q9ZNX9_SIGE_ARATH
+Prediction: Non-secretory protein
+Signal peptide probability: 0.066
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.052 between pos. 18 and 19
+
+>sp_P0DI47_CASP3_RAPSA
+SignalP-HMM result: 
+>sp_P0DI47_CASP3_RAPSA
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.009
+Max cleavage site probability: 0.000 between pos. 17 and 18
+
+>sp_P0DH92_VATL1_ARATH
+SignalP-HMM result: 
+>sp_P0DH92_VATL1_ARATH
+Prediction: Signal peptide
+Signal peptide probability: 0.881
+Signal anchor probability: 0.100
+Max cleavage site probability: 0.217 between pos. 28 and 29
+
+>sp_E9Q6B2_CC85C_MOUSE
+SignalP-HMM result: 
+>sp_E9Q6B2_CC85C_MOUSE
+Prediction: Signal peptide
+Signal peptide probability: 0.962
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.530 between pos. 20 and 21
+
+>sp_F4K4R6_GEX2_ARATH
+SignalP-HMM result: 
+>sp_F4K4R6_GEX2_ARATH
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_Q59Q46_IMDH_CANAL
+SignalP-HMM result: 
+>sp_Q59Q46_IMDH_CANAL
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_Q6AWY4_GRF5_ORYSJ
+SignalP-HMM result: 
+>sp_Q6AWY4_GRF5_ORYSJ
+Prediction: Non-secretory protein
+Signal peptide probability: 0.072
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.020 between pos. 33 and 34
+
+>sp_B3EWK9_YAMD_DELRA
+SignalP-HMM result: 
+>sp_B3EWK9_YAMD_DELRA
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_G3V7R4_FOXO1_RAT
+SignalP-HMM result: 
+>sp_G3V7R4_FOXO1_RAT
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_E1BCH6_ISPD_BOVIN
+SignalP-HMM result: 
+>sp_E1BCH6_ISPD_BOVIN
+Prediction: Non-secretory protein
+Signal peptide probability: 0.098
+Signal anchor probability: 0.048
+Max cleavage site probability: 0.066 between pos. 57 and 58
+
+>sp_G1C1T1_CUC13_CONCL
+SignalP-HMM result: 
+>sp_G1C1T1_CUC13_CONCL
+Prediction: Non-secretory protein
+Signal peptide probability: 0.006
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.003 between pos. 36 and 37
+
+>sp_Q6K8E7_LCB1B_ORYSJ
+SignalP-HMM result: 
+>sp_Q6K8E7_LCB1B_ORYSJ
+Prediction: Signal peptide
+Signal peptide probability: 0.863
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.429 between pos. 29 and 30
+
+>sp_G3V7P1_STX12_RAT
+SignalP-HMM result: 
+>sp_G3V7P1_STX12_RAT
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_Q940Y9_POLL2_ARATH
+SignalP-HMM result: 
+>sp_Q940Y9_POLL2_ARATH
+Prediction: Non-secretory protein
+Signal peptide probability: 0.295
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.129 between pos. 20 and 21
+
+>sp_Q9SJY5_PUMP5_ARATH
+SignalP-HMM result: 
+>sp_Q9SJY5_PUMP5_ARATH
+Prediction: Non-secretory protein
+Signal peptide probability: 0.240
+Signal anchor probability: 0.003
+Max cleavage site probability: 0.171 between pos. 20 and 21
+
+>sp_F6XZJ7_SAM15_MOUSE
+SignalP-HMM result: 
+>sp_F6XZJ7_SAM15_MOUSE
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_Q68FU7_COQ6_RAT
+SignalP-HMM result: 
+>sp_Q68FU7_COQ6_RAT
+Prediction: Signal peptide
+Signal peptide probability: 0.969
+Signal anchor probability: 0.012
+Max cleavage site probability: 0.323 between pos. 26 and 27
+
+>sp_Q9SBJ1_PDK_ARATH
+SignalP-HMM result: 
+>sp_Q9SBJ1_PDK_ARATH
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. 20 and 21
+
+>sp_B3EWN4_2SSL_RICCO
+SignalP-HMM result: 
+>sp_B3EWN4_2SSL_RICCO
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_G5DC91_TLP1_MANZA
+SignalP-HMM result: 
+>sp_G5DC91_TLP1_MANZA
+Prediction: Non-secretory protein
+Signal peptide probability: 0.139
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.087 between pos. 15 and 16
+
+>sp_G2TRU5_COXM2_SCHPO
+SignalP-HMM result: 
+>sp_G2TRU5_COXM2_SCHPO
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+
+>sp_P0DI00_FB264_ARATH
+SignalP-HMM result: 
+>sp_P0DI00_FB264_ARATH
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. 25 and 26
+
+>sp_Q10P01_LCB1A_ORYSJ
+SignalP-HMM result: 
+>sp_Q10P01_LCB1A_ORYSJ
+Prediction: Signal peptide
+Signal peptide probability: 0.915
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.454 between pos. 20 and 21
+
+>sp_Q9VAJ3_PPK19_DROME
+SignalP-HMM result: 
+>sp_Q9VAJ3_PPK19_DROME
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. 50 and 51
+
+>sp_Q5KA65_XPT1_CRYNJ
+SignalP-HMM result: 
+>sp_Q5KA65_XPT1_CRYNJ
+Prediction: Non-secretory protein
+Signal peptide probability: 0.001
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.001 between pos. 15 and 16
+
+>sp_B3EWI6_AMP2_CENMR
+SignalP-HMM result: 
+>sp_B3EWI6_AMP2_CENMR
+Prediction: Non-secretory protein
+Signal peptide probability: 0.000
+Signal anchor probability: 0.000
+Max cleavage site probability: 0.000 between pos. -1 and  0
+When using results from this server, please cite:
+Henrik Nielsen, Jacob Engelbrecht, Soren Brunak and Gunnar von Heijne: Identification of prokaryotic and eukaryotic signal peptides and prediction of their cleavage sites. Protein Engineering, 10, 1-6 (1997).
+If you specifically use the SignalP-HMM output, please also cite:
+Henrik Nielsen and Anders Krogh: Prediction of signal peptides and signal anchors by a hidden Markov model. In Proceedings of the Sixth International Conference on Intelligent Systems for Molecular Biology (ISMB 6), AAAI Press, Menlo Park, California, pp. 122--130 (1998).
