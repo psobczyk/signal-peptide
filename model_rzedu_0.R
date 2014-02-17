@@ -7,7 +7,7 @@ require(depmixS4)
 source("run_model.R")
 
 procent_rozpoznania <- NULL
-testowane_bialka <- sample(1:length(analized_sequences),50, replace=FALSE)
+testowane_bialka <- sample(1:length(analized_sequences),100, replace=FALSE)
 for(numer_probki in testowane_bialka){
   probka <- as.numeric(degenerate(analized_sequences[[numer_probki]], aa5)[1:(all_nhc[numer_probki,4]+10)])
   fitted.model <- uruchom_model(probka)
@@ -32,13 +32,3 @@ par(new=TRUE)
 barplot(a[,1],,col="pink",xaxt="n",yaxt="n",xlab="",ylab="state",density=4)
 axis(side=4,at=c(0,1,2,3), labels=c("","one", "two", "three"),line=F,tick=F)
 
-height <- t(t(c(1,-1,1)))
-bardensity <- t(t(c(10,10,0)))
-barangle <- t(t(c(45,135,0)))
-barplot(height, density = bardensity, angle = barangle) 
-
-
-s <- strsplit("AWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",split="")
-probka <- as.numeric(degenerate(unlist(s), aa5))
-fitted.model <- uruchom_model(probka)
-viterbi_path <- fitted.model@posterior

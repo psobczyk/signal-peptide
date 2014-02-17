@@ -34,6 +34,27 @@ t2 <- table(degenerate(h_region, aa5))
 t3 <- table(degenerate(c_region, aa5))
 t4 <- table(degenerate(reszta, aa5))
 
+#distribution of regions lengths
+fit_poisson <- function(x){
+  xfit<-floor(seq(min(x),max(x),length=60))
+  yfit<-dpois(xfit,lambda=mean(x)) 
+  h <- hist(x, probability=T)
+  par(mfrow=c(2,1))
+  plot(h$mids, h$density, type="l", xlab="długość regionu", ylab = "gęstość", col="red", 
+       ylim=c(0, max(yfit, h$density)), main="Zgodność z rozkładem Poissona")
+  lines(xfit, yfit, col="blue", lwd=2, xaxt="n",yaxt="n",xlab="",ylab="") 
+  legend("topright",col=c("red","blue"),lty=1,legend=c("data","fitted"),cex=0.6)
+  x = table(x)
+  k=as.numeric(names(x))
+  plot(k,log(x)+lfactorial(k), col="red",pch="o", ylab="częstość", main="Poissoness plot")
+  a <-lm(log(x)+lfactorial(k)~k)
+  abline(coef=a$coefficients, col="blue")
+  legend("topleft",lty=1,pch=c("o", ""), col=c("red","blue"),legend=c("data","fitted"),cex=0.6)
+}
+fit_poisson(lengths[,1])
+fit_poisson(lengths[,2])
+fit_poisson(lengths[,3])
+
 #setting params -------
 additional_margin = 10
 pipar <- c(1,0,0,0)
