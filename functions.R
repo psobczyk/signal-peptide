@@ -167,7 +167,7 @@ calc_t <- function(list_prots) {
 
 #helper function starting model
 start_model <- function(x, t1, t2, t3){
-  #tu musz¹ zostaæ wczytane dane
+  #tu musz? zosta? wczytane dane
   numStates <- 3
   n_responses <- length(unique(x))
   #szanse wyprodukowania sygnalow
@@ -187,7 +187,7 @@ start_model <- function(x, t1, t2, t3){
     )
   )
   
-  #transition probs, wyliczone z dlugosci regionów
+  #transition probs, wyliczone z dlugosci region?w
   transition <- list(transInit(~1, nstates=numStates, family=multinomial("identity"), pstart=c(0.82, 0.18, 0), fixed=c(TRUE, TRUE, TRUE)),
                      transInit(~1, nstates=numStates, family=multinomial("identity"), pstart=c(0, 0.92, 0.08), fixed=c(TRUE, TRUE, TRUE)),
                      transInit(~1, nstates=numStates, family=multinomial("identity"), pstart=c(0, 0, 1), fixed=c(TRUE, TRUE, TRUE)))
@@ -209,8 +209,31 @@ start_model <- function(x, t1, t2, t3){
   fitted
 }
 
+#helper function starting model
+start_model2 <- function(x, t1, t2, t3, t4){
+  #setting params -------
+  additional_margin = 10
+  pipar <- c(1,0,0,0)
+  tpmpar <- matrix(c(0, 1, 0, 0,
+                     0, 0, 1, 0,
+                     0, 0, 0, 1,
+                     0.01, 0, 0, 0), 4, byrow = TRUE)
+  #FIXME!!! --------------
+  rdpar <- list(lambda = c(5.360593, 11.56915, 4.554336,additional_margin))
+  #FIXME!!!!! ---------------
+  odpar <- list(m = matrix(c((t1/sum(t1))[1:4],
+                             (t2/sum(t2))[1:4],
+                             (t3/sum(t3))[1:4],
+                             (t4/sum(t4))[1:4]), 4, byrow = TRUE))
+  
+  viterbi_path <- hsmm.viterbi(x,od = "mult", rd = "pois",
+                                 pi.par = pipar, tpm.par = tpmpar,
+                                 od.par = odpar, rd.par = rdpar)
+  return(viterbi_path)
+}
+
 #calculates concert of the single protein
-test_protein <- function(protein, signal, aa_list, t1, t2, t3, memory = FALSE) {
+test_protein <- function(protein, signal, aa_list, t1, t2, t3, t4, memory = FALSE) {
   nhc <- find_nhc(protein, signal)
   
   if (memory) {
@@ -218,8 +241,9 @@ test_protein <- function(protein, signal, aa_list, t1, t2, t3, memory = FALSE) {
   } else {
     deg_protein <- as.numeric(degenerate(protein[1L:(nhc[4]+30)], aa_list))
   }
-  fitted_model <- start_model(deg_protein, t1, t2, t3)
-  viterbi_path <- fitted_model@posterior[1L:nhc[4], 1]
+  #fitted_model <- start_model(deg_protein, t1, t2, t3)
+  #viterbi_path <- fitted_model@posterior[1L:nhc[4], 1]
+  viterbi_path <- start_model2(deg_protein, t1, t2, t3, t4)$path[1L:nhc[4]]
   nhc[4] <- nhc[4] + 1
   expected <- c(rep(1, nhc[2] - 1), rep(2, nhc[3] - nhc[2]), rep(3, nhc[4] - nhc[3]))
   c(sum(viterbi_path==expected)/length(viterbi_path),
@@ -238,18 +262,17 @@ find_signal <- function(list_prots, ts, alpha = 2, paralell = FALSE) {
   if (paralell) {
     sfLapply(list_prots, function(protein)
       recogn <- sapply(pot_sigs, function(cs) 
-        try(test_protein(protein, c(1, cs), aa5, ts[["t1"]], ts[["t2"]], ts[["t3"]]), silent = TRUE)
+        try(test_protein(protein, c(1, cs), aa5, ts[["t1"]], ts[["t2"]], ts[["t3"]], ts[["t4"]]), silent = TRUE)
       )
     )
   } else {
     lapply(list_prots, function(protein)
       recogn <- sapply(pot_sigs, function(cs) 
-        try(test_protein(protein, c(1, cs), aa5, ts[["t1"]], ts[["t2"]], ts[["t3"]]), silent = TRUE)
+        try(test_protein(protein, c(1, cs), aa5, ts[["t1"]], ts[["t2"]], ts[["t3"]], ts[["t4"]]), silent = TRUE)
       )
     )       
   }
 }
-
 
 #read result of signalp2; remeber to copy raw result to txt 
 read_signalp2 <- function(connection) {

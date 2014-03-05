@@ -61,11 +61,6 @@ degenerate_mem <- function(protein, aa_list) {
       paste0(deg_aa[row], collapse = ""))), levels = aa_pairs)))
 }
 
-transition1 <- make_transition_matrix(n_region, aa5)
-transition2 <- make_transition_matrix(h_region, aa5)
-transition3 <- make_transition_matrix(c_region, aa5)
-transition4 <- make_transition_matrix(rest, aa5)
-
 # values ----------------------------
 
 aa5 = list(positively.charged=c("K", "R", "H"),
@@ -73,9 +68,17 @@ aa5 = list(positively.charged=c("K", "R", "H"),
            polar.uncharged=c("S", "T", "N", "Q"),
            rest=c("D","E","A","P","Y","G"))
 
+transition1 <- make_transition_matrix(n_region, aa5)
+transition2 <- make_transition_matrix(h_region, aa5)
+transition3 <- make_transition_matrix(c_region, aa5)
+transition4 <- make_transition_matrix(rest, aa5)
+
+
+
 # libraries ----------------------------
 
 library(depmixS4)
+library(dhmm)
 library(seqinr)
 library(snowfall)
 library(kernlab)
@@ -121,8 +124,9 @@ ts <- calc_t(euk[pos[["train"]]])
 
 sfInit( parallel=TRUE, cpus=4 )
 sfLibrary(depmixS4)
+sfLibrary(dhmm)
 
-sfExport("test_protein", "find_nhc", "degenerate", "start_model", 
+sfExport("test_protein", "find_nhc", "degenerate", "start_model", "start_model2", 
          "aa5", "ts", "euk", "euk_not", "pos", "neg")
 pos_valid <- find_signal(euk[pos[["valid"]]], ts, paralell = TRUE)
 neg_valid <- find_signal(euk_not[neg[["valid"]]], ts, paralell = TRUE)
@@ -147,8 +151,8 @@ points(res_pc$scores[res[5] == "pos", 1], res_pc$scores[res[5] == "pos", 2], col
 
 dump("res",file="dane_pca.Rdat")
 i = 4
-titles <- c("Zgodnoœæ calkowita", "Zgodnoœæ - N-region", "Zgodnoœæ - H-region",
-            "Zgodnoœæ - C-region")
+titles <- c("Zgodno?? calkowita", "Zgodno?? - N-region", "Zgodno?? - H-region",
+            "Zgodno?? - C-region")
 
 dens_neg <- density(result_filtered_neg[i, ])
 dens_pos <- density(result_filtered_pos[i, ])     
