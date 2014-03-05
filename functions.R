@@ -1,3 +1,14 @@
+# LIBRARIES ----------------------------
+
+library(dhmm)
+library(seqinr)
+library(snowfall)
+library(kernlab)
+library(ROCR)
+
+
+
+#READ UNIPROT DATA -----------------------------
 #helper function to get seqs from  .txt files
 preliminary_seqs <- function(all_lines, signal) {
   prot_ids <- grep("\\<ID   ", all_lines)
@@ -85,6 +96,7 @@ read_uniprot <- function(connection, euk) {
 }
 
 
+#SEQUENCE PROCESSING ------------------------
 
 #function to find n, h and c regions in signal peptide
 find_nhc <- function(protein, signal = NULL) {
@@ -210,6 +222,7 @@ start_model <- function(x, t1, t2, t3){
 }
 
 #helper function starting model
+#this function is fabulous fast - that's quite suspicious
 start_model2 <- function(x, t1, t2, t3, t4){
   #setting params -------
   additional_margin = 10
@@ -229,7 +242,7 @@ start_model2 <- function(x, t1, t2, t3, t4){
   viterbi_path <- hsmm.viterbi(x,od = "mult", rd = "pois",
                                  pi.par = pipar, tpm.par = tpmpar,
                                  od.par = odpar, rd.par = rdpar)
-  return(viterbi_path)
+  viterbi_path
 }
 
 #calculates concert of the single protein
@@ -274,6 +287,28 @@ find_signal <- function(list_prots, ts, alpha = 2, paralell = FALSE) {
   }
 }
 
+#create subsets from data
+split_prots <- function(list_prot, train = 0.5, valid = 0.3, replace = TRUE) {
+  len <- length(list_prot)
+  ids <- sample(len, replace = replace)
+  train_len <- round(len*train, 0)
+  valid_len <- train_len + 1 + round(len*valid, 0)
+  train_id <- ids[1L:train_len]
+  valid_id <- ids[(train_len + 1):valid_len]
+  test_id <- ids[(valid_len + 1):len]
+  list(train = ids[1L:train_len],
+       valid = ids[(train_len + 1):valid_len],
+       test = ids[(valid_len + 1):len])
+}
+
+#list of results to data.frame, also calculates average
+list_to_df <- function(results, target) {
+  results <- t(do.call(cbind, lapply(results[sapply(results, class) == "matrix"], rowMeans)))
+  cbind(data.frame(results), tar = rep(target, nrow(results)))
+}
+
+
+#READ SIGNALP OUTPUT  ----------------------
 #read result of signalp2; remeber to copy raw result to txt 
 read_signalp2 <- function(connection) {
   all_lines <- readLines(connection)
