@@ -1,0 +1,60 @@
+Wykrywanie peptydów sygnałowych przy użyciu HMM
+========================================================
+author: Michał Burdukiewicz i Piotr Sobczyk
+date: 24.04.2014
+
+Wprowadzenie
+========================================================
+```{r,include=FALSE}
+library(knitcitations)
+#bib <- read.bibtex('dpcr.bib')
+library(ggplot2)
+```
+Peptydy sygnałowe to krótkie sekwencje aminokwasowe znajdujące się na N-końcu białka. Umożliwiają transport dojrzałego peptydu przez błonę otaczającą komórkę.
+
+Wprowadzenie
+========================================================
+
+W literaturze wyróżnia się trzy regiony charakterystyczne dla peptydów sygnałowych:
+* n-region: 1-5 aminokwasów, preferowane aminokwasy z dodatnim ładunkiem, 
+* h-region: 0 - 20 aminokwasów, preferowane aminokwasy hydrofobowe.
+* c-region: 3 - 7 polarnych aminokwasów bez ładunku.
+* miejsce cięcia: na pozycjach -3 i -1 w stosunku do miejsca cięcia małe, obojętne aminokwasy.
+
+Wprowadzenie
+========================================================
+
+```{r,echo=FALSE, fig.height=2.5, fig.align='center', fig.width=10}
+plot(c(-0.2, 1.2), c(0.4,0.6), axes = FALSE, cex = 0, xlab = "", ylab = "")
+rect(0, 0.4, 0.2, 0.6, border = NA, col = adjustcolor("blue", alpha.f = 0.30))
+rect(0.2, 0.4, 0.6, 0.6, border = NA, col = adjustcolor("red", alpha.f = 0.30))
+rect(0.6, 0.4, 0.85, 0.6, border = NA, col = adjustcolor("grey", alpha.f = 0.40))
+rect(0.85, 0.4, 1, 0.6, border = NA, col = adjustcolor("green", alpha.f = 0.30))
+text(0, 0.5, "N-", pos = 2, cex = 1.2, family = "mono")
+text(1, 0.5, "-C'", pos = 4, cex = 1.2, family = "mono")
+text(0.1, 0.55, "n-region", pos = 1)
+text(0.4, 0.55, "h-region", pos = 1)
+text(0.725, 0.55, "c-region", pos = 1)
+text(0.925, 0.55, enc2utf8("cięcie"), pos = 1)
+```
+
+Zróżnicowanie w wielkości i składzie aminokwasowym poszczególnych regionów peptydu sygnałowego wpływa na szybkość transportu całego białka.
+
+Cel pracy
+========================================================
+
+```{r,echo=FALSE, fig.height=2.5, fig.align='center', fig.width=10}
+plot(c(-0.2, 1.2), c(0.4,0.6), axes = FALSE, cex = 0, xlab = "", ylab = "")
+rect(0, 0.4, 0.2, 0.6, border = NA, col = adjustcolor("blue", alpha.f = 0.30))
+rect(0.2, 0.4, 0.6, 0.6, border = NA, col = adjustcolor("red", alpha.f = 0.30))
+rect(0.6, 0.4, 0.85, 0.6, border = NA, col = adjustcolor("grey", alpha.f = 0.40))
+rect(0.85, 0.4, 1, 0.6, border = NA, col = adjustcolor("green", alpha.f = 0.30))
+text(0, 0.5, "N-", pos = 2, cex = 1.2, family = "mono")
+text(1, 0.5, "-C'", pos = 4, cex = 1.2, family = "mono")
+text(0.1, 0.55, "n-region", pos = 1)
+text(0.4, 0.55, "h-region", pos = 1)
+text(0.725, 0.55, "c-region", pos = 1)
+text(0.925, 0.55, "cleave", pos = 1)
+```
+
+Zróżnicowanie w wielkości i składzie aminokwasowym poszczególnych regionów peptydu sygnałowego wpływa na szybkość transportu całego białka.

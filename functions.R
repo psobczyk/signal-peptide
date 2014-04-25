@@ -153,7 +153,7 @@ degenerate <- function(seq, aa_group) {
 
 
 
-calc_t <- function(list_prots) {
+calc_t <- function(list_prots, aa_list) {
   nhc <- t(vapply(list_prots, find_nhc, rep(0, 4)))
   
   n_region <- NULL
@@ -169,10 +169,10 @@ calc_t <- function(list_prots) {
     rest <- c(rest, list_prots[[i]][region_starts[4]:length(list_prots[[i]])])
   }
   
-  t1 <- table(degenerate(n_region, aa5))
-  t2 <- table(degenerate(h_region, aa5))
-  t3 <- table(degenerate(c_region, aa5))
-  t4 <- table(degenerate(rest, aa5))
+  t1 <- table(degenerate(n_region, aa_list))
+  t2 <- table(degenerate(h_region, aa_list))
+  t3 <- table(degenerate(c_region, aa_list))
+  t4 <- table(degenerate(rest, aa_list))
   
   list(mean_cs = mean(nhc[, 4]), sd_cs = sd(nhc[, 4]), t1 = t1, t2 = t2, t3 = t3, t4 = t4)
 }
@@ -268,7 +268,7 @@ test_signal <- function(protein, signal, aa_list, t1, t2, t3, t4, memory = FALSE
 
 #seeks signal peptides in the list of proteins
 #pot_sigs: potential signal cleavage site
-find_signal <- function(list_prots, ts, alpha = 2, model, paralell = FALSE) {
+find_signal <- function(list_prots, ts, aa_list, cleave_thr = 0.3, model, paralell = FALSE) {
   
   #signal peptide must have at least 12 aa - assumption
 
@@ -276,15 +276,15 @@ find_signal <- function(list_prots, ts, alpha = 2, model, paralell = FALSE) {
   if (paralell) {
     sfLapply(list_prots, function(protein) {
       pot_cl <- find_cleave(protein, model = model, ort_codes = ort_codes)
-      recogn <- sapply(pot_cl[pot_cl[, 1] > 0.5, 2], function(cs) 
-        try(test_signal(protein, c(1, cs), aa5, ts[["t1"]], ts[["t2"]], ts[["t3"]], ts[["t4"]]), silent = TRUE)
+      recogn <- sapply(pot_cl[pot_cl[, 1] > cleave_thr, 2], function(cs) 
+        try(test_signal(protein, c(1, cs), aa_list, ts[["t1"]], ts[["t2"]], ts[["t3"]], ts[["t4"]]), silent = TRUE)
       )}
     )
   } else {
     lapply(list_prots, function(protein) {
       pot_cl <- find_cleave(protein, model = model, ort_codes = ort_codes)
-      recogn <- sapply(pot_cl[pot_cl[, 1] > 0.5, 2], function(cs)  
-        try(test_signal(protein, c(1, cs), aa5, ts[["t1"]], ts[["t2"]], ts[["t3"]], ts[["t4"]]), silent = TRUE)
+      recogn <- sapply(pot_cl[pot_cl[, 1] > cleave_thr, 2], function(cs)  
+        try(test_signal(protein, c(1, cs), aa_list, ts[["t1"]], ts[["t2"]], ts[["t3"]], ts[["t4"]]), silent = TRUE)
       )}
     )}     
 }
@@ -305,8 +305,19 @@ split_prots <- function(list_prot, train = 0.5, valid = 0.3, replace = TRUE) {
 
 #list of results to data.frame, also calculates average
 list_to_df <- function(results, target) {
-  results <- t(do.call(cbind, lapply(results[sapply(results, class) == "matrix"], rowMeans)))
-  cbind(data.frame(results), tar = rep(target, nrow(results)))
+  n_feature <- nrow(results[[1]])
+  cleaved <- which(sapply(results, class) == "matrix")
+  results_cleaved <- t(do.call(cbind, lapply(results[cleaved], function(i)
+    i[, which(colSums(i) == max(colSums(i)))[1]])))
+  if (length(cleaved) != length(results)) {
+  results_uncleaved <- t(do.call(cbind, lapply(results[-cleaved], function(i)
+    rep(0, n_feature))))
+  data.frame(rbind(data.frame(results_cleaved),
+              data.frame(results_uncleaved)),
+        tar = c(target[cleaved], target[-cleaved]))
+  } else {
+    data.frame(results_cleaved, tar = target)
+  }
 }
 
 
@@ -420,11 +431,12 @@ calc_unigrams <- function(seqs) {
   data.frame(AA = agg_unigram[[1]], freq = agg_unigram[[2]]/len)
 }
 
+
 find_cleave <- function(protein, model, ort_codes, start_search = 12, end_search = 36) {
   coded <- apply(sapply(start_search:end_search, function(i) 
     protein[i:(i + 8)]), 2, function(nonamer) {
       encode_ort(nonamer, ort_codes)
     })
-  matrix(c(predict(model, t(coded), type = "probabilities")[,2], start_search:end_search), ncol = 2)
+  matrix(c(predict(model, t(coded), type = "probabilities")[, 2], start_search:end_search), ncol = 2)
 }
   

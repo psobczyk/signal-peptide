@@ -117,12 +117,6 @@ neg_test <- find_signal(euk_not[neg[["test"]]], ts, model = svm_fit$finalModel, 
 
 sfStop()
 
-pos_valid <- find_signal(euk[pos[["valid"]]], ts, model = svm_fit$finalModel, paralell = FALSE)
-neg_valid <- find_signal(euk_not[neg[["valid"]]][5:6], ts, model = svm_fit$finalModel, paralell = FALSE)
-pos_test <- find_signal(euk[pos[["test"]]], ts, model = svm_fit$finalModel, paralell = FALSE)
-neg_test <- find_signal(euk_not[neg[["test"]]], ts, model = svm_fit$finalModel, paralell = FALSE)
-
-
 
 valid <- rbind(list_to_df(pos_valid, "pos"), list_to_df(neg_valid, "neg"))
 test <- rbind(list_to_df(pos_test, "pos"), list_to_df(neg_test, "neg"))
