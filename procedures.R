@@ -58,6 +58,34 @@ neg <- split_prots(euk_not, replace = FALSE)
 neg[["valid"]] <- neg[["valid"]][1L:length(pos[["valid"]])]
 neg[["test"]] <- neg[["test"]][1L:length(pos[["test"]])]
 
+# TYMCZASOWE
+with_sig <- vapply(euk, function(protein) attr(protein, "sig")[1] != 0, FALSE)
+all_nhc <- t(vapply(euk[with_sig], find_nhc, rep(0, 4)))
+len_c <- all_nhc[, "cs"] - all_nhc[, "start_c"]
+len_h <- all_nhc[, "start_c"] - all_nhc[, "start_h"]
+len_n <- all_nhc[, "start_h"] - all_nhc[, "start_n"]
+
+params <- NULL
+max.length = 28
+
+n_region_lengths <- table(len_n)[-c(1,2)]
+max.nRegion.length = which.min(1:max(as.numeric(names(n_region_lengths))) %in% names(n_region_lengths))-1
+nRegion.lengths = n_region_lengths[1:max.nRegion.length]
+params <- c(nRegion.lengths/sum(nRegion.lengths), rep(0, max.length-max.nRegion.length))
+
+h_region_lengths <- table(len_h)
+max.hRegion.length = which.min(3:max(as.numeric(names(h_region_lengths))) %in% names(h_region_lengths))-1
+max.hRegion.length = 21
+hRegion.lengths = h_region_lengths[1:max.hRegion.length]
+params <- cbind(params, c(0,0,hRegion.lengths/sum(hRegion.lengths), rep(0, max.length-max.hRegion.length-2)))
+
+c_region_lengths <- table(len_c)
+max.cRegion.length = which.min(2:max(as.numeric(names(c_region_lengths))) %in% names(c_region_lengths))-1
+cRegion.lengths = c_region_lengths[1:max.cRegion.length]
+params <- cbind(params, c(0,cRegion.lengths/sum(cRegion.lengths), rep(0, max.length-max.cRegion.length-1)))
+params <- cbind(params, rep(1/max.length, max.length))
+#KONIEC TYMCZASOWE
+
 # searching cleave region ---------------------
 
 #########
@@ -102,7 +130,7 @@ sfStop()
 
 # testing signal peptide ---------------------
 
-ts <- calc_t(euk[pos[["train"]]])
+ts <- calc_t(euk[pos[["train"]]], aa5)
 
 sfInit(parallel=TRUE, cpus=6)
 sfLibrary(depmixS4)

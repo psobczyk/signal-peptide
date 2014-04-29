@@ -233,16 +233,20 @@ start_model2 <- function(x, t1, t2, t3, t4){
                      0, 0, 0, 1,
                      0.01, 0, 0, 0), 4, byrow = TRUE)
   #FIXME!!! --------------
-  rdpar <- list(lambda = c(5.360593, 11.56915, 4.554336,additional_margin))
+#   rdpar <- list(lambda = c(5.360593, 11.56915, 4.554336,additional_margin))
+  rdpar <- list(np = params)
   #FIXME!!!!! ---------------
   odpar <- list(m = matrix(c((t1/sum(t1))[1:4],
                              (t2/sum(t2))[1:4],
                              (t3/sum(t3))[1:4],
                              (t4/sum(t4))[1:4]), 4, byrow = TRUE))
   
-  viterbi_path <- hsmm.viterbi(x,od = "mult", rd = "pois",
-                                 pi.par = pipar, tpm.par = tpmpar,
-                                 od.par = odpar, rd.par = rdpar)
+#   viterbi_path <- hsmm.viterbi(x,od = "mult", rd = "pois",
+#                                  pi.par = pipar, tpm.par = tpmpar,
+#                                  od.par = odpar, rd.par = rdpar)
+  viterbi_path <- hsmm.viterbi(x,od = "mult", rd = "nonp",
+                               pi.par = pipar, tpm.par = tpmpar,
+                               od.par = odpar, rd.par = rdpar)
   viterbi_path
 }
 

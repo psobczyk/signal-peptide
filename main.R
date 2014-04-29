@@ -21,6 +21,26 @@ for(i in 1:3644){
   reszta <- c(reszta, analized_sequences[[i]][all_nhc[i,4]:(length(analized_sequences[[i]]))])
 }
 
+params <- NULL
+max.length = 32
+
+n_region_lengths <- table(lengths[,1])
+max.nRegion.length = which.min(1:max(as.numeric(names(n_region_lengths))) %in% names(n_region_lengths))-1
+nRegion.lengths = n_region_lengths[1:max.nRegion.length]
+params <- nRegion.lengths/sum(nRegion.lengths)
+
+h_region_lengths <- table(lengths[,2])[-1]
+max.hRegion.length = which.min(1:max(as.numeric(names(h_region_lengths))) %in% names(h_region_lengths))-1
+max.hRegion.length = 25
+hRegion.lengths = h_region_lengths[1:max.hRegion.length]
+params <- cbind(params, c(hRegion.lengths/sum(hRegion.lengths), rep(0, max.length-max.hRegion.length)))
+
+c_region_lengths <- table(lengths[,3])
+max.cRegion.length = which.min(2:max(as.numeric(names(c_region_lengths))) %in% names(c_region_lengths))-1
+cRegion.lengths = c_region_lengths[1:max.cRegion.length]
+params <- cbind(params, c(0,cRegion.lengths/sum(cRegion.lengths), rep(0, max.length-max.cRegion.length-1)))
+params <- cbind(params, rep(1/max.length, max.length))
+
 #oszacowanie parametrow rozkladow wykladniczych
 #library("fitdistrplus") 
 #fitdist(lengths[,1], "exp", method ="mle")
@@ -33,11 +53,7 @@ aa5 = list(positively.charged=c("K", "R", "H"),
            rest=c("D","E","A","P","Y","G"))
 
 t1 <- table(degenerate(n_region, aa5))
-t1/sum(t1)
 t2 <- table(degenerate(h_region, aa5))
-t2/sum(t2)
 t3 <- table(degenerate(c_region, aa5))
-t3/sum(t3)
 t4 <- table(degenerate(reszta, aa5))
-t4/sum(t4)
 
