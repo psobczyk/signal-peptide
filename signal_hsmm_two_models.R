@@ -108,7 +108,7 @@ b <- wyniki.not[,1]-wyniki.not[,2]
 standardized.probability <- exp(c(a,b)-max(b)) #possible bad idea but nothing better yet
 
 auc(response=c(rep(0,length(a)), rep(1, length(b))), predictor=exp(c(a,b)-max(b)))
-
+roc(response=c(rep(0,length(a)), rep(1, length(b))), predictor=exp(c(a,b)-max(b)), plot=T)
 #' TO DO
 #' 0. Przeanalizowanie czy wszystko jest poprawnie przeskalowane (czyli wyrugorwanie części handicapu)
 #' 1. Model nieparametryczny z hsmm -> wyjąć prawdopodobieństwa
