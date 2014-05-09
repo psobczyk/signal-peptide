@@ -49,7 +49,7 @@ pipar <- c(1,0,0,0)
 tp <- matrix(c(0.814, 0.186, 0, 0,
                0, 0.91, 0.09, 0,
                0, 0, 0.78, 0.22,
-               0, 0, 0, 1), 4, byrow = TRUE)
+               0, 0, 0, 1-1/additional.aminoacids), 4, byrow = TRUE)
 
 od <- matrix(c((t1/sum(t1))[1:4],
                (t2/sum(t2))[1:4],
@@ -59,38 +59,51 @@ od <- matrix(c((t1/sum(t1))[1:4],
 # comparison of two models ------
 numb.trials <- 400
 wyniki <- NULL
+cuts <- NULL
 testowane_bialka <- sample(1:length(analized_sequences), numb.trials, replace=FALSE)
 for(numer_probki in testowane_bialka){
-  probka <- as.numeric(degenerate(analized_sequences[[numer_probki]], aa5)
-                       [1:(all_nhc[numer_probki,4]+additional.aminoacids)])
+  #probka <- as.numeric(degenerate(analized_sequences[[numer_probki]], aa5)
+  #                     [1:(all_nhc[numer_probki,4]+additional.aminoacids)])
+  probka <- as.numeric(degenerate(analized_sequences[[numer_probki]], aa5)[1:max.length])
   probka <- na.omit(probka)
   viterbi.res <- viterbi(probka, pipar, tp, od)
   viterbi_path <- viterbi.res$path
+  c.site <- max(which(viterbi_path==3))
+  if(c.site==-Inf) c.site=length(probka)
+  cuts <- c(cuts, c.site)
   prob.signal <- viterbi.res$viterbi[length(probka), viterbi_path[length(probka)]]
   prob.non <- Reduce(function(x, y) x + overall.probs.log[y], probka, 0)
+  prob.signal <- viterbi.res$viterbi[c.site, viterbi_path[c.site]]
+  prob.non <- Reduce(function(x, y) x + overall.probs.log[y], probka[1:c.site], 0)
   wyniki <- rbind(wyniki, c(prob.signal, prob.non))
 }
 
 #negative ----
 max.length = 50
 wyniki.not <- NULL
+cuts.non <- NULL
 testowane_bialka <- sample(1:length(euk_not),numb.trials, replace=FALSE)
 for(numer_probki in testowane_bialka){
   probka <- as.numeric(degenerate(euk_not[[numer_probki]], aa5)[1:max.length])
   viterbi.res <- viterbi(probka, pipar, tp, od)
   viterbi_path <- viterbi.res$path
+  c.site <- max(which(viterbi_path==3))
+  if(c.site==-Inf) c.site=length(probka)
+  cuts.non <- c(cuts.non, c.site)
   prob.signal <- viterbi.res$viterbi[length(probka), viterbi_path[length(probka)]]
   prob.non <- Reduce(function(x, y) x + overall.probs.log[y], probka, 0)
+  prob.signal <- viterbi.res$viterbi[c.site, viterbi_path[c.site]]
+  prob.non <- Reduce(function(x, y) x + overall.probs.log[y], probka[1:c.site], 0)
   wyniki.not <- rbind(wyniki.not, c(prob.signal, prob.non))
 }
 
 # results ----------
-cheat = 3.5 #we give handicap to signal peptides
-sum(wyniki[,1]+cheat>wyniki[,2])/numb.trials
-sum(wyniki.not[,1]+cheat<wyniki.not[,2])/numb.trials
+cheat = 7 #we give handicap to signal peptides
+sum(wyniki[,1]+cheat*cuts/max.length>wyniki[,2])/numb.trials
+sum(wyniki.not[,1]+cheat*cuts.non/max.length<wyniki.not[,2])/numb.trials
 
 #' TO DO
-#' 0. Przeanalizowanie czy wszystko jest poprawnie przeskalowane
+#' 0. Przeanalizowanie czy wszystko jest poprawnie przeskalowane (czyli wyrugorwanie części handicapu)
 #' 1. Model nieparametryczny z hsmm -> wyjąć prawdopodobieństwa
 #' 2. Więcej modeli negatywnych
 #' 
