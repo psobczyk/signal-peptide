@@ -1,7 +1,7 @@
 #skrypt
 #libraries -------
 library(hsmm)
-
+library(pROC)
 #skrypt
 pcname <- Sys.info()['nodename'] 
 if(pcname=="piotr-tobit")
@@ -39,7 +39,7 @@ t2 <- table(degenerate(h_region, aa5))
 t3 <- table(degenerate(c_region, aa5))
 t4 <- table(degenerate(reszta, aa5))
 
-overall <- table(degenerate(unlist(analized_sequences), aa5))
+overall <- t4 #table(degenerate(unlist(analized_sequences), aa5))
 overall.probs <- overall/sum(overall)          
 overall.probs.log = log(overall.probs) #for viterbi
 
@@ -58,10 +58,11 @@ od <- matrix(c((t1/sum(t1))[1:4],
 
 # comparison of two models ------
 numb.trials <- 400
+max.length = 50
 wyniki <- NULL
 cuts <- NULL
 testowane_bialka <- sample(1:length(analized_sequences), numb.trials, replace=FALSE)
-for(numer_probki in testowane_bialka){
+for(numer_probki in 1:length(analized_sequences)){
   #probka <- as.numeric(degenerate(analized_sequences[[numer_probki]], aa5)
   #                     [1:(all_nhc[numer_probki,4]+additional.aminoacids)])
   probka <- as.numeric(degenerate(analized_sequences[[numer_probki]], aa5)[1:max.length])
@@ -79,11 +80,10 @@ for(numer_probki in testowane_bialka){
 }
 
 #negative ----
-max.length = 50
 wyniki.not <- NULL
 cuts.non <- NULL
 testowane_bialka <- sample(1:length(euk_not),numb.trials, replace=FALSE)
-for(numer_probki in testowane_bialka){
+for(numer_probki in 1:length(euk_not)){
   probka <- as.numeric(degenerate(euk_not[[numer_probki]], aa5)[1:max.length])
   viterbi.res <- viterbi(probka, pipar, tp, od)
   viterbi_path <- viterbi.res$path
@@ -98,9 +98,16 @@ for(numer_probki in testowane_bialka){
 }
 
 # results ----------
-cheat = 7 #we give handicap to signal peptides
-sum(wyniki[,1]+cheat*cuts/max.length>wyniki[,2])/numb.trials
-sum(wyniki.not[,1]+cheat*cuts.non/max.length<wyniki.not[,2])/numb.trials
+cheat = 6 #we give handicap to signal peptides
+sum(wyniki[,1]+cheat*cuts/max.length>wyniki[,2])/length(analized_sequences) #numb.trials
+sum(wyniki.not[,1]+cheat*cuts.non/max.length<wyniki.not[,2])/length(euk_not) #numb.trials
+
+#naive way to compute AUC - does it make any sense?
+a <- wyniki[,1]-wyniki[,2]
+b <- wyniki.not[,1]-wyniki.not[,2]
+standardized.probability <- exp(c(a,b)-max(b)) #possible bad idea but nothing better yet
+
+auc(response=c(rep(0,length(a)), rep(1, length(b))), predictor=exp(c(a,b)-max(b)))
 
 #' TO DO
 #' 0. Przeanalizowanie czy wszystko jest poprawnie przeskalowane (czyli wyrugorwanie części handicapu)
