@@ -7,15 +7,22 @@ Wprowadzenie
 ========================================================
 ```{r,include=FALSE}
 library(knitcitations)
-#bib <- read.bibtex('dpcr.bib')
+bib <- read.bibtex('signalP.bib')
+library(seqinr)
+library(xtable)
 library(ggplot2)
+library(ROCR)
+load("cleave_report.RData")
+load("prez4.RData")
+source("cleave_report_codes.R")
+aa <- a()[-1]
 ```
 Peptydy sygnałowe to krótkie sekwencje aminokwasowe znajdujące się na N-końcu białka. Umożliwiają transport dojrzałego peptydu przez błonę otaczającą komórkę.
 
 Wprowadzenie
 ========================================================
 
-W literaturze wyróżnia się trzy regiony charakterystyczne dla peptydów sygnałowych:
+W literaturze wyróżnia się trzy regiony charakterystyczne dla peptydów sygnałowych `r citep(bib[["nielsen_identification_1997"]])`:
 * n-region: 1-5 aminokwasów, preferowane aminokwasy z dodatnim ładunkiem, 
 * h-region: 0 - 20 aminokwasów, preferowane aminokwasy hydrofobowe.
 * c-region: 3 - 7 polarnych aminokwasów bez ładunku.
@@ -38,23 +45,188 @@ text(0.725, 0.55, "c-region", pos = 1)
 text(0.925, 0.55, enc2utf8("cięcie"), pos = 1)
 ```
 
-Zróżnicowanie w wielkości i składzie aminokwasowym poszczególnych regionów peptydu sygnałowego wpływa na szybkość transportu całego białka.
+Zróżnicowanie w wielkości i składzie aminokwasowym poszczególnych regionów peptydu sygnałowego wpływa na szybkość transportu całego białka `r citep(bib[["hegde_surprising_2006"]])`.
+
 
 Cel pracy
 ========================================================
+Duża zmienność rozpoznawanych sekwencji wymaga elastyczności algorytmu, a to uniemożliwia stosowanie metod nadmiernie dopasowujących się do danych jak sieci neuronowe, czy maszyny wektorów wspierających.
 
-```{r,echo=FALSE, fig.height=2.5, fig.align='center', fig.width=10}
-plot(c(-0.2, 1.2), c(0.4,0.6), axes = FALSE, cex = 0, xlab = "", ylab = "")
-rect(0, 0.4, 0.2, 0.6, border = NA, col = adjustcolor("blue", alpha.f = 0.30))
-rect(0.2, 0.4, 0.6, 0.6, border = NA, col = adjustcolor("red", alpha.f = 0.30))
-rect(0.6, 0.4, 0.85, 0.6, border = NA, col = adjustcolor("grey", alpha.f = 0.40))
-rect(0.85, 0.4, 1, 0.6, border = NA, col = adjustcolor("green", alpha.f = 0.30))
-text(0, 0.5, "N-", pos = 2, cex = 1.2, family = "mono")
-text(1, 0.5, "-C'", pos = 4, cex = 1.2, family = "mono")
-text(0.1, 0.55, "n-region", pos = 1)
-text(0.4, 0.55, "h-region", pos = 1)
-text(0.725, 0.55, "c-region", pos = 1)
-text(0.925, 0.55, "cleave", pos = 1)
+Zalety ukrytych modeli Markova:
+* przejrzystość (intuicyjna reprezentacja problemu),
+* rozszerzalność (możliwość dodania do algorytmu dodatkowych reguł).
+
+Planowany sposób działania programu
+========================================================
+1. Rozpoznanie potencjalnych miejsc cięcia w N-końcowej części białka.
+2. Określenie prawdopodobieństwa z jakim badany peptyd jest peptydem sygnałowym.
+
+Proces uczenia - wykrywanie miejsc cięcia
+=======================================================
+Założenia przyśpieszające pracę:
+* region cięcia to nonamer $A_1 A_2 A_3 A_4 | A_5 A_6 A_7 A_8 A_9$ `r citep(bib[["jain_signal_1994"]])`.
+* peptydazy sygnałowe działają przynajmniej częściowo podobnie do proteazy HIV-1, a zatem można użyć metody stosowanych przy wykrywaniu regionów cięcia tego białka.
+
+Proces uczenia - wykrywanie miejsc cięcia
+=======================================================
+Zbiór pozytywny: znane miejsca cięcia.
+Zbior negatywny I: nonomery zaczynające się 12 aminokwasów od miejsca cięcia.
+Zbior negatywny II: nonomery zaczynające się 12 aminokwasów przed miejscem cięcia.
+
+
+Proces uczenia - wykrywanie miejsc cięcia
+=======================================================
+```{r echo = FALSE, fig.width=18,fig.align='center',fig.height=10}
+colors <- rainbow(20)[as.vector(sapply(0:9, function(i)
+  c(1 + i, 11 + i)))]
+
+ggplot(muni3gr, aes(AA, value, fill=variable)) + 
+  geom_bar(stat="identity", position="dodge")  + 
+  ggtitle("Standarized count\nof aminoacids in full data set") + 
+  theme(plot.title = element_text(lineheight=1.8, face="bold"))
+
 ```
 
-Zróżnicowanie w wielkości i składzie aminokwasowym poszczególnych regionów peptydu sygnałowego wpływa na szybkość transportu całego białka.
+
+Proces uczenia - wykrywanie miejsc cięcia
+=======================================================
+Na podstawie zakodowanych ortonormalnie nonamerów SVM (RBF) jest uczony rozpoznawać miejsca cięcia.
+
+```{r echo = FALSE, fig.width=16,fig.align='center',fig.height=8}
+rocr_pred <- prediction(mpreds[3], mpreds[5])
+plot(performance(rocr_pred,"tpr","fpr"))
+text(0.8, 0.2, paste0("AUC = ", round(performance(rocr_pred, "auc")@y.values[[1]], 2)), cex = 2)
+```
+
+Proces uczenia - wykrywanie peptydów sygnałowych
+========================================================
+
+Poszczególne aminokwasy na podstawie wybranych cech chemiczno-fizycznych są zaliczane do liczniejszych grup - degeneracja sekwencji. 
+
+```{r,echo=FALSE,results='asis'}
+tabAminokwasow = function(aminokwasy, nazwyGrupy, ...) {
+  tab = cbind(data.frame(1:length(aminokwasy)), data.frame(sapply(aminokwasy, function(x) paste(x, collapse=", "))))
+  dimnames(tab) = list(nazwyGrupy, c("Grupa", "Aminokwasy"))
+  return(xtable(tab, align = c("r", "c", "l"), ...))
+}
+
+aa5 = list('1' = c("K", "R", "H"),
+           '2' = c("V","I","L","M","F","W","C"),
+           '3' = c("S", "T", "N", "Q"),
+           '4' = c("D","E","A","P","Y","G"))
+print(tabAminokwasow(aa5, c("Naładowane dodatnio",
+                            "Hydrofobowe",
+                            "Polarne bez ładunku",
+                            "Pozostałe")), type='html')
+```
+
+Proces uczenia - wykrywanie peptydów sygnałowych
+========================================================
+
+Pierwsza wersja algorytmu naiwnie przyjmowała za potencjalnie miejsce cięcia 25 aminowaksów - od pozycji 12 do 37. 
+
+Obecna wersja za potencjalne miejsca cięcia przyjmuje aminokwasy o prawdopodobieństwie miejsca cięcia większym niż pewna wartość krytyczna.
+
+
+Zgodność
+=====================================================
+
+Zgodność to kryterium dodane w pierwotnej, naiwnej wersji algorytmu.
+
+$$
+z = \frac{1}{l}\sum_{i = 1}^{l} I(t_i = m_i)
+$$
+
+gdzie:
+* $t$  - predykcja przynależności regionalnej z modelu teoretycznego,
+* $m$  - predykcja przynależności regionalnej z ukrytego modelu markowa.
+
+Zgodność
+=====================================================
+
+```{r echo = FALSE, fig.width=16,fig.align='center',fig.height=8}
+source(file="dane_pca.Rdat")
+res_pc <- princomp(x = res[-5])
+plot(res_pc$scores[, 1], res_pc$scores[, 2], cex = 0, xlab = "PCA_1", ylab = "PCA_2", main = "Wyniki PCA - algorytm naiwny")
+points(res_pc$scores[res[5] == "neg", 1], res_pc$scores[res[5] == "neg", 2])
+points(res_pc$scores[res[5] == "pos", 1], res_pc$scores[res[5] == "pos", 2], col = "red")
+```
+
+Zgodność
+=====================================================
+
+```{r echo = FALSE, fig.width=16,fig.align='center',fig.height=8}
+source(file="dane_pca.Rdat")
+plot(pca$scores[, 1], pca$scores[, 2], cex = 0, xlab = "PCA_1", ylab = "PCA_2", main = "Wyniki PCA - algorytm wykrywający miejsca cięcia")
+points(pca$scores[pca_et == "neg", 1], pca$scores[pca_et == "neg", 2])
+points(pca$scores[pca_et == "pos", 1], pca$scores[pca_et == "pos", 2], col = "red")
+```
+
+Wpływ wartości krytycznej miejsca cięcia na AUC
+=====================================================
+
+```{r echo = FALSE, fig.width=16,fig.align='center',fig.height=8}
+cols <- rainbow(5)
+plot(models_sum[[1]][[1]])
+for (i in 2L:6)
+  plot(models_sum[[i]][[1]], add = TRUE, col = cols[i], lwd = 2)
+legend("bottomright", legend = sapply(1:6, function(i) paste0((i-1)/10, " (AUC: ", round(models_sum[[i]][[2]], 2), ")")), lwd = 2, col = c("black", cols))
+```
+
+Użyte kodowanie
+=====================================================
+
+```{r,echo=FALSE,results='asis'}
+tabAminokwasow = function(aminokwasy, nazwyGrupy, ...) {
+  tab = cbind(data.frame(1:length(aminokwasy)), data.frame(sapply(aminokwasy, function(x) paste(x, collapse=", "))))
+  dimnames(tab) = list(nazwyGrupy, c("Grupa", "Aminokwasy"))
+  return(xtable(tab, align = c("r", "c", "l"), ...))
+}
+
+aa5 = list('1' = c("K", "R", "H"),
+           '2' = c("V","I","L","M","F","W","C"),
+           '3' = c("S", "T", "N", "Q"),
+           '4' = c("D","E","A","P","Y","G"))
+print(tabAminokwasow(aa5, c("Naładowane dodatnio",
+                            "Hydrofobowe",
+                            "Polarne bez ładunku",
+                            "Pozostałe")), type='html')
+```
+
+Wpływ wartości krytycznej miejsca cięcia na AUC
+=====================================================
+
+```{r echo = FALSE, fig.width=16,fig.align='center',fig.height=8}
+cols <- rainbow(5)
+plot(models_sum2[[1]][[1]])
+for (i in 2L:6)
+  plot(models_sum2[[i]][[1]], add = TRUE, col = cols[i], lwd = 2)
+legend("bottomright", legend = sapply(1:6, function(i) paste0((i-1)/10, " (AUC: ", round(models_sum2[[i]][[2]], 2), ")")), lwd = 2, col = c("black", cols))
+```
+
+Użyte kodowanie
+=====================================================
+
+```{r,echo=FALSE,results='asis'}
+tabAminokwasow = function(aminokwasy, nazwyGrupy, ...) {
+  tab = cbind(data.frame(1:length(aminokwasy)), data.frame(sapply(aminokwasy, function(x) paste(x, collapse=", "))))
+  dimnames(tab) = list(nazwyGrupy, c("Grupa", "Aminokwasy"))
+  return(xtable(tab, align = c("r", "c", "l"), ...))
+}
+
+aa6 <- list(`1` = c("A", "C", "Q", "E"), 
+            `2` = c("R", "H",  "K"), 
+            `3` = c("N", "D", "G", "P", "S", "T"), 
+            `4` = c("I", "L",  "M", "F", "W", "Y", "V"))
+
+print(tabAminokwasow(aa5, c("???1",
+                            "Naładowane dodatnio",
+                            "???2",
+                            "???3")), type='html')
+```
+
+Plan pracy
+=====================================================
+1. Dołączenie ukrytego modelu Markova z pamięcią.
+2. Dokładniejsze zbadanie miejsc cięcia.
+3. Dopracowanie algorytmu wyszukującego miejsca cięcia.

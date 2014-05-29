@@ -6,13 +6,33 @@ library(pROC)
 pcname <- Sys.info()['nodename'] 
 if(pcname=="piotr-tobit")
   setwd("~/Dropbox/doktorat/sekwencje_sygnalowe")
-
+if(pcname=="MICHALKOMP")
+  setwd("C:/Users/Michal/Dropbox/sekwencje_sygnalowe")
 #wczytanie danych
 source("wczytywanie_danych.R")
 #wczytanie funkcji przygotowujacych dane treningowe
 source("get_sig.R")
 #algorytm viterbiego
 source("myViterbi.R")
+
+#test function
+
+bihmm <- function(list_prot, aa_group) {
+  t(vapply(list_prot, function(prot) {
+    probka <- as.numeric(degenerate(prot, aa_group)[1:max.length])
+    viterbi.res <- viterbi(probka, pipar, tp, od)
+    viterbi_path <- viterbi.res[["path"]]
+    c.site <- max(which(viterbi_path==3))
+    if(c.site==-Inf) 
+      c.site=length(probka)
+    prob.signal <- viterbi.res$viterbi[length(probka), viterbi_path[length(probka)]]
+    prob.non <- Reduce(function(x, y) x + overall.probs.log[y], probka, 0)
+    prob.signal <- viterbi.res$viterbi[c.site, viterbi_path[c.site]]
+    prob.non <- Reduce(function(x, y) x + overall.probs.log[y], probka[1:c.site], 0)
+    c(prob.signal = prob.signal, prob.non = prob.non, c.site = c.site)
+  }, c(0, 0, 0)))
+}
+
 
 #building training set ----
 analized_sequences <- speuk[with_sig]
@@ -72,7 +92,7 @@ for(numer_probki in 1:length(analized_sequences)){
   c.site <- max(which(viterbi_path==3))
   if(c.site==-Inf) c.site=length(probka)
   cuts <- c(cuts, c.site)
-  prob.signal <- viterbi.res$viterbi[length(probka), viterbi_path[length(probka)]]
+  prob.signal <- viterbi.res[["viterbi"]][length(probka), viterbi_path[length(probka)]]
   prob.non <- Reduce(function(x, y) x + overall.probs.log[y], probka, 0)
   prob.signal <- viterbi.res$viterbi[c.site, viterbi_path[c.site]]
   prob.non <- Reduce(function(x, y) x + overall.probs.log[y], probka[1:c.site], 0)
@@ -82,25 +102,15 @@ for(numer_probki in 1:length(analized_sequences)){
 #negative ----
 wyniki.not <- NULL
 cuts.non <- NULL
-testowane_bialka <- sample(1:length(euk_not),numb.trials, replace=FALSE)
-for(numer_probki in 1:length(euk_not)){
-  probka <- as.numeric(degenerate(euk_not[[numer_probki]], aa5)[1:max.length])
-  viterbi.res <- viterbi(probka, pipar, tp, od)
-  viterbi_path <- viterbi.res$path
-  c.site <- max(which(viterbi_path==3))
-  if(c.site==-Inf) c.site=length(probka)
-  cuts.non <- c(cuts.non, c.site)
-  prob.signal <- viterbi.res$viterbi[length(probka), viterbi_path[length(probka)]]
-  prob.non <- Reduce(function(x, y) x + overall.probs.log[y], probka, 0)
-  prob.signal <- viterbi.res$viterbi[c.site, viterbi_path[c.site]]
-  prob.non <- Reduce(function(x, y) x + overall.probs.log[y], probka[1:c.site], 0)
-  wyniki.not <- rbind(wyniki.not, c(prob.signal, prob.non))
-}
+testowane_bialka <- sample(1:length(euk_not), numb.trials, replace=FALSE)
+tmp <- bihmm(euk_not[testowane_bialka], aa5)
 
 # results ----------
 cheat = 6 #we give handicap to signal peptides
 sum(wyniki[,1]+cheat*cuts/max.length>wyniki[,2])/length(analized_sequences) #numb.trials
 sum(wyniki.not[,1]+cheat*cuts.non/max.length<wyniki.not[,2])/length(euk_not) #numb.trials
+
+wyniki <- bihmm(euk_not[testowane_bialka], aa5)
 
 #naive way to compute AUC - does it make any sense?
 a <- wyniki[,1]-wyniki[,2]
@@ -114,3 +124,5 @@ roc(response=c(rep(0,length(a)), rep(1, length(b))), predictor=exp(c(a,b)-max(b)
 #' 1. Model nieparametryczny z hsmm -> wyjąć prawdopodobieństwa
 #' 2. Więcej modeli negatywnych
 #' 
+
+
