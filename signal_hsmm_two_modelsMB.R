@@ -2,23 +2,14 @@
 #libraries -------
 library(hsmm)
 library(pROC)
+library(pbapply)
 #skrypt
-pcname <- Sys.info()['nodename'] 
-if(pcname=="piotr-tobit")
-  setwd("~/Dropbox/doktorat/sekwencje_sygnalowe")
-if(pcname=="MICHALKOMP")
-  setwd("C:/Users/Michal/Dropbox/sekwencje_sygnalowe")
-#wczytanie danych
-source("wczytywanie_danych.R")
-if(pcname=="MICHALKOMP")
-  setwd("D:/michal/doktorat/signal-peptide")
 
-#wczytanie funkcji przygotowujacych dane treningowe
-source("get_sig.R")
 #algorytm viterbiego
 source("myViterbi.R")
+source("functions.R")
 
-bihmm <- function(list_prot, aa_group) {
+bihmm <- function(list_prot, aa_group, pipar, tp, od, overall.probs.log, max.length = 50) {
   t(vapply(list_prot, function(prot) {
     probka <- as.numeric(degenerate(prot, aa_group)[1:max.length])
     probka <- na.omit(probka)
@@ -29,6 +20,43 @@ bihmm <- function(list_prot, aa_group) {
     prob.non <- Reduce(function(x, y) x + overall.probs.log[y], probka[1:c.site], 0)
     c(prob.signal = prob.signal, prob.non = prob.non, c.site = c.site)
   }, c(0, 0, 0)))
+}
+
+test_bihmm <- function(train_data, test_data, aa_group) {
+  ts <- calc_t(train_data, aa_group)
+  
+  t1 <- ts[["t1"]]
+  t2 <- ts[["t2"]]
+  t3 <- ts[["t3"]]
+  t4 <- ts[["t4"]]
+  
+  overall <- t4 #table(degenerate(unlist(analized_sequences), aa5))
+  overall.probs <- overall/sum(overall)          
+  overall.probs.log = log(overall.probs) #for viterbi
+  
+  #setting params for hmm -------
+  additional.aminoacids = 10 #aminoacids choosen after cleavage site
+  pipar <- c(1,0,0,0)
+  tp <- matrix(c(0.814, 0.186, 0, 0,
+                 0, 0.91, 0.09, 0,
+                 0, 0, 0.78, 0.22,
+                 0, 0, 0, 1-1/additional.aminoacids), 4, byrow = TRUE)
+  
+  od <- matrix(c((t1/sum(t1))[1:4],
+                 (t2/sum(t2))[1:4],
+                 (t3/sum(t3))[1:4],
+                 (t4/sum(t4))[1:4]), 4, byrow = TRUE)
+  
+  bihmm(test_data, aa_group, pipar, tp, od, overall.probs.log)
+}
+
+#ets - vector of etiquettes (0 if signal)
+#cs - vector of real cleave sites
+analyze_bihmm <- function(bihmm_res, ets) {
+  pred <- bihmm_res[, 1] - bihmm_res[, 2]
+  pred_exp <- exp(pred - max(pred))
+  list(auc = auc(response = ets, predictor = pred_exp),
+       roc = roc(response = ets, predictor = pred_exp, plot=FALSE))
 }
 
 aa1 = list('1' = c("G", "A", "P", "V", "L", "I", "M"), 
@@ -59,101 +87,40 @@ aa5 = list('1' = c("K", "R", "H"),
            '3' = c("S", "T", "N", "Q"),
            '4' = c("D","E","A","P","Y","G"))
 
-aa6 <- list(`1` = c("A", "C", "Q", "E"), 
-            `2` = c("R", "H",  "K"), 
-            `3` = c("N", "D", "G", "P", "S", "T"), 
-            `4` = c("I", "L",  "M", "F", "W", "Y", "V"))
+aa6 <- list('1' = c("A", "C", "Q", "E"), 
+            '2' = c("R", "H",  "K"), 
+            '3' = c("N", "D", "G", "P", "S", "T"), 
+            '4' = c("I", "L",  "M", "F", "W", "Y", "V"))
 
 #building training set ----
-analized_sequences <- speuk[with_sig]
-euk_not <- read.fasta("euk_not.fasta", seqtype = "AA")
+train_size <- 800
+test_size <- 100 #real number of test size is two times larger
+train_pos <- read_uniprot("euk.txt", euk = TRUE)
+train_neg <- read.fasta("euk_not.fasta", seqtype = "AA")
 
-n_region <- NULL
-h_region <- NULL
-c_region <- NULL
-reszta <- NULL
-for(i in 1:length(analized_sequences)){
-  n_region <- c(n_region, analized_sequences[[i]][1:lengths[i,1]]) 
-  h_region <- c(h_region, analized_sequences[[i]][all_nhc[i,2]:(all_nhc[i,3]-1)])
-  c_region <- c(c_region, analized_sequences[[i]][all_nhc[i,3]:(all_nhc[i,4]-1)])
-  reszta <- c(reszta, analized_sequences[[i]][all_nhc[i,4]:(length(analized_sequences[[i]]))])
-}
+#one hundred repeats
+hundred_reps <- pblapply(1:100, function(unnecessary_argument) {
+  ind_pos <- sample(1:length(train_pos))
+  ind_neg <- sample(1:length(train_neg))
+  
+  train_dat <- train_pos[ind_pos[1:train_size]] 
+  test_dat <- c(train_pos[ind_pos[(train_size + 1):(train_size + test_size)]],
+                train_neg[ind_neg[1:test_size]])
+  
+  ets <- c(rep(0, test_size), rep(1, test_size))
+  real_cs <- sapply(train_pos[ind_pos[(train_size + 1):(train_size + test_size)]], 
+                    function(protein) attr(protein, "sig")[2])
+  #training
+  res <- test_bihmm(train_dat, test_dat, aa5)
+  characteristics <- analyze_bihmm(res, ets)
+  cs <- data.frame(real.cs = real_cs, pred.cs = res[1:test_size, 3])
+  list(chars = characteristics, cs = cs)
+})
 
-numb.trials <- 400
-testowane_bialka <- sample(1:length(analized_sequences), numb.trials, replace=FALSE)
-testowane_bialka <- sample(1:length(euk_not), numb.trials, replace=FALSE)
-prot_pos = analized_sequences
-prot_neg = euk_not[testowane_bialka]
+all_cs <- do.call("rbind", lapply(hundred_reps, function(i) i[["cs"]]))
+hist((all_cs[[1]] - all_cs[[2]]))
 
-cheat <- 6 #we give handicap to signal peptides
-test_pos <- lapply(read.fasta("test_pos.fasta", seqtype = "AA"), toupper)
-test_neg <- lapply(read.fasta("test_neg.fasta", seqtype = "AA"), toupper)
-test_neg <- test_neg[sapply(test_neg[1:100], length) > 100][1:100]
-real_cl <- sapply(read_uniprot("test_pos.txt", euk = TRUE), function(i) 
-  attr(i, "sig")[2])
-
-
-############tu start funkcji
-bihmm_test <- function(prot_pos, prot_neg, test_pos, test_neg, real_cl, cheat) {
-
-t1 <- table(degenerate(n_region, aa_group))
-t2 <- table(degenerate(h_region, aa_group))
-t3 <- table(degenerate(c_region, aa_group))
-t4 <- table(degenerate(reszta, aa_group))
-
-overall <- t4 #table(degenerate(unlist(analized_sequences), aa5))
-overall.probs <- overall/sum(overall)          
-overall.probs.log = log(overall.probs) #for viterbi
-
-#setting params for hmm -------
-additional.aminoacids = 10 #aminoacids choosen after cleavage site
-pipar <- c(1,0,0,0)
-tp <- matrix(c(0.814, 0.186, 0, 0,
-               0, 0.91, 0.09, 0,
-               0, 0, 0.78, 0.22,
-               0, 0, 0, 1-1/additional.aminoacids), 4, byrow = TRUE)
-
-od <- matrix(c((t1/sum(t1))[1:4],
-               (t2/sum(t2))[1:4],
-               (t3/sum(t3))[1:4],
-               (t4/sum(t4))[1:4]), 4, byrow = TRUE)
-
-# comparison of two models ------
-wyniki <- bihmm(prot_pos, aa5)
-
-#negative ----
-
-wyniki.not <- bihmm(prot_neg, aa5)
-
-# results ----------
-
-#sum(wyniki[,1] + cheat * cuts/max.length > wyniki[,2])/length(analized_sequences) #numb.trials
-#sum(wyniki.not[,1] + cheat * cuts.non/max.length <wyniki.not[,2])/length(euk_not) #numb.trials
-
-#naive way to compute AUC - does it make any sense?
-a <- wyniki[,1] - wyniki[,2]
-b <- wyniki.not[,1] - wyniki.not[,2]
-#standardized.probability <- exp(c(a,b) - max(b)) #possible bad idea but nothing better yet
-
-#auc(response=c(rep(0,length(a)), rep(1, length(b))), predictor=exp(c(a,b)-max(b)))
-#roc(response=c(rep(0,length(a)), rep(1, length(b))), predictor=exp(c(a,b)-max(b)), plot=T)
-#' TO DO
-#' 0. Przeanalizowanie czy wszystko jest poprawnie przeskalowane (czyli wyrugorwanie części handicapu)
-#' 1. Model nieparametryczny z hsmm -> wyjąć prawdopodobieństwa
-#' 2. Więcej modeli negatywnych
-#' 
-#
-
-# quick test
-
-
-wyniki <- bihmm(test_pos, aa5)
-wyniki.not <- bihmm(test_neg, aa5)
-a <- wyniki[,1]-wyniki[,2]
-b <- wyniki.not[,1]-wyniki.not[,2]
-standardized.probability <- exp(c(a,b)-max(b)) #possible bad idea but nothing better yet
-list(auc = auc(response=c(rep(0,length(a)), rep(1, length(b))), predictor=exp(c(a,b)-max(b))),
-     roc = roc(response=c(rep(0,length(a)), rep(1, length(b))), predictor=exp(c(a,b)-max(b)), plot=FALSE),
-     mse_cl = sqrt(mean((real_cl[rownames(wyniki)] - wyniki[, 3])^2, na.rm = TRUE)))
-}
-
+#building final testing set ----
+# test_neg <- lapply(read.fasta("test_neg.fasta", seqtype = "AA"), toupper)
+# test_neg <- test_neg[sapply(test_neg[1:100], length) > 100]
+# test_pos <- read_uniprot("test_pos.txt", euk = TRUE)
