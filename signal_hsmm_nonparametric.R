@@ -100,6 +100,8 @@ for(numer_probki in testowane_bialka){ #1:length(analized_sequences)){
   wyniki <- rbind(wyniki, c(prob.signal, prob.non))
 }
 
+plot.Viterbi.results(viterbi_path, analized_sequences[[numer_probki]])
+
 #negative ----
 wyniki.not <- NULL
 cuts.non <- NULL
