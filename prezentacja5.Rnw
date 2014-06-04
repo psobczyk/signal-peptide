@@ -1,0 +1,220 @@
+\documentclass[10pt]{beamer}
+\usetheme{Warsaw}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+
+
+\linespread{1.3}
+
+\begin{document}
+
+<<knitrIntro, echo = FALSE, message=FALSE>>=
+library(seqinr)
+library(MASS)
+library(xtable)
+library(rgl)
+
+knit_hooks$set(rgl = function(before, options, envir) {
+  if (!before) {
+    ## after a chunk has been evaluated
+    if (rgl.cur() == 0) return()  # no active device
+    name = paste(options$fig.path, options$label, sep = '')
+    rgl.snapshot(paste(name, '.png', sep = ''), fmt = 'png')
+    return(paste('\\includegraphics[scale=0.37]{', name, '}\n', sep = ''))
+  }
+})
+@
+
+
+\date{}
+\author{Michał  Burdukiewicz \inst{1} \and Piotr Sobczyk \inst{2} \and Paweł  Błażej \inst{1} \\ \and Paweł  Mackiewicz \inst{1}}
+\institute[shortinst]{\inst{1} University of Wrocław, Department of Genomics, Poland \and %
+                      \inst{2} Wrocław University of Technology, Institute of Mathematics and Computer Science, Poland}
+
+\title{Signal peptide prediction using hidden Markov models}
+
+
+\begin{frame}
+\maketitle
+\end{frame}
+
+
+\AtBeginSection[]
+  {
+     \begin{frame}<beamer>
+     \frametitle{Plan}
+     \tableofcontents[currentsection]
+     \end{frame}
+  }
+
+\section{Secretory signal peptides}
+
+\begin{frame}
+Secretory signal peptides:
+\begin{itemize}
+  \item short (20-30 residues) N-terminal sequences,
+  \item directs a protein to the endomembrane system and next to the extracellular localization,
+  \item possess three distinct domains, which lengths can vary from peptide to peptide.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\begin{figure}[t]
+<<sigseq1, echo = FALSE, fig.height=2.5, fig.align='center', fig.pos='hh',out.height=100>>=
+
+plot(c(-0.2, 1.2), c(0.4,0.6), axes = FALSE, cex = 0, xlab = "", ylab = "",
+     mar=c(0.1, 0.1, 0.1, 0.1))
+rect(0, 0.4, 0.2, 0.6, border = NA, col = adjustcolor("blue", alpha.f = 0.30))
+rect(0.2, 0.4, 0.6, 0.6, border = NA, col = adjustcolor("red", alpha.f = 0.30))
+rect(0.6, 0.4, 0.85, 0.6, border = NA, col = adjustcolor("grey", alpha.f = 0.40))
+rect(0.85, 0.4, 1.1, 0.6, border = NA, col = adjustcolor("green", alpha.f = 0.30))
+text(0, 0.5, "N-", pos = 2, cex = 1.2, family = "mono")
+text(1.1, 0.5, "-C", pos = 4, cex = 1.2, family = "mono")
+text(0.1, 0.55, "n-region", pos = 1)
+text(0.4, 0.55, "h-region", pos = 1)
+text(0.725, 0.55, "c-region", pos = 1)
+text(0.975, 0.55, "cleave site", pos = 1)
+@
+\end{figure}
+
+n-region:
+\begin{itemize}
+  \item usually 5-8 residues long,
+  \item mostly basic residues.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{figure}[t]
+<<sigseq2, echo = FALSE, fig.height=2.5, fig.align='center', fig.pos='hh',out.height=100>>=
+
+plot(c(-0.2, 1.2), c(0.4,0.6), axes = FALSE, cex = 0, xlab = "", ylab = "",
+     mar=c(0.1, 0.1, 0.1, 0.1))
+rect(0, 0.4, 0.2, 0.6, border = NA, col = adjustcolor("blue", alpha.f = 0.30))
+rect(0.2, 0.4, 0.6, 0.6, border = NA, col = adjustcolor("red", alpha.f = 0.30))
+rect(0.6, 0.4, 0.85, 0.6, border = NA, col = adjustcolor("grey", alpha.f = 0.40))
+rect(0.85, 0.4, 1.1, 0.6, border = NA, col = adjustcolor("green", alpha.f = 0.30))
+text(0, 0.5, "N-", pos = 2, cex = 1.2, family = "mono")
+text(1.1, 0.5, "-C", pos = 4, cex = 1.2, family = "mono")
+text(0.1, 0.55, "n-region", pos = 1)
+text(0.4, 0.55, "h-region", pos = 1)
+text(0.725, 0.55, "c-region", pos = 1)
+text(0.975, 0.55, "cleave site", pos = 1)
+@
+\end{figure}
+
+h-region:
+\begin{itemize}
+  \item usually 8-12 residues long,
+  \item strongly hydrophobic.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{figure}[t]
+<<sigseq3, echo = FALSE, fig.height=2.5, fig.align='center', fig.pos='hh',out.height=100>>=
+
+plot(c(-0.2, 1.2), c(0.4,0.6), axes = FALSE, cex = 0, xlab = "", ylab = "",
+     mar=c(0.1, 0.1, 0.1, 0.1))
+rect(0, 0.4, 0.2, 0.6, border = NA, col = adjustcolor("blue", alpha.f = 0.30))
+rect(0.2, 0.4, 0.6, 0.6, border = NA, col = adjustcolor("red", alpha.f = 0.30))
+rect(0.6, 0.4, 0.85, 0.6, border = NA, col = adjustcolor("grey", alpha.f = 0.40))
+rect(0.85, 0.4, 1.1, 0.6, border = NA, col = adjustcolor("green", alpha.f = 0.30))
+text(0, 0.5, "N-", pos = 2, cex = 1.2, family = "mono")
+text(1.1, 0.5, "-C", pos = 4, cex = 1.2, family = "mono")
+text(0.1, 0.55, "n-region", pos = 1)
+text(0.4, 0.55, "h-region", pos = 1)
+text(0.725, 0.55, "c-region", pos = 1)
+text(0.975, 0.55, "cleave site", pos = 1)
+@
+\end{figure}
+
+c-region:
+\begin{itemize}
+  \item about 6 residues long,
+  \item a few polar, uncharged residues.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{figure}[t]
+<<sigseq4, echo = FALSE, fig.height=2.5, fig.align='center', fig.pos='hh',out.height=100>>=
+
+plot(c(-0.2, 1.2), c(0.4,0.6), axes = FALSE, cex = 0, xlab = "", ylab = "",
+     mar=c(0.1, 0.1, 0.1, 0.1))
+rect(0, 0.4, 0.2, 0.6, border = NA, col = adjustcolor("blue", alpha.f = 0.30))
+rect(0.2, 0.4, 0.6, 0.6, border = NA, col = adjustcolor("red", alpha.f = 0.30))
+rect(0.6, 0.4, 0.85, 0.6, border = NA, col = adjustcolor("grey", alpha.f = 0.40))
+rect(0.85, 0.4, 1.1, 0.6, border = NA, col = adjustcolor("green", alpha.f = 0.30))
+text(0, 0.5, "N-", pos = 2, cex = 1.2, family = "mono")
+text(1.1, 0.5, "-C", pos = 4, cex = 1.2, family = "mono")
+text(0.1, 0.55, "n-region", pos = 1)
+text(0.4, 0.55, "h-region", pos = 1)
+text(0.725, 0.55, "c-region", pos = 1)
+text(0.975, 0.55, "cleave site", pos = 1)
+@
+\end{figure}
+
+Cleave site:
+\begin{itemize}
+  \item very variable,
+  \item usually small, neutral residuals at -3 and -1 positions.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+Patterns in the molecular structure of signal peptides allow creation of the heuristic algorithm which identifies borders of all regions.
+\end{frame}
+
+
+\section{Hidden semi-Markov model}
+
+\begin{frame}
+Hidden semi-Markov model of a secretory signal peptide:
+\begin{itemize}
+  \item the observable distribution of aminoacids is a result of being in a certain region (state),
+  \item a probability of staying in a given region decreases over time (reflects variability in regions' lengths).
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+Training procedure:
+\begin{itemize}
+  \item removal of atypical or poorly annotated records from data set of proteins with signal peptide from UniProt database,
+  \item reducion of dimensionality by aggregating aminoacids to several physicochemical groups,
+  \item determination of n-, h-, c-regions by the heuristic algorithm, 
+  \item calculation of the aminoacid group frequency in each region,
+  \item training of HSMMs (model for signal peptide and model for protein without signal peptide).
+\end{itemize} 
+\end{frame}
+
+
+\begin{frame}
+During the test, each protein is fitted to two HSMMs. The outcome consists of probabilities of belonging to given models and predicted cleave site.
+
+TU OBRAZEK Z WYJSCIA GRAFICZNEGO
+
+\end{frame}
+
+\section{signal.hsmm}
+
+\begin{frame}
+Blabla
+\end{frame}
+
+\section{Comparision with other signal peptide predictors}
+
+\begin{frame}
+Blabla
+\end{frame}
+
+\section{Summary}
+
+\begin{frame}
+Blabla
+\end{frame}
+
+\end{document}
