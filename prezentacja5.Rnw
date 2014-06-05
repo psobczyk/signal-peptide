@@ -23,7 +23,7 @@ load("prezent5_data.Rdata")
 \date{}
 \author{Michał  Burdukiewicz \inst{1} \and Piotr Sobczyk \inst{2} \and Paweł  Błażej \inst{1} \\ \and Paweł  Mackiewicz \inst{1}}
 \institute[shortinst]{\inst{1} University of Wrocław, Department of Genomics, Poland \and %
-                      \inst{2} Wrocław University of Technology, Institute of Mathematics and Computer Science, Poland}
+\inst{2} Wrocław University of Technology, Institute of Mathematics and Computer Science, Poland}
 
 \title{Signal peptide prediction using hidden Markov models}
 
@@ -36,12 +36,12 @@ load("prezent5_data.Rdata")
 
 
 \AtBeginSection[]
-  {
-     \begin{frame}<beamer>
-     \frametitle{Plan}
-     \tableofcontents[currentsection]
-     \end{frame}
-  }
+{
+\begin{frame}<beamer>
+\frametitle{Plan}
+\tableofcontents[currentsection]
+\end{frame}
+}
 
 
 
@@ -51,19 +51,19 @@ load("prezent5_data.Rdata")
 \begin{frame}
 Secretory signal peptides:
 \begin{itemize}
-  \item are short (20-30 residues) N-terminal sequences,
-  \item direct a protein to the endomembrane system and next to the extracellular localization,
-  \item possess three distinct domains, which lengths can vary from peptide to peptide~\cite{hegde_surprising_2006}.
+\item are short (20-30 residues) N-terminal sequences,
+\item direct a protein to the endomembrane system and next to the extracellular localization,
+\item possess three distinct domains, which lengths can vary from peptide to peptide~\cite{hegde_surprising_2006}.
 \end{itemize}
 \end{frame}
 
 \begin{frame}
 Proteins with secretory signal peptides:
 \begin{itemize}
-  \item hormons (e.g., prolactin, glucagon),
-  \item immune system proteins (e.g., interferons, interleukins),
-  \item structural proteins (e.g., collagen),
-  \item metabolic enzymes (e.g., alpha-galactosidase, pepsins).
+\item hormons (e.g., prolactin, glucagon),
+\item immune system proteins (e.g., interferons, interleukins),
+\item structural proteins (e.g., collagen),
+\item metabolic enzymes (e.g., alpha-galactosidase, pepsins).
 \end{itemize}
 \end{frame}
 
@@ -88,8 +88,8 @@ text(0.975, 0.55, "cleave site", pos = 1)
 
 n-region:
 \begin{itemize}
-  \item usually 5-8 residues long,
-  \item mostly basic residues~\cite{nielsen_prediction_1998}.
+\item usually 5-8 residues long,
+\item mostly basic residues~\cite{nielsen_prediction_1998}.
 \end{itemize}
 \end{frame}
 
@@ -114,8 +114,8 @@ text(0.975, 0.55, "cleave site", pos = 1)
 
 h-region:
 \begin{itemize}
-  \item usually 8-12 residues long,
-  \item strongly hydrophobic~\cite{nielsen_prediction_1998}.
+\item usually 8-12 residues long,
+\item strongly hydrophobic~\cite{nielsen_prediction_1998}.
 \end{itemize}
 \end{frame}
 
@@ -140,8 +140,8 @@ text(0.975, 0.55, "cleave site", pos = 1)
 
 c-region:
 \begin{itemize}
-  \item about 6 residues long,
-  \item a few polar, uncharged residues~\cite{jain_signal_1994}.
+\item about 6 residues long,
+\item a few polar, uncharged residues~\cite{jain_signal_1994}.
 \end{itemize}
 \end{frame}
 
@@ -166,13 +166,13 @@ text(0.975, 0.55, "cleave site", pos = 1)
 
 Cleave site:
 \begin{itemize}
-  \item very variable,
-  \item usually small, neutral residuals at -3 and -1 positions~\cite{nielsen_prediction_1998}.
+\item very variable,
+\item usually small, neutral residuals at -3 and -1 positions~\cite{nielsen_prediction_1998}.
 \end{itemize}
 \end{frame}
 
 \begin{frame}
-Patterns in the molecular structure of signal peptides allow creation of the heuristic algorithm which identifies borders of all regions.
+Patterns in the molecular structure of signal peptides allow creation of the heuristic algorithm identifying borders of all regions~\cite{nielsen_prediction_1998}.
 \end{frame}
 
 
@@ -181,19 +181,19 @@ Patterns in the molecular structure of signal peptides allow creation of the heu
 \begin{frame}
 Hidden semi-Markov model of a secretory signal peptide:
 \begin{itemize}
-  \item the observable distribution of amino acids is a result of being in a certain region (state),
-  \item a probability of staying in a given region decreases over time (reflects variability in regions' lengths).
+\item the observable distribution of amino acids is a result of being in a certain region (state),
+\item a probability of staying in a given region decreases over time (reflects variability in regions' lengths).
 \end{itemize}
 \end{frame}
 
 \begin{frame}
 Training procedure:
 \begin{itemize}
-  \item removal of atypical or poorly annotated records from data set of proteins with signal peptide from UniProt database,
-  \item reduction of dimensionality by aggregating amino acids to several physicochemical groups,
-  \item determination of n-, h-, c-regions by the heuristic algorithm, 
-  \item calculation of the amino acid group frequency in each region and the average length of the region,
-  \item training of HSMMs (model for signal peptide and model for protein without signal peptide).
+\item removal of atypical or poorly annotated records from data set of proteins with signal peptide from UniProt database,
+\item determination of n-, h-, c-regions by the heuristic algorithm, 
+\item reduction of dimensionality by aggregating amino acids to several physicochemical groups,
+\item calculation of the amino acid group frequency in each region and the average length of the region,
+\item training of HSMMs (model for signal peptide and model for protein without signal peptide).
 \end{itemize} 
 \end{frame}
 
@@ -201,7 +201,7 @@ Training procedure:
 <<echo = FALSE,message=FALSE,results='asis'>>=
 tabAminokwasow = function(aminokwasy, nazwyGrupy, ...) {
   tab = cbind(data.frame(1:length(aminokwasy)), data.frame(sapply(aminokwasy, function(x) paste(x, collapse=", "))))
-  dimnames(tab) = list(nazwyGrupy, c("Group", "Amonoacids"))
+  dimnames(tab) = list(nazwyGrupy, c("Group", "Amino acids"))
   return(xtable(tab, align = c("r", "c", "l"), ...))
 }
 
@@ -210,7 +210,8 @@ aa5 = list('1' = c("K", "R", "H"),
            '3' = c("S", "T", "N", "Q"),
            '4' = c("D","E","A","P","Y","G"))
 print(tabAminokwasow(aa5, c("Positively charged", "Nonpolar and aliphatic",
-                             "Polar and uncharged", "Negatively charged and nonpolar")))
+                            "Polar and uncharged", "Negatively charged and nonpolar"),
+                     caption = "Classification of amino acids used by signal-hsmm."))
 @
 \end{frame}
 
@@ -225,7 +226,7 @@ library(igraph)
 iArrows <- igraph:::igraph.Arrows
 radius = 0.075
 plot(c(0, 1.7), c(0, 1), cex = 0, axes = FALSE, xlab = "", ylab = "",
-     mar=c(0.1, 0.1, 0.1, 0.1))
+     mar=c(0.1, 0.1, 2.1, 0.1), main = "HSMM model layout")
 symbols(0.1, 0.5, circles = radius, add = TRUE, inches = FALSE)
 symbols(0.3, 0.8, circles = radius, add = TRUE, inches = FALSE)
 symbols(0.3, 0.2, circles = radius, add = TRUE, inches = FALSE)
@@ -265,9 +266,9 @@ Proteins without known cleave site or with more than one cleave site were remove
 \begin{frame}
 Validation procedure:
 \begin{enumerate}
-  \item sample without replacement 800 proteins with signal peptides an train signal-hsmm,
-  \item sample without replacement 100 proteins with signal peptides and 100 proteins without signal peptide and test it with newly trained signal-hsmm,
-  \item repeat above procedure 1000 times.
+\item sample without replacement 800 proteins with signal peptides an train signal-hsmm,
+\item sample without replacement 100 proteins with signal peptides and 100 proteins without signal peptide and test it with newly trained signal-hsmm,
+\item repeat above procedure 1000 times.
 \end{enumerate} 
 \end{frame}
 
@@ -278,13 +279,48 @@ plot(density(sapply(hundred_reps, function(i) i$chars$auc)), main = "Density of 
 \end{frame}
 
 \begin{frame}
+<<echo = FALSE,message=FALSE,results='asis'>>=
+aa2 = list('1' = c("G", "A", "P", "V", "L", "I", "M", "F"), 
+           '2' =c("K", "R", "H"), 
+           '3' =c("D", "E"), 
+           '4' =c("S", "T", "C", "N", "Q", "Y", "W"))
+nazwy2 = c("Nonpolar", "Polar (positive charge)", "Polar (negative charge)", "Polar")
+print(tabAminokwasow(aa5, nazwy2, caption = "Classification of amino acids using only polarity and charge of a side chain."))
+@
+\end{frame}
+
+\begin{frame}
+<<echo = FALSE,message=FALSE,results='hide', fig.height=4.5>>=
+plot(density(sapply(hundred_reps, function(i) i$chars$auc)), main = "Density of AUC")
+lines(density(sapply(hundred_reps2, function(i) i$chars$auc)), col = "red")
+legend("topleft", lty = 1, col = c("black", "red"),
+       legend = c("Classification 1", "Classification 2"))
+@
+\end{frame}
+
+\begin{frame}
 <<echo = FALSE,message=FALSE,results='hide', fig.height=4.5>>=
 all_cs <- do.call("rbind", lapply(hundred_reps, function(i) i[["cs"]]))
+all_cs2 <- do.call("rbind", lapply(hundred_reps2, function(i) i[["cs"]]))
 plot(density((all_cs[[1]] - all_cs[[2]])), main = "Density of cleave site misplacement")
 sapply(-1:3*20, function(i)
   abline(v = i, col = "grey"))
 sapply(1:4/20, function(i)
   abline(h = i, col = "grey"))
+
+@
+\end{frame}
+
+\begin{frame}
+<<echo = FALSE,message=FALSE,results='hide', fig.height=4.5>>=
+plot(density((all_cs[[1]] - all_cs[[2]])), main = "Density of cleave site misplacement")
+sapply(-1:3*20, function(i)
+  abline(v = i, col = "grey"))
+sapply(1:4/20, function(i)
+  abline(h = i, col = "grey"))
+lines(density((all_cs2[[1]] - all_cs2[[2]])), col = "red")
+legend("topright", lty = 1, col = c("black", "red"),
+       legend = c("Classification 1", "Classification 2"))
 @
 \end{frame}
 
@@ -293,10 +329,10 @@ sapply(1:4/20, function(i)
 \begin{frame}
 Other secretory signal peptide predictors:
 \begin{itemize}
-  \item neural networks (SignalP 4.1)~\cite{petersen_signalp_2011},
-  \item hidden Markov models (Phobius)~\cite{kall_combined_2004},
-  \item position matrices (PredSi)~\cite{hiller_predisi:_2004}, 
-  \item support vector machines~\cite{cai_support_2003}.
+\item neural networks (SignalP 4.1)~\cite{petersen_signalp_2011},
+\item hidden Markov models (Phobius)~\cite{kall_combined_2004},
+\item position matrices (PredSi)~\cite{hiller_predisi:_2004}, 
+\item support vector machines~\cite{cai_support_2003}.
 \end{itemize} 
 \end{frame}
 
@@ -336,9 +372,9 @@ legend("bottomright", lty = 1, col = c("red", "green", "blue", "black"),
 \begin{frame}
 <<echo = FALSE,message=FALSE,results='asis'>>=
 aucs <- c(signal_hsmm[["auc"]],
-  auc(response = ets2, predictor = signalp4),
-  auc(response = ets2, predictor = phobius[, 1]),
-  auc(response = ets2, predictor = predsi[, 4]))
+          auc(response = ets2, predictor = signalp4),
+          auc(response = ets2, predictor = phobius[, 1]),
+          auc(response = ets2, predictor = predsi[, 4]))
 dat <- data.frame(Predictor = pred_names, AUC = aucs)
 print(xtable(dat, digits = 4))
 @
