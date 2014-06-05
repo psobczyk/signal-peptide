@@ -25,8 +25,8 @@ plot.Viterbi.results <- function(viterbi_path, protein){
   abline(v=c.site+0.5, lwd =3, col="red")
   text(x=c.site+0.5, y=circle.y+3, labels="cut", cex=2,pos=2)
   text(x=c.site, y=circle.y-3, pos=1, cex=2, labels="Aminoacids")
-  legend(x="bottomright", legend=c("n-region", "h-region", "c-region", "cleavage site", "mature protein"),
-         fill=c("slateblue1", "pink2", "ivory2", "red",  "seagreen1"))
+  legend(x="bottomright", legend=c("n-region", "h-region", "c-region", "mature protein"),
+         fill=c("slateblue1", "pink2", "ivory2", "seagreen1"))
   text(x=1:length, y=circle.y-1.5, labels=protein[1:length])
 }
 
