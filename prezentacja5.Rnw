@@ -6,25 +6,17 @@
 \usepackage{amsmath}
 
 
-\linespread{1.3}
 
 \begin{document}
+
+
 
 <<knitrIntro, echo = FALSE, message=FALSE>>=
 library(seqinr)
 library(MASS)
 library(xtable)
-library(rgl)
-
-knit_hooks$set(rgl = function(before, options, envir) {
-  if (!before) {
-    ## after a chunk has been evaluated
-    if (rgl.cur() == 0) return()  # no active device
-    name = paste(options$fig.path, options$label, sep = '')
-    rgl.snapshot(paste(name, '.png', sep = ''), fmt = 'png')
-    return(paste('\\includegraphics[scale=0.37]{', name, '}\n', sep = ''))
-  }
-})
+library(pROC)
+load("prezent5_data.Rdata")
 @
 
 
@@ -41,6 +33,8 @@ knit_hooks$set(rgl = function(before, options, envir) {
 \end{frame}
 
 
+
+
 \AtBeginSection[]
   {
      \begin{frame}<beamer>
@@ -49,21 +43,33 @@ knit_hooks$set(rgl = function(before, options, envir) {
      \end{frame}
   }
 
+
+
+
 \section{Secretory signal peptides}
 
 \begin{frame}
 Secretory signal peptides:
 \begin{itemize}
-  \item short (20-30 residues) N-terminal sequences,
-  \item directs a protein to the endomembrane system and next to the extracellular localization,
-  \item possess three distinct domains, which lengths can vary from peptide to peptide.
+  \item are short (20-30 residues) N-terminal sequences,
+  \item direct a protein to the endomembrane system and next to the extracellular localization,
+  \item possess three distinct domains, which lengths can vary from peptide to peptide~\cite{hegde_surprising_2006}.
 \end{itemize}
 \end{frame}
 
+\begin{frame}
+Proteins with secretory signal peptides:
+\begin{itemize}
+  \item hormons (e.g., prolactin, glucagon),
+  \item immune system proteins (e.g., interferons, interleukins),
+  \item structural proteins (e.g., collagen),
+  \item metabolic enzymes (e.g., alpha-galactosidase, pepsins).
+\end{itemize}
+\end{frame}
 
 \begin{frame}
-\begin{figure}[t]
-<<sigseq1, echo = FALSE, fig.height=2.5, fig.align='center', fig.pos='hh',out.height=100>>=
+\begin{figure}
+<<echo = FALSE, fig.height=2.5, out.height=100>>=
 
 plot(c(-0.2, 1.2), c(0.4,0.6), axes = FALSE, cex = 0, xlab = "", ylab = "",
      mar=c(0.1, 0.1, 0.1, 0.1))
@@ -83,13 +89,13 @@ text(0.975, 0.55, "cleave site", pos = 1)
 n-region:
 \begin{itemize}
   \item usually 5-8 residues long,
-  \item mostly basic residues.
+  \item mostly basic residues~\cite{nielsen_prediction_1998}.
 \end{itemize}
 \end{frame}
 
 \begin{frame}
-\begin{figure}[t]
-<<sigseq2, echo = FALSE, fig.height=2.5, fig.align='center', fig.pos='hh',out.height=100>>=
+\begin{figure}
+<<echo = FALSE, fig.height=2.5, out.height=100>>=
 
 plot(c(-0.2, 1.2), c(0.4,0.6), axes = FALSE, cex = 0, xlab = "", ylab = "",
      mar=c(0.1, 0.1, 0.1, 0.1))
@@ -109,13 +115,13 @@ text(0.975, 0.55, "cleave site", pos = 1)
 h-region:
 \begin{itemize}
   \item usually 8-12 residues long,
-  \item strongly hydrophobic.
+  \item strongly hydrophobic~\cite{nielsen_prediction_1998}.
 \end{itemize}
 \end{frame}
 
 \begin{frame}
-\begin{figure}[t]
-<<sigseq3, echo = FALSE, fig.height=2.5, fig.align='center', fig.pos='hh',out.height=100>>=
+\begin{figure}
+<<echo = FALSE, fig.height=2.5, out.height=100>>=
 
 plot(c(-0.2, 1.2), c(0.4,0.6), axes = FALSE, cex = 0, xlab = "", ylab = "",
      mar=c(0.1, 0.1, 0.1, 0.1))
@@ -135,13 +141,13 @@ text(0.975, 0.55, "cleave site", pos = 1)
 c-region:
 \begin{itemize}
   \item about 6 residues long,
-  \item a few polar, uncharged residues.
+  \item a few polar, uncharged residues~\cite{jain_signal_1994}.
 \end{itemize}
 \end{frame}
 
 \begin{frame}
-\begin{figure}[t]
-<<sigseq4, echo = FALSE, fig.height=2.5, fig.align='center', fig.pos='hh',out.height=100>>=
+\begin{figure}
+<<echo = FALSE, fig.height=2.5, out.height=100>>=
 
 plot(c(-0.2, 1.2), c(0.4,0.6), axes = FALSE, cex = 0, xlab = "", ylab = "",
      mar=c(0.1, 0.1, 0.1, 0.1))
@@ -161,7 +167,7 @@ text(0.975, 0.55, "cleave site", pos = 1)
 Cleave site:
 \begin{itemize}
   \item very variable,
-  \item usually small, neutral residuals at -3 and -1 positions.
+  \item usually small, neutral residuals at -3 and -1 positions~\cite{nielsen_prediction_1998}.
 \end{itemize}
 \end{frame}
 
@@ -186,35 +192,170 @@ Training procedure:
   \item removal of atypical or poorly annotated records from data set of proteins with signal peptide from UniProt database,
   \item reducion of dimensionality by aggregating aminoacids to several physicochemical groups,
   \item determination of n-, h-, c-regions by the heuristic algorithm, 
-  \item calculation of the aminoacid group frequency in each region,
+  \item calculation of the aminoacid group frequency in each region and the average length of the region,
   \item training of HSMMs (model for signal peptide and model for protein without signal peptide).
 \end{itemize} 
+\end{frame}
+
+\begin{frame}
+<<echo = FALSE,message=FALSE,results='asis'>>=
+tabAminokwasow = function(aminokwasy, nazwyGrupy, ...) {
+  tab = cbind(data.frame(1:length(aminokwasy)), data.frame(sapply(aminokwasy, function(x) paste(x, collapse=", "))))
+  dimnames(tab) = list(nazwyGrupy, c("Group", "Amonoacids"))
+  return(xtable(tab, align = c("r", "c", "l"), ...))
+}
+
+aa5 = list('1' = c("K", "R", "H"),
+           '2' = c("V","I","L","M","F","W","C"),
+           '3' = c("S", "T", "N", "Q"),
+           '4' = c("D","E","A","P","Y","G"))
+print(tabAminokwasow(aa5, c("Positively charged", "Nonpolar and aliphatic",
+                             "Polar and uncharged", "Negatively charged and nonpolar")))
+@
 \end{frame}
 
 
 \begin{frame}
 During the test, each protein is fitted to two HSMMs. The outcome consists of probabilities of belonging to given models and predicted cleave site.
-
-TU OBRAZEK Z WYJSCIA GRAFICZNEGO
-
 \end{frame}
 
-\section{signal.hsmm}
+\begin{frame}
+<<echo = FALSE,message=FALSE,results='hide', fig.height=5>>=
+library(igraph)
+iArrows <- igraph:::igraph.Arrows
+radius = 0.075
+plot(c(0, 1.7), c(0, 1), cex = 0, axes = FALSE, xlab = "", ylab = "",
+     mar=c(0.1, 0.1, 0.1, 0.1))
+symbols(0.1, 0.5, circles = radius, add = TRUE, inches = FALSE)
+symbols(0.3, 0.8, circles = radius, add = TRUE, inches = FALSE)
+symbols(0.3, 0.2, circles = radius, add = TRUE, inches = FALSE)
+symbols(0.7, 0.2, circles = radius, add = TRUE, inches = FALSE)
+symbols(1.1, 0.2, circles = radius, add = TRUE, inches = FALSE)
+symbols(1.5, 0.2, circles = radius, add = TRUE, inches = FALSE)
+arrows(0.1 + radius * sqrt(2)/2, 0.5 + radius * sqrt(2)/2, 0.3 - radius, 0.8,length=0.4,angle=15)
+arrows(0.1 + radius * sqrt(2)/2, 0.5 - radius * sqrt(2)/2, 0.3 - radius, 0.2,length=0.4,angle=15)
+arrows(0.3 + radius, 0.2, 0.7 - radius, 0.2,length=0.3,angle=20)
+arrows(0.7 + radius, 0.2, 1.1 - radius, 0.2,length=0.3,angle=20)
+arrows(1.1 + radius, 0.2, 1.5 - radius, 0.2,length=0.3,angle=20)
+iArrows(0.3 + radius, 0.8, 0.3, 0.8 + radius, curve=-3.8)
+iArrows(0.3 + radius, 0.2, 0.3, 0.2 + radius, curve=-3.8)
+iArrows(0.7 + radius, 0.2, 0.7, 0.2 + radius, curve=-3.8)
+iArrows(1.1 + radius, 0.2, 1.1, 0.2 + radius, curve=-3.8)
+iArrows(1.5 + radius, 0.2, 1.5, 0.2 + radius, curve=-3.8)
+text(0.1, 0.51, "start")
+text(0.3, 0.81, "4")
+text(0.3, 0.21, "1")
+text(0.7, 0.21, "2")
+text(1.1, 0.21, "3")
+text(1.5, 0.21, "4")
+legend(0.8, 1, box.col = "white",
+       legend = c("1: n-region", "2: h-region", "3: c-region", "4: mature protein"))
+
+@
+\end{frame}
+
+\section{signal.hsmm evaluation}
 
 \begin{frame}
-Blabla
+A validation data set contains 2288 proteins with experimentally confirmed signal peptides and 15238 proteins without signal peptides.
+\\[12pt]
+Proteins without known cleave site or with more than one cleave site were removed from the data set.
+\end{frame}
+
+\begin{frame}
+Validation procedure:
+\begin{enumerate}
+  \item sample without replacement 800 proteins with signal peptides an train signal-hsmm,
+  \item sample without replacement 100 proteins with signal peptides and 100 proteins without signal peptide and test it with newly trained signal-hsmm,
+  \item repeat above procedure 1000 times.
+\end{enumerate} 
+\end{frame}
+
+\begin{frame}
+<<echo = FALSE,message=FALSE,results='hide', fig.height=4.5>>=
+plot(density(sapply(hundred_reps, function(i) i$chars$auc)), main = "Density of AUC")
+@
+\end{frame}
+
+\begin{frame}
+<<echo = FALSE,message=FALSE,results='hide', fig.height=4.5>>=
+all_cs <- do.call("rbind", lapply(hundred_reps, function(i) i[["cs"]]))
+plot(density((all_cs[[1]] - all_cs[[2]])), main = "Density of cleave site misplacement")
+sapply(-1:3*20, function(i)
+  abline(v = i, col = "grey"))
+sapply(1:4/20, function(i)
+  abline(h = i, col = "grey"))
+@
 \end{frame}
 
 \section{Comparision with other signal peptide predictors}
 
 \begin{frame}
-Blabla
+Other secretory signal peptide predictors:
+\begin{itemize}
+  \item neural networks (SignalP 4.1)~\cite{petersen_signalp_2011},
+  \item hidden Markov models (Phobius)~\cite{kall_combined_2004},
+  \item position matrices (PredSi)~\cite{hiller_predisi:_2004}, 
+  \item support vector machines~\cite{cai_support_2003}.
+\end{itemize} 
+\end{frame}
+
+\begin{frame}
+A data set chosen for comparision contains 70 proteins with experimentally confirmed signal peptides and 198 proteins without signal peptides.
+\\[12pt]
+Proteins without known cleave site or with more than one cleave site or added before 2012 were removed from the data set.
+\\[12pt]
+signal.hsmm was trained on data set of 2288 proteins with signal peptides.
+\end{frame}
+
+\begin{frame}
+<<echo = FALSE,message=FALSE,results='hide', out.height=220, out.width=260,fig.align='center'>>=
+pred_names <- c("signal.hsmm", "SignalP 4.1", "Phobius", "PredSi")
+plot(roc(response = ets2, predictor = signalp4), col = "green", main = "ROC curve",
+     ylim = c(0, 1), xlim = c(1, 0))
+plot(signal_hsmm[["roc"]], add = TRUE, col = "red")
+plot(roc(response = ets2, predictor = phobius[, 1]), add = TRUE, col = "blue")
+plot(roc(response = ets2, predictor = predsi[,4]), add = TRUE, col = "black")
+legend("bottomright", lty = 1, col = c("red", "green", "blue", "black"),
+       legend = pred_names)
+@
+\end{frame}
+
+\begin{frame}
+<<echo = FALSE,message=FALSE,results='hide', fig.height=4.5>>=
+plot(roc(response = ets2, predictor = signalp4), col = "green", 
+     ylim = c(0.8, 1), xlim = c(1, 0.8))
+plot(signal_hsmm[["roc"]], add = TRUE, col = "red")
+plot(roc(response = ets2, predictor = phobius[, 1]), add = TRUE, col = "blue")
+plot(roc(response = ets2, predictor = predsi[,4]), add = TRUE, col = "black")
+legend("bottomright", lty = 1, col = c("red", "green", "blue", "black"),
+       legend = pred_names)
+@
+\end{frame}
+
+\begin{frame}
+<<echo = FALSE,message=FALSE,results='asis'>>=
+aucs <- c(signal_hsmm[["auc"]],
+  auc(response = ets2, predictor = signalp4),
+  auc(response = ets2, predictor = phobius[, 1]),
+  auc(response = ets2, predictor = predsi[, 4]))
+dat <- data.frame(Predictor = pred_names, AUC = aucs)
+print(xtable(dat, digits = 4))
+@
 \end{frame}
 
 \section{Summary}
 
 \begin{frame}
-Blabla
+Hidden semi-Markov models can be used to accurately predict a presence of secretory signal peptides.
+\\[12pt]
+A prediction of cleavage site position still requires a refinement.
+
+\end{frame}
+
+\begin{frame}[allowframebreaks]
+\bibliographystyle{plain}
+\bibliography{prez5}
 \end{frame}
 
 \end{document}
