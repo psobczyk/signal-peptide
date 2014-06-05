@@ -6,6 +6,14 @@
 \usepackage{amsmath}
 
 
+% rysunki
+\usepackage{tikz}
+\usepackage{ifthen}
+\usepackage{xxcolor}
+\usetikzlibrary{arrows}
+\usetikzlibrary[topaths]
+\usetikzlibrary{decorations.pathreplacing}
+
 
 \begin{document}
 
@@ -32,7 +40,9 @@ load("prezent5_data.Rdata")
 \maketitle
 \end{frame}
 
-
+\begin{frame}
+\tableofcontents
+\end{frame}
 
 
 \AtBeginSection[]
@@ -181,19 +191,19 @@ Patterns in the molecular structure of signal peptides allow creation of the heu
 \begin{frame}
 Hidden semi-Markov model of a secretory signal peptide:
 \begin{itemize}
-\item the observable distribution of amino acids is a result of being in a certain region (state),
-\item a probability of staying in a given region decreases over time (reflects variability in regions' lengths).
+\item<1-> the observable distribution of amino acids is a result of being in a certain region (state),
+\item<2-> a probability of staying in a given region decreases over time (reflects variability in regions' lengths).
 \end{itemize}
 \end{frame}
 
 \begin{frame}
 Training procedure:
 \begin{itemize}
-\item removal of atypical or poorly annotated records from data set of proteins with signal peptide from UniProt database,
-\item determination of n-, h-, c-regions by the heuristic algorithm, 
-\item reduction of dimensionality by aggregating amino acids to several physicochemical groups,
-\item calculation of the amino acid group frequency in each region and the average length of the region,
-\item training of HSMMs (model for signal peptide and model for protein without signal peptide).
+\item<1-> removal of atypical or poorly annotated records from data set of proteins with signal peptide from UniProt database,
+\item<2-> determination of n-, h-, c-regions by the heuristic algorithm, 
+\item<3-> reduction of dimensionality by aggregating amino acids to several physicochemical groups,
+\item<4-> calculation of the amino acid group frequency in each region and the average length of the region,
+\item<5-> training of HSMMs (model for signal peptide and model for protein without signal peptide).
 \end{itemize} 
 \end{frame}
 
@@ -221,38 +231,31 @@ During the test phase, each protein is fitted to two HSMMs. The outcome consists
 \end{frame}
 
 \begin{frame}
-<<echo = FALSE,message=FALSE,results='hide', fig.height=5>>=
-library(igraph)
-iArrows <- igraph:::igraph.Arrows
-radius = 0.075
-plot(c(0, 1.7), c(0, 1), cex = 0, axes = FALSE, xlab = "", ylab = "",
-     mar=c(0.1, 0.1, 2.1, 0.1), main = "HSMM model layout")
-symbols(0.1, 0.5, circles = radius, add = TRUE, inches = FALSE)
-symbols(0.3, 0.8, circles = radius, add = TRUE, inches = FALSE)
-symbols(0.3, 0.2, circles = radius, add = TRUE, inches = FALSE)
-symbols(0.7, 0.2, circles = radius, add = TRUE, inches = FALSE)
-symbols(1.1, 0.2, circles = radius, add = TRUE, inches = FALSE)
-symbols(1.5, 0.2, circles = radius, add = TRUE, inches = FALSE)
-arrows(0.1 + radius * sqrt(2)/2, 0.5 + radius * sqrt(2)/2, 0.3 - radius, 0.8,length=0.4,angle=15)
-arrows(0.1 + radius * sqrt(2)/2, 0.5 - radius * sqrt(2)/2, 0.3 - radius, 0.2,length=0.4,angle=15)
-arrows(0.3 + radius, 0.2, 0.7 - radius, 0.2,length=0.3,angle=20)
-arrows(0.7 + radius, 0.2, 1.1 - radius, 0.2,length=0.3,angle=20)
-arrows(1.1 + radius, 0.2, 1.5 - radius, 0.2,length=0.3,angle=20)
-iArrows(0.3 + radius, 0.8, 0.3, 0.8 + radius, curve=-3.8)
-iArrows(0.3 + radius, 0.2, 0.3, 0.2 + radius, curve=-3.8)
-iArrows(0.7 + radius, 0.2, 0.7, 0.2 + radius, curve=-3.8)
-iArrows(1.1 + radius, 0.2, 1.1, 0.2 + radius, curve=-3.8)
-iArrows(1.5 + radius, 0.2, 1.5, 0.2 + radius, curve=-3.8)
-text(0.1, 0.51, "start")
-text(0.3, 0.81, "4")
-text(0.3, 0.21, "1")
-text(0.7, 0.21, "2")
-text(1.1, 0.21, "3")
-text(1.5, 0.21, "4")
-legend(0.8, 1, box.col = "white",
-       legend = c("1: n-region", "2: h-region", "3: c-region", "4: mature protein"))
 
-@
+\begin{figure}
+\centering
+\resizebox{9.5cm}{!}{%
+\begin{tikzpicture}[->,>=stealth',shorten >=2pt,auto,node distance=3cm, thick]
+  \tikzstyle{line} = [draw=black, color=blue!30!black!50, line width=1.5mm, -latex']
+  \tikzstyle{main node} = [circle,fill=blue!20,draw, minimum size = 2.2cm, font=\itshape,
+     align=center,  top color=white, bottom color=blue!50!black!70 ] %font=\sffamily\small\bfseries,
+  %nodes
+  \node[main node] 				 	(start') 	[]						{Start};	     
+  \node[main node, bottom color=purple!70!black!70] 	(nregion') 	[right of=start',xshift=-5mm, yshift=15mm] 	{n-region};
+  \node[main node, bottom color=pink!70!black!70] 	(hregion') 	[right of=nregion',xshift=-5mm,yshift=15mm] 	{h-region};
+  \node[main node, bottom color=gray!70!black!70] 	(cregion') 	[right of=hregion',xshift=-5mm,yshift=-15mm] 	{c-region};
+  \node[main node, bottom color=green!70!black!70] 	(mature') 	[right of=cregion',xshift=-5mm, yshift=-15mm] 	{Mature protein};
+  
+  %lines
+  \path [line] (start')   edge node [left, color=black] {} (nregion');
+  \path [line] (nregion') edge node [below, color=black] { } (hregion');
+  \path [line] (hregion') edge node [below, color=black] { } (cregion');
+  \path [line] (cregion') edge node [left, color=black] { } (mature');
+  \draw [line] (start') to[out=340,in=200] (mature');
+\end{tikzpicture} }
+\end{figure}
+
+
 \end{frame}
 
 \section{signal.hsmm evaluation}
@@ -266,15 +269,19 @@ Proteins without known cleave site or with more than one cleave site were remove
 \begin{frame}
 Validation procedure:
 \begin{enumerate}
-\item sample without replacement 800 proteins with signal peptides an train signal-hsmm,
-\item sample without replacement 100 proteins with signal peptides and 100 proteins without signal peptide and test it with newly trained signal-hsmm,
-\item repeat above procedure 1000 times.
+\item<1-> sample without replacement 800 proteins with signal peptides an train signal-hsmm,
+\item<2-> sample without replacement 100 proteins with signal peptides and 100 proteins without signal peptide and test it with newly trained signal-hsmm,
+\item<3-> repeat above procedure 1000 times.
 \end{enumerate} 
 \end{frame}
 
 \begin{frame}
 <<echo = FALSE,message=FALSE,results='hide', fig.height=4.5>>=
 plot(density(sapply(hundred_reps, function(i) i$chars$auc)), main = "Density of AUC")
+sapply(-1:3*20, function(i)
+  abline(v = i, col = "grey"))
+sapply(1:4/20, function(i)
+  abline(h = i, col = "grey"))
 @
 \end{frame}
 
@@ -285,7 +292,7 @@ aa2 = list('1' = c("G", "A", "P", "V", "L", "I", "M", "F"),
            '3' =c("D", "E"), 
            '4' =c("S", "T", "C", "N", "Q", "Y", "W"))
 nazwy2 = c("Nonpolar", "Polar (positive charge)", "Polar (negative charge)", "Polar")
-print(tabAminokwasow(aa5, nazwy2, caption = "Classification of amino acids using only polarity and charge of a side chain."))
+print(tabAminokwasow(aa2, nazwy2, caption = "Classification of amino acids using only polarity and charge of a side chain."))
 @
 \end{frame}
 
@@ -329,10 +336,10 @@ legend("topright", lty = 1, col = c("black", "red"),
 \begin{frame}
 Other secretory signal peptide predictors:
 \begin{itemize}
-\item neural networks (SignalP 4.1)~\cite{petersen_signalp_2011},
-\item hidden Markov models (Phobius)~\cite{kall_combined_2004},
-\item position matrices (PredSi)~\cite{hiller_predisi:_2004}, 
-\item support vector machines~\cite{cai_support_2003}.
+\item<1-> neural networks (SignalP 4.1)~\cite{petersen_signalp_2011},
+\item<2-> hidden Markov models (Phobius)~\cite{kall_combined_2004},
+\item<3-> position matrices (PredSi)~\cite{hiller_predisi:_2004}, 
+\item<4-> support vector machines~\cite{cai_support_2003}.
 \end{itemize} 
 \end{frame}
 
