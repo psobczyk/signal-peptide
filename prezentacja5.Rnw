@@ -181,7 +181,7 @@ Patterns in the molecular structure of signal peptides allow creation of the heu
 \begin{frame}
 Hidden semi-Markov model of a secretory signal peptide:
 \begin{itemize}
-  \item the observable distribution of aminoacids is a result of being in a certain region (state),
+  \item the observable distribution of amino acids is a result of being in a certain region (state),
   \item a probability of staying in a given region decreases over time (reflects variability in regions' lengths).
 \end{itemize}
 \end{frame}
@@ -190,9 +190,9 @@ Hidden semi-Markov model of a secretory signal peptide:
 Training procedure:
 \begin{itemize}
   \item removal of atypical or poorly annotated records from data set of proteins with signal peptide from UniProt database,
-  \item reducion of dimensionality by aggregating aminoacids to several physicochemical groups,
+  \item reduction of dimensionality by aggregating amino acids to several physicochemical groups,
   \item determination of n-, h-, c-regions by the heuristic algorithm, 
-  \item calculation of the aminoacid group frequency in each region and the average length of the region,
+  \item calculation of the amino acid group frequency in each region and the average length of the region,
   \item training of HSMMs (model for signal peptide and model for protein without signal peptide).
 \end{itemize} 
 \end{frame}
@@ -216,7 +216,7 @@ print(tabAminokwasow(aa5, c("Positively charged", "Nonpolar and aliphatic",
 
 
 \begin{frame}
-During the test, each protein is fitted to two HSMMs. The outcome consists of probabilities of belonging to given models and predicted cleave site.
+During the test phase, each protein is fitted to two HSMMs. The outcome consists of probabilities of belonging to given models and predicted cleave site.
 \end{frame}
 
 \begin{frame}
@@ -301,7 +301,7 @@ Other secretory signal peptide predictors:
 \end{frame}
 
 \begin{frame}
-A data set chosen for comparision contains 70 proteins with experimentally confirmed signal peptides and 198 proteins without signal peptides.
+A data set chosen for comparison contains 70 proteins with experimentally confirmed signal peptides and 198 proteins without signal peptides.
 \\[12pt]
 Proteins without known cleave site or with more than one cleave site or added before 2012 were removed from the data set.
 \\[12pt]
