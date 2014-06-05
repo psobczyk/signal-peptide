@@ -76,7 +76,9 @@ read_uniprot <- function(connection, euk) {
     ith_seq <- strsplit(gsub(" ", "", paste0(all_lines[start_seq:end_seq], collapse = "")), "")[[1]]
     
     class(ith_seq) <- "SeqFastaAA"
-    attr(ith_seq, "name") <- strsplit(all_lines[sure_seqs[1,i]], "   ")[[1]][2]
+    aa_name <- strsplit(all_lines[sure_seqs[1,i]], "   ")[[1]][2]
+    attr(ith_seq, "name") <- aa_name
+    attr(ith_seq, "Annot") <- paste0(">", aa_name)
     attr(ith_seq, "class") <- "SeqFastaAA"
     
     sig <- as.numeric(na.omit(as.numeric(strsplit(strsplit(all_lines[sure_seqs[4,i]], "SIGNAL       ")[[1]][2], " ")[[1]])))
@@ -140,7 +142,8 @@ find_nhc <- function(protein, signal = NULL) {
     start_h <- start_h + 1
     noh <- noh + ifelse(sig[start_h] %in% c("A", "I", "L", "M", "F", "W", "V"), 1, 0)
   }
-  c(start_n = signal[1], start_h = start_h, start_c = start_c, cs = signal[2])
+  #c(start_n = signal[1], start_h = start_h, start_c = start_c, cs = signal[2])
+  c(start_n = 1, start_h = start_h, start_c = start_c, cs = signal[2])
 }
 
 
@@ -174,7 +177,14 @@ calc_t <- function(list_prots, aa_list) {
   t3 <- table(degenerate(c_region, aa_list))
   t4 <- table(degenerate(rest, aa_list))
   
-  list(mean_cs = mean(nhc[, 4]), sd_cs = sd(nhc[, 4]), t1 = t1, t2 = t2, t3 = t3, t4 = t4)
+  len_c <- nhc[, "cs"] - nhc[, "start_c"]
+  len_h <- nhc[, "start_c"] - nhc[, "start_h"]
+  len_n <- nhc[, "start_h"] - nhc[, "start_n"]
+  lengths <- matrix(c(len_n, len_h, len_c), ncol = 3)
+  colnames(lengths) <- c("n", "h", "c")
+  
+  list(mean_cs = mean(nhc[, 4]), sd_cs = sd(nhc[, 4]), t1 = t1, t2 = t2, t3 = t3, t4 = t4, 
+       lengths = lengths)
 }
 
 
@@ -338,7 +348,7 @@ read_signalp2 <- function(connection) {
   res
 }
 
-#read result of signalp2; remeber to copy raw result to txt
+#read result of signalp4; remeber to copy raw result to txt
 read_signalp4 <- function(connection) {
   all_lines <- readLines(connection)
   found_names <- grep(">", all_lines)
@@ -346,6 +356,20 @@ read_signalp4 <- function(connection) {
   res <- sapply(strsplit(all_lines[found_names + 6], "   "), function(x) x[7])
   res <- as.numeric(as.factor(res)) - 1
   names(res) <- all_names
+  res
+}
+
+read_phobius <- function(connection) {
+  all_lines <- readLines(connection)
+  all_lines <- all_lines[-1]
+  splited <- strsplit(all_lines, " ")
+  purged <- t(sapply(splited, function(i) i[i != ""]))
+  cl_sites <- sapply(which(purged[, 3] == "Y"), function(i)
+    as.numeric(strsplit(strsplit(purged[i,4], "/")[[1]][1], "c")[[1]][[2]]))
+  res <- matrix(0, ncol = 2, nrow = nrow(purged))
+  res[purged[, 3] == "Y", 1] <- 1
+  res[purged[, 3] == "Y", 2] <- cl_sites
+  rownames(res) <- purged[, 1]
   res
 }
 
