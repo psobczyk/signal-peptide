@@ -4,6 +4,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{amsfonts}
 \usepackage{amsmath}
+\usepackage[notocbib]{apacite}
 
 
 % rysunki
@@ -41,6 +42,7 @@ load("prezent5_data.Rdata")
 \end{frame}
 
 \begin{frame}
+\frametitle{Outline}
 \tableofcontents
 \end{frame}
 
@@ -48,7 +50,7 @@ load("prezent5_data.Rdata")
 \AtBeginSection[]
 {
 \begin{frame}<beamer>
-\frametitle{Plan}
+\frametitle{Outline}
 \tableofcontents[currentsection]
 \end{frame}
 }
@@ -99,7 +101,7 @@ text(0.975, 0.55, "cleave site", pos = 1)
 n-region:
 \begin{itemize}
 \item usually 5-8 residues long,
-\item mostly basic residues~\cite{nielsen_prediction_1998}.
+\item mostly basic residues (histidine, arginine, lysine)~\cite{nielsen_prediction_1998}.
 \end{itemize}
 \end{frame}
 
@@ -300,7 +302,7 @@ print(tabAminokwasow(aa2, nazwy2, caption = "Classification of amino acids using
 <<echo = FALSE,message=FALSE,results='hide', fig.height=4.5>>=
 plot(density(sapply(hundred_reps, function(i) i$chars$auc)), main = "Density of AUC")
 lines(density(sapply(hundred_reps2, function(i) i$chars$auc)), col = "red")
-legend("topleft", lty = 1, col = c("black", "red"),
+legend("topleft", lty = 1, col = c("black", "red"), bg = "white",
        legend = c("Classification 1", "Classification 2"))
 @
 \end{frame}
@@ -323,10 +325,10 @@ sapply(1:4/20, function(i)
 plot(density((all_cs[[1]] - all_cs[[2]])), main = "Density of cleave site misplacement")
 sapply(-1:3*20, function(i)
   abline(v = i, col = "grey"))
-sapply(1:4/20, function(i)
+sapply(0:4/20, function(i)
   abline(h = i, col = "grey"))
 lines(density((all_cs2[[1]] - all_cs2[[2]])), col = "red")
-legend("topright", lty = 1, col = c("black", "red"),
+legend("topright", lty = 1, col = c("black", "red"), bg = "white",
        legend = c("Classification 1", "Classification 2"))
 @
 \end{frame}
@@ -339,7 +341,8 @@ Other secretory signal peptide predictors:
 \item<1-> neural networks (SignalP 4.1)~\cite{petersen_signalp_2011},
 \item<2-> hidden Markov models (Phobius)~\cite{kall_combined_2004},
 \item<3-> position matrices (PredSi)~\cite{hiller_predisi:_2004}, 
-\item<4-> support vector machines~\cite{cai_support_2003}.
+\item<4-> optimized evidence theoretic K nearest neighbor (Signal-3L)~\cite{shen_signal-3l:_2007},
+\item<5-> support vector machines~\cite{cai_support_2003}.
 \end{itemize} 
 \end{frame}
 
@@ -396,8 +399,10 @@ A prediction of cleavage site position still requires a refinement.
 
 \end{frame}
 
+
+
 \begin{frame}[allowframebreaks]
-\bibliographystyle{plain}
+\bibliographystyle{apacite}
 \bibliography{prez5}
 \end{frame}
 
