@@ -51,48 +51,6 @@ test_bihmm <- function(train_data, test_data, aa_group) {
 }
 
 
-signal_hsmm_train <- function(train_data, aa_group) {
-  ts <- calc_t(train_data, aa_group)
-  
-  t1 <- ts[["t1"]]
-  t2 <- ts[["t2"]]
-  t3 <- ts[["t3"]]
-  t4 <- ts[["t4"]]
-  
-  overall <- t4 #table(degenerate(unlist(analized_sequences), aa5))
-  overall.probs <- overall/sum(overall)          
-  overall.probs.log = log(overall.probs) #for viterbi
-  
-  #setting params for hmm -------
-  additional.aminoacids = 10 #aminoacids choosen after cleavage site
-  pipar <- c(1,0,0,0)
-  tp <- matrix(c(0.814, 0.186, 0, 0,
-                 0, 0.91, 0.09, 0,
-                 0, 0, 0.78, 0.22,
-                 0, 0, 0, 1-1/additional.aminoacids), 4, byrow = TRUE)
-  
-  od <- matrix(c((t1/sum(t1))[1:4],
-                 (t2/sum(t2))[1:4],
-                 (t3/sum(t3))[1:4],
-                 (t4/sum(t4))[1:4]), 4, byrow = TRUE)
-  
-  list(pipar = pipar, tp = tp, od = od, overall.probs.log = overall.probs.log)
-}
-
-signal_hsmm_test <- function(prot, aa_group, signal_hsmm_train_res, max.length = 50) {
-  pipar <- signal_hsmm_train_res$pipar
-  tp <- signal_hsmm_train_res$tp
-  od <- signal_hsmm_train_res$od
-  overall.probs.log <- signal_hsmm_train_res$overall.probs.log
-  probka <- as.numeric(degenerate(prot, aa_group)[1:max.length])
-  probka <- na.omit(probka)
-  viterbi.res <- viterbi(probka, pipar, tp, od)
-  viterbi_path <- viterbi.res[["path"]]
-  c.site <- ifelse(any(viterbi_path==3), max(which(viterbi_path==3)), length(probka))
-  prob.signal <- viterbi.res[["viterbi"]][c.site, viterbi_path[c.site]]
-  prob.non <- Reduce(function(x, y) x + overall.probs.log[y], probka[1:c.site], 0)
-  list(prob.signal = prob.signal, prob.non = prob.non, c.site = c.site, path = viterbi_path)  
-}
 
 #ets - vector of etiquettes (0 if signal)
 #cs - vector of real cleave sites
