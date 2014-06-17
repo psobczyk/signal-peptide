@@ -3,7 +3,6 @@
 library(hsmm)
 library(pROC)
 library(pbapply)
-#skrypt
 
 #algorytm viterbiego
 source("myViterbi.R")

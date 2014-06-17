@@ -106,7 +106,7 @@ test_size <- 120 #real number of test size is two times larger
 train_pos <- read_uniprot("euk.txt", euk = TRUE)
 train_neg <- read.fasta("euk_not.fasta", seqtype = "AA")
 
-hundred_reps <- pblapply(1:1000, function(unnecessary_argument) {
+hundred_repsD <- pblapply(1:1000, function(unnecessary_argument) {
   ind_pos <- sample(1:length(train_pos))
   ind_neg <- sample(1:length(train_neg))
   
@@ -124,7 +124,7 @@ hundred_reps <- pblapply(1:1000, function(unnecessary_argument) {
   list(chars = characteristics, cs = cs)
 })
 
-hundred_reps2 <- pblapply(1:1000, function(unnecessary_argument) {
+hundred_repsD2 <- pblapply(1:1000, function(unnecessary_argument) {
   ind_pos <- sample(1:length(train_pos))
   ind_neg <- sample(1:length(train_neg))
   
@@ -141,4 +141,6 @@ hundred_reps2 <- pblapply(1:1000, function(unnecessary_argument) {
   cs <- data.frame(real.cs = real_cs, pred.cs = res[1:test_size, 3])
   list(chars = characteristics, cs = cs)
 })
+
+save(hundred_repsD, hundred_repsD2, file = "duration_signal_data.Rdata")
 
