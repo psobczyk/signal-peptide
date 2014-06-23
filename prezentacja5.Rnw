@@ -19,17 +19,17 @@
 \begin{document}
 
 
-
 <<knitrIntro, echo = FALSE, message=FALSE>>=
 library(seqinr)
 library(MASS)
 library(xtable)
 library(pROC)
 load("prezent5_data.Rdata")
+load("duration_signal_data.Rdata")
 @
 
 
-\date{}
+%\date{}
 \author{Michał  Burdukiewicz \inst{1} \and Piotr Sobczyk \inst{2} \and Paweł  Błażej \inst{1} \\ \and Paweł  Mackiewicz \inst{1}}
 \institute[shortinst]{\inst{1} University of Wrocław, Department of Genomics, Poland \and %
 \inst{2} Wrocław University of Technology, Institute of Mathematics and Computer Science, Poland}
@@ -81,7 +81,7 @@ Proteins with secretory signal peptides:
 
 \begin{frame}
 \begin{figure}
-<<echo = FALSE, fig.height=2.5, out.height=100>>=
+<<echo = FALSE,fig.height=2.5,out.height=100>>=
 
 plot(c(-0.2, 1.2), c(0.4,0.6), axes = FALSE, cex = 0, xlab = "", ylab = "",
      mar=c(0.1, 0.1, 0.1, 0.1))
@@ -279,11 +279,11 @@ Validation procedure:
 
 \begin{frame}
 <<echo = FALSE,message=FALSE,results='hide', fig.height=4.5>>=
-plot(density(sapply(hundred_reps, function(i) i$chars$auc)), main = "Density of AUC")
-sapply(-1:3*20, function(i)
-  abline(v = i, col = "grey"))
-sapply(1:4/20, function(i)
+plot(density(sapply(hundred_repsD, function(i) i$chars$auc)), main = "Density of AUC")
+sapply(0:6*5, function(i)
   abline(h = i, col = "grey"))
+sapply(45:50/50, function(i)
+  abline(v = i, col = "grey"))
 @
 \end{frame}
 
@@ -300,8 +300,8 @@ print(tabAminokwasow(aa2, nazwy2, caption = "Classification of amino acids using
 
 \begin{frame}
 <<echo = FALSE,message=FALSE,results='hide', fig.height=4.5>>=
-plot(density(sapply(hundred_reps, function(i) i$chars$auc)), main = "Density of AUC")
-lines(density(sapply(hundred_reps2, function(i) i$chars$auc)), col = "red")
+plot(density(sapply(hundred_repsD, function(i) i$chars$auc)), main = "Density of AUC")
+lines(density(sapply(hundred_repsD2[!wrongs], function(i) i$chars$auc)), col = "red")
 legend("topleft", lty = 1, col = c("black", "red"), bg = "white",
        legend = c("Classification 1", "Classification 2"))
 @
@@ -309,8 +309,8 @@ legend("topleft", lty = 1, col = c("black", "red"), bg = "white",
 
 \begin{frame}
 <<echo = FALSE,message=FALSE,results='hide', fig.height=4.5>>=
-all_cs <- do.call("rbind", lapply(hundred_reps, function(i) i[["cs"]]))
-all_cs2 <- do.call("rbind", lapply(hundred_reps2, function(i) i[["cs"]]))
+all_cs <- do.call("rbind", lapply(hundred_repsD, function(i) i[["cs"]]))
+all_cs2 <- do.call("rbind", lapply(hundred_repsD2[!wrongs], function(i) i[["cs"]]))
 plot(density((all_cs[[1]] - all_cs[[2]])), main = "Density of cleave site misplacement")
 sapply(-1:3*20, function(i)
   abline(v = i, col = "grey"))
@@ -359,7 +359,7 @@ signal.hsmm was trained on data set of 2288 proteins with signal peptides.
 pred_names <- c("signal.hsmm", "SignalP 4.1", "Phobius", "PredSi")
 plot(roc(response = ets2, predictor = signalp4), col = "green", main = "ROC curve",
      ylim = c(0, 1), xlim = c(1, 0))
-plot(signal_hsmm[["roc"]], add = TRUE, col = "red")
+plot(signal_hsmmD[["roc"]], add = TRUE, col = "red")
 plot(roc(response = ets2, predictor = phobius[, 1]), add = TRUE, col = "blue")
 plot(roc(response = ets2, predictor = predsi[,4]), add = TRUE, col = "black")
 legend("bottomright", lty = 1, col = c("red", "green", "blue", "black"),
@@ -371,7 +371,7 @@ legend("bottomright", lty = 1, col = c("red", "green", "blue", "black"),
 <<echo = FALSE,message=FALSE,results='hide', fig.height=4.5>>=
 plot(roc(response = ets2, predictor = signalp4), col = "green", 
      ylim = c(0.8, 1), xlim = c(1, 0.8))
-plot(signal_hsmm[["roc"]], add = TRUE, col = "red")
+plot(signal_hsmmD[["roc"]], add = TRUE, col = "red")
 plot(roc(response = ets2, predictor = phobius[, 1]), add = TRUE, col = "blue")
 plot(roc(response = ets2, predictor = predsi[,4]), add = TRUE, col = "black")
 legend("bottomright", lty = 1, col = c("red", "green", "blue", "black"),
@@ -381,7 +381,7 @@ legend("bottomright", lty = 1, col = c("red", "green", "blue", "black"),
 
 \begin{frame}
 <<echo = FALSE,message=FALSE,results='asis'>>=
-aucs <- c(signal_hsmm[["auc"]],
+aucs <- c(signal_hsmmD[["auc"]],
           auc(response = ets2, predictor = signalp4),
           auc(response = ets2, predictor = phobius[, 1]),
           auc(response = ets2, predictor = predsi[, 4]))

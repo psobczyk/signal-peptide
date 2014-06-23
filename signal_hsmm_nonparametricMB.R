@@ -141,6 +141,16 @@ hundred_repsD2 <- pblapply(1:1000, function(unnecessary_argument) {
   cs <- data.frame(real.cs = real_cs, pred.cs = res[1:test_size, 3])
   list(chars = characteristics, cs = cs)
 })
+wrongs <- sapply(hundred_repsD2, class) == "try-error"
 
-save(hundred_repsD, hundred_repsD2, file = "duration_signal_data.Rdata")
+#special ets for signal.hsmm
+ets <- c(rep(0, length(test_pos)), rep(1, length(test_neg)))
+test_neg <- lapply(read.fasta("test_neg.fasta", seqtype = "AA"), toupper)
+# test_neg <- test_neg[sapply(test_neg[1:100], length) > 100]
+test_pos <- read_uniprot("test_pos.txt", euk = TRUE)
+final_res <- signal_hsmm_train(train_pos, append(test_pos, test_neg), aa5)
+signal_hsmmD <- analyze_bihmm(final_res, ets)
+
+
+save(hundred_repsD, hundred_repsD2, signal_hsmmD, wrongs, file = "duration_signal_data.Rdata")
 
