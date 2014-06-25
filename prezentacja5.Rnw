@@ -29,7 +29,7 @@ load("duration_signal_data.Rdata")
 @
 
 
-%\date{}
+\date{}
 \author{Michał  Burdukiewicz \inst{1} \and Piotr Sobczyk \inst{2} \and Paweł  Błażej \inst{1} \\ \and Paweł  Mackiewicz \inst{1}}
 \institute[shortinst]{\inst{1} University of Wrocław, Department of Genomics, Poland \and %
 \inst{2} Wrocław University of Technology, Institute of Mathematics and Computer Science, Poland}
@@ -395,7 +395,7 @@ print(xtable(dat, digits = 4))
 \begin{frame}
 Hidden semi-Markov models can be used to accurately predict a presence of secretory signal peptides.
 \\[12pt]
-A prediction of cleavage site position still requires a refinement.
+The prediction of cleavage site position still requires further refinement.
 
 \end{frame}
 
