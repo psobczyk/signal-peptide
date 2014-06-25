@@ -154,3 +154,23 @@ signal_hsmmD <- analyze_bihmm(final_res, ets)
 
 save(hundred_repsD, hundred_repsD2, signal_hsmmD, wrongs, file = "duration_signal_data.Rdata")
 
+error_seeking <- pblapply(1:1000, function(unnecessary_argument) {
+  ind_pos <- sample(1:length(train_pos))
+  ind_neg <- sample(1:length(train_neg))
+  
+  train_dat <- train_pos[ind_pos[1:train_size]] 
+  test_dat <- c(train_pos[ind_pos[(train_size + 1):(train_size + test_size)]],
+                train_neg[ind_neg[1:test_size]])
+  
+  ets <- c(rep(0, test_size), rep(1, test_size))
+  real_cs <- sapply(train_pos[ind_pos[(train_size + 1):(train_size + test_size)]], 
+                    function(protein) attr(protein, "sig")[2])
+  #training
+  res <- signal_hsmm_train(train_dat, test_dat, aa2)
+  characteristics <- analyze_bihmm(res, ets)
+  cs <- data.frame(real.cs = real_cs, pred.cs = res[1:test_size, 3])
+  list(chars = characteristics, cs = cs, ind_pos = ind_pos, ind_neg = ind_neg)
+})
+
+save(error_seeking, file = "error_seeking.Rdata")
+
