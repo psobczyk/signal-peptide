@@ -13,6 +13,7 @@
 \linespread{1.3}
 
 \begin{document}
+\SweaveOpts{concordance=TRUE}
 
 <<knitrIntro, echo = FALSE, message=FALSE>>=
 pdf.options(encoding = "CP1250")
@@ -34,8 +35,8 @@ knit_hooks$set(rgl = function(before, options, envir) {
 
 
 \date{}
-\title{Predykcja lokalizacji subkomórkowej}
-\author{Micha³ Burdukiewicz, Piotr Sobczyk}
+\title{Predykcja lokalizacji subkom?rkowej}
+\author{Micha? Burdukiewicz, Piotr Sobczyk}
 
 \begin{frame}
 \maketitle
@@ -50,25 +51,25 @@ knit_hooks$set(rgl = function(before, options, envir) {
 \section{Przygotowanie danych}
 
 \begin{frame}
-Do stworzenia pierwszej wersji programu SignalP u¿yto bazy Swiss-Prot 29 (czerwiec 1994) zawieraj¹cej 38303 bia³ek.
+Do stworzenia pierwszej wersji programu SignalP u?yto bazy Swiss-Prot 29 (czerwiec 1994) zawieraj?cej 38303 bia?ek.
 
 \begin{block}{Zapytanie}
 created:[1950 TO 1995] AND reviewed:yes
 \end{block}
 
-Powy¿sze zapytanie znajduje 38440 bia³ek w bazie UniProt. 
+Powy?sze zapytanie znajduje 38440 bia?ek w bazie UniProt. 
 
-Do uczenia programu SignalP wykorzystano tylko sekwencje z jednym, znanym miejscem ciêcia, dlatego ze zbioru znalezionych rekordów  usuniêto te, w których informacja o peptydzie sygna³owym zawiera³a symbole:
- '<1', '?' oraz alternatywne miejsca ciêcia.
+Do uczenia programu SignalP wykorzystano tylko sekwencje z jednym, znanym miejscem ci?cia, dlatego ze zbioru znalezionych rekord?w  usuni?to te, w kt?rych informacja o peptydzie sygna?owym zawiera?a symbole:
+ '<1', '?' oraz alternatywne miejsca ci?cia.
 
 \end{frame}
 
 \subsection{Sekwencje pochodzenia eukariotycznego}
 
 \begin{frame}
-Baza Swiss-Prot 29 po oczyszczeniu zawiera³a 2282 bia³ek eukariotycznych zawieraj¹cych sekwencje sygna³owe sekrecji, których obecnoœæ potwierdzono eksperymentalnie.
+Baza Swiss-Prot 29 po oczyszczeniu zawiera?a 2282 bia?ek eukariotycznych zawieraj?cych sekwencje sygna?owe sekrecji, kt?rych obecno?? potwierdzono eksperymentalnie.
 
-Poni¿sze zapytanie dalszym oczyszczeniu pozwala otrzymaæ 2382 bia³ek:
+Poni?sze zapytanie dalszym oczyszczeniu pozwala otrzyma? 2382 bia?ek:
 \begin{block}{Zapytanie - eukarionty}
 select: (keyword:signal) AND reviewed:yes AND created:[1950 TO 1995] AND taxonomy:'Eukaryota [2759]' AND annotation:(type:signal confidence:experimental)
 \end{block}
@@ -79,9 +80,9 @@ select: (keyword:signal) AND reviewed:yes AND created:[1950 TO 1995] AND taxonom
 \subsection{Sekwencje pochodzenia prokariotycznego}
 
 \begin{frame}
-Baza Swiss-Prot 29 po oczyszczeniu zawiera³a 579 bia³ek prokariotycznych zawieraj¹cych sekwencje sygna³owe sekrecji, których obecnoœæ potwierdzono eksperymentalnie. Ze zbioru ucz¹cego wykluczono sekwencje odcinane przez peptydazê sygna³ow¹ II.
+Baza Swiss-Prot 29 po oczyszczeniu zawiera?a 579 bia?ek prokariotycznych zawieraj?cych sekwencje sygna?owe sekrecji, kt?rych obecno?? potwierdzono eksperymentalnie. Ze zbioru ucz?cego wykluczono sekwencje odcinane przez peptydaz? sygna?ow? II.
 
-Poni¿sze zapytanie dalszym oczyszczeniu pozwala otrzymaæ 603 bia³ka:
+Poni?sze zapytanie dalszym oczyszczeniu pozwala otrzyma? 603 bia?ka:
 \begin{block}{Zapytanie - prokarionty}
 select: (keyword:signal) AND reviewed:yes AND created:[1950 TO 1995] AND annotation:(type:signal confidence:experimental) NOT keyword:'Lipoprotein [KW-0449]' AND (taxonomy:'Bacteria [2]' OR taxonomy:'Archaea [2157]')
 \end{block}
@@ -91,11 +92,11 @@ select: (keyword:signal) AND reviewed:yes AND created:[1950 TO 1995] AND annotat
 
 \begin{frame}
 
-NIE usuniêto sekwencji redundatnych, poniewa¿ nie by³o jasne w jaki sposób dokonano tego podczas przygotowania zbioru ucz¹cego dla programu SignalP.
+NIE usuni?to sekwencji redundatnych, poniewa? nie by?o jasne w jaki spos?b dokonano tego podczas przygotowania zbioru ucz?cego dla programu SignalP.
 
 \end{frame}
 
-\section{Przyjêty model}
+\section{Przyj?ty model}
 
 \begin{frame}
 \begin{figure}
@@ -111,29 +112,29 @@ text(1, 0.5, "-3'", pos = 4, cex = 1.2, family = "mono")
 text(0.1, 0.55, "n-region", pos = 1)
 text(0.4, 0.55, "h-region", pos = 1)
 text(0.725, 0.55, "c-region", pos = 1)
-text(0.925, 0.55, "ciêcie", pos = 1)
+text(0.925, 0.55, "ci?cie", pos = 1)
 @
 \end{figure}
 \vspace{-1.5cm}
 \begin{footnotesize}
 \begin{itemize}
-  \item n-region: 1-5 aminokwasów, preferowane aminokwasy z dodatnim ³adunkiem.
-  \item h-region: \textbf{\emph{0 - 20}} aminokwasów, preferowane aminokwasy hydrofobowe.
-  \item c-region: 3 - 7 polarnych aminokwasów bez ³adunku.
-  \item miejsce ciêcia: na pozycjach -3 i -1 w stosunku do miejsca ciêcia ma³e, obojêtne aminokwasy.
+  \item n-region: 1-5 aminokwas?w, preferowane aminokwasy z dodatnim ?adunkiem.
+  \item h-region: \textbf{\emph{0 - 20}} aminokwas?w, preferowane aminokwasy hydrofobowe.
+  \item c-region: 3 - 7 polarnych aminokwas?w bez ?adunku.
+  \item miejsce ci?cia: na pozycjach -3 i -1 w stosunku do miejsca ci?cia ma?e, oboj?tne aminokwasy.
 \end{itemize}
 \end{footnotesize}
 \end{frame}
 
 
 
-\subsection{Wyszukiwanie regionów n, h i c}
+\subsection{Wyszukiwanie region?w n, h i c}
 
 \begin{frame}
 Wyznaczenie c-regionu:
 \begin{itemize}
-  \item z pozycji -1 przesun¹æ siê na pozycjê -3,
-  \item przesuwaæ siê do N-koñca do momentu napotkania bloku co najmniej dwóch hydrofobowych aminokwasów.
+  \item z pozycji -1 przesun?? si? na pozycj? -3,
+  \item przesuwa? si? do N-ko?ca do momentu napotkania bloku co najmniej dw?ch hydrofobowych aminokwas?w.
 \end{itemize}
 
 \begin{figure}
@@ -152,7 +153,7 @@ text(1, 0.5, "-3'", pos = 4, cex = 1.2, family = "mono")
 text(0.1, 0.55, "n-region", pos = 1)
 text(0.4, 0.55, "h-region", pos = 1)
 text(0.725, 0.55, "c-region", pos = 1)
-text(0.925, 0.55, "ciêcie", pos = 1)
+text(0.925, 0.55, "ci?cie", pos = 1)
 @
 \end{figure}
 
@@ -161,9 +162,9 @@ text(0.925, 0.55, "ciêcie", pos = 1)
 \begin{frame}
 Wyznaczenie h-regionu:
 \begin{itemize}
-  \item przenieœæ siê 6 aminokwasów w stronê N-koñca bia³ka od 5'-koñca c-regionu, \emph{jeœli pozycja osi¹gniêta w ten sposób jest mniejsza ni¿ 1, to przenieœæ siê do pierwszego aminokwasu i przejœæ do kroku 3}.
-  \item przesuwaæ siê do N-koñca do momentu napotkania aminokwasu z ³adunkiem lub bloku co najmniej trzech niehydrofobowych aminokwasów \emph{lub do momentu napotkania pierwszego aminokwasu}.
-  \item jeœli N-koniec h-regionu nie jest hydrofobowym aminokwasem, przesuwaæ siê w stronê 3'-koñca do momentu napotkania hydrofobowego aminokwasu \textbf{lub pocz¹tku c-regionu}.
+  \item przenie?? si? 6 aminokwas?w w stron? N-ko?ca bia?ka od 5'-ko?ca c-regionu, \emph{je?li pozycja osi?gni?ta w ten spos?b jest mniejsza ni? 1, to przenie?? si? do pierwszego aminokwasu i przej?? do kroku 3}.
+  \item przesuwa? si? do N-ko?ca do momentu napotkania aminokwasu z ?adunkiem lub bloku co najmniej trzech niehydrofobowych aminokwas?w \emph{lub do momentu napotkania pierwszego aminokwasu}.
+  \item je?li N-koniec h-regionu nie jest hydrofobowym aminokwasem, przesuwa? si? w stron? 3'-ko?ca do momentu napotkania hydrofobowego aminokwasu \textbf{lub pocz?tku c-regionu}.
 \end{itemize}
 
 \end{frame}
@@ -171,20 +172,20 @@ Wyznaczenie h-regionu:
 
 \begin{frame}
 \begin{block}{Krok 1}
-przenieœæ siê 6 aminokwasów w stronê N-koñca bia³ka od 5'-koñca c-regionu, \emph{jeœli pozycja osi¹gniêta w ten sposób jest mniejsza ni¿ 1, to przenieœæ siê do pierwszego aminokwasu i przejœæ do kroku 3}
+przenie?? si? 6 aminokwas?w w stron? N-ko?ca bia?ka od 5'-ko?ca c-regionu, \emph{je?li pozycja osi?gni?ta w ten spos?b jest mniejsza ni? 1, to przenie?? si? do pierwszego aminokwasu i przej?? do kroku 3}
 \end{block}
 
-Niekiedy pocz¹tek c-regionu wyznaczany jest w okolicy pierwszego aminokwasu, wtedy za³o¿enie o minimalnej d³ugoœci 6 aminokwasów h-regionu nie jest spe³nione.
+Niekiedy pocz?tek c-regionu wyznaczany jest w okolicy pierwszego aminokwasu, wtedy za?o?enie o minimalnej d?ugo?ci 6 aminokwas?w h-regionu nie jest spe?nione.
 
 \end{frame}
 
 \begin{frame}
 
 \begin{block}{Krok 2}
-przesuwaæ siê do N-koñca do momentu napotkania aminokwasu z ³adunkiem lub bloku co najmniej trzech niehydrofobowych aminokwasów \emph{lub do momentu napotkania pierwszego aminokwasu}.
+przesuwa? si? do N-ko?ca do momentu napotkania aminokwasu z ?adunkiem lub bloku co najmniej trzech niehydrofobowych aminokwas?w \emph{lub do momentu napotkania pierwszego aminokwasu}.
 \end{block}
 
-h-region mo¿e byæ tak krótki, ¿e nie ma szansy na spe³nienie innego warunku koñcz¹cego ni¿ napotkanie pierwszego aminokwasu.
+h-region mo?e by? tak kr?tki, ?e nie ma szansy na spe?nienie innego warunku ko?cz?cego ni? napotkanie pierwszego aminokwasu.
 
 \end{frame}
 
@@ -192,16 +193,16 @@ h-region mo¿e byæ tak krótki, ¿e nie ma szansy na spe³nienie innego warunku koñc
 \begin{frame}
 
 \begin{block}{Krok 3}
-jeœli N-koniec h-regionu nie jest hydrofobowym aminokwasem, przesuwaæ siê w stronê 3'-koñca do momentu napotkania hydrofobowego aminokwasu \textbf{lub pocz¹tku c-regionu}.
+je?li N-koniec h-regionu nie jest hydrofobowym aminokwasem, przesuwa? si? w stron? 3'-ko?ca do momentu napotkania hydrofobowego aminokwasu \textbf{lub pocz?tku c-regionu}.
 \end{block}
 
-Bez dodatkowego warunku pocz¹tek h-regionu mo¿e siê znajdowaæ za pocz¹tkiem c-regionu.
+Bez dodatkowego warunku pocz?tek h-regionu mo?e si? znajdowa? za pocz?tkiem c-regionu.
 
 \end{frame}
 
 
 
-\subsection{Zgodnoœæ}
+\subsection{Zgodno??}
 
 \begin{frame}
 
@@ -211,26 +212,26 @@ z = \sum_{i = 1}^{l} I(k_i = l_i)
 
 gdzie: $k$
 \begin{itemize}
-  \item $k$  - predykcja przynale¿noœci regionalnej z modelu teoretycznego,
-  \item $l$  - predykcja przynale¿noœci regionalnej z ukrytego modelu markowa.
+  \item $k$  - predykcja przynale?no?ci regionalnej z modelu teoretycznego,
+  \item $l$  - predykcja przynale?no?ci regionalnej z ukrytego modelu markowa.
 \end{itemize}
 \end{frame}
 
 
 \begin{frame}
-Poprawiæ te rysunki
+Poprawi? te rysunki
 \begin{figure}
 <<dens, echo = FALSE, fig.height=4.5>>=
 source(file="densities.Rdat")
 par(mfrow=c(2,2), cex.main = 0.9, cex.lab = 0.8)
 for (i in 1:4) {
-titles <- c("Zgodnoœæ calkowita", "Zgodnoœæ - N-region", "Zgodnoœæ - H-region",
-            "Zgodnoœæ - C-region")
+titles <- c("Zgodno?? calkowita", "Zgodno?? - N-region", "Zgodno?? - H-region",
+            "Zgodno?? - C-region")
 
 dens_neg <- density(result_filtered_neg[i, ])
 dens_pos <- density(result_filtered_pos[i, ])     
 max_y <- ifelse(max(dens_neg[["y"]]) >= max(dens_pos[["y"]]), max(dens_neg[["y"]]), max(dens_pos[["y"]]))
-plot(c(0, 1), c(0, max_y), main = titles[i], cex = 0, ylab = "Gêstoœæ", xlab = "Zgodnoœæ")
+plot(c(0, 1), c(0, max_y), main = titles[i], cex = 0, ylab = "G?sto??", xlab = "Zgodno??")
 lines(dens_neg, lwd = 2)
 lines(dens_pos, col = "red", lty = "dashed")
 legend("topleft", c("neg", "pos"), lty = c("solid", "dashed"), lwd = c(2, 1), col = c("black", "red"))
@@ -276,9 +277,9 @@ points(res_pc$scores[res[5] == "pos", 1], res_pc$scores[res[5] == "pos", 2], col
 
 \begin{frame}
 \begin{itemize}
-  \item na podstawie zbioru ucz¹cego policzono czêstoœci wystêpowania aminokwasów w ró¿nych regionach peptydu sygna³owego,
-  \item dla ka¿dego bia³ka w zbiorze walidacyjnych dla ka¿dego potencjalnego miejsca ciêcia policzono zgodnoœci,
-  \item na podstawie uzyskanych wyników nauczono SVM.
+  \item na podstawie zbioru ucz?cego policzono cz?sto?ci wyst?powania aminokwas?w w r??nych regionach peptydu sygna?owego,
+  \item dla ka?dego bia?ka w zbiorze walidacyjnych dla ka?dego potencjalnego miejsca ci?cia policzono zgodno?ci,
+  \item na podstawie uzyskanych wynik?w nauczono SVM.
 \end{itemize}
 \end{frame}
 

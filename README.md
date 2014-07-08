@@ -1,6 +1,13 @@
 signal-peptide
 ==============
 
+* signal_hsmm_nonparametricMB.R - working algorithm
+* pub_pos_train.txt - training data
+* pub_pos_test.txt - test data (signal peptides)
+* pub_neg_test.txt - test data (without signal peptides)
+
+
+------------------------------------
 program for exploring properties of signal peptides. 
 
 functions.R - all important functions

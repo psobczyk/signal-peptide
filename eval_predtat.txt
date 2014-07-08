@@ -1,0 +1,420 @@
+33VP_CHENC - Sec signal peptide predicted. Most likely cleavage site: 1 - 23 [IFS-FD] - Reliability score: 0.839 
+3FN3_WALAE - Sec signal peptide predicted. Most likely cleavage site: 1 - 21 [GHT-FV] - Reliability score: 0.858 
+3FN4_WALAE - Sec signal peptide predicted. Most likely cleavage site: 1 - 31 [SST-SP] - Reliability score: 0.894 
+3FN5_WALAE - Sec signal peptide predicted. Most likely cleavage site: 1 - 21 [GYT-LT] - Reliability score: 0.983 
+AA5GT_DIACA - TM segment predicted: 10 - 30 - Reliability score: 0.931 
+AL11A_OLEEU - Sec signal peptide predicted. Most likely cleavage site: 1 - 22 [VLS-DD] - Reliability score: 0.919 
+ALL10_OLEEU - Sec signal peptide predicted. Most likely cleavage site: 1 - 44 [AEA-TD] - Reliability score: 0.891 
+APY_AEDAL - Sec signal peptide predicted. Most likely cleavage site: 1 - 20 [SFA-AV] - Reliability score: 0.933 
+ASP21_YEAST - Sec signal peptide predicted. Most likely cleavage site: 1 - 19 [SGA-PL] - Reliability score: 0.977 
+ASP22_YEAST - Sec signal peptide predicted. Most likely cleavage site: 1 - 19 [SGA-PL] - Reliability score: 0.977 
+ASP23_YEAST - Sec signal peptide predicted. Most likely cleavage site: 1 - 19 [SGA-PL] - Reliability score: 0.977 
+ASP24_YEAST - Sec signal peptide predicted. Most likely cleavage site: 1 - 19 [SGA-PL] - Reliability score: 0.977 
+AVLB1_WHEAT - Sec signal peptide predicted. Most likely cleavage site: 1 - 18 [AIA-QL] - Reliability score: 1.000 
+BAGLU_SCUBA - Sec signal peptide predicted. Most likely cleavage site: 1 - 25 [VIG-EE] - Reliability score: 0.971 
+CBDAS_CANSA - Sec signal peptide predicted. Most likely cleavage site: 1 - 28 [SIA-NP] - Reliability score: 0.859 
+CBG_PINCO - TM segment predicted: 5 - 23 - Reliability score: 0.853 
+CIP2_HYPJQ - Sec signal peptide predicted. Most likely cleavage site: 1 - 17 [IQA-QS] - Reliability score: 0.978 
+CR1_OPICY - Sec signal peptide predicted. Most likely cleavage site: 1 - 19 [VNA-RN] - Reliability score: 1.000 
+DIR6_ARATH - Sec signal peptide predicted. Most likely cleavage site: 1 - 29 [VLS-FR] - Reliability score: 0.918 
+E3GAL_FLAVE - Sec signal peptide predicted. Most likely cleavage site: 1 - 21 [VDA-AT] - Reliability score: 1.000 
+EFCB_NEPCI - Sec signal peptide predicted. Most likely cleavage site: 1 - 19 [ANA-SS] - Reliability score: 0.976 
+ENPP6_BOVIN - Sec signal peptide predicted. Most likely cleavage site: 1 - 22 [ASA-RR] - Reliability score: 0.999 
+EST2E_MOUSE - Sec signal peptide predicted. Most likely cleavage site: 1 - 26 [VQG-QD] - Reliability score: 0.982 
+FA5V_PSETE - Sec signal peptide predicted. Most likely cleavage site: 1 - 30 [VNA-AQ] - Reliability score: 0.930 
+GAOA_GIBZA - Sec signal peptide predicted. Most likely cleavage site: 1 - 18 [AVA-VT] - Reliability score: 0.987 
+GLP1_MORAL - Sec signal peptide predicted. Most likely cleavage site: 1 - 18 [SHG-AI] - Reliability score: 0.986 
+HUGA_VESMG - Sec signal peptide predicted. Most likely cleavage site: 1 - 17 [VNG-DS] - Reliability score: 0.947 
+KA167_MESGB - Sec signal peptide predicted. Most likely cleavage site: 1 - 22 [TEA-FG] - Reliability score: 0.982 
+KHS_FUSSH - Sec signal peptide predicted. Most likely cleavage site: 1 - 19 [ALA-SK] - Reliability score: 0.999 
+LEC1_MICCO - Sec signal peptide predicted. Most likely cleavage site: 1 - 20 [LSG-AE] - Reliability score: 0.988 
+LECC1_ARAHY - Sec signal peptide predicted. Most likely cleavage site: 1 - 26 [AHS-LG] - Reliability score: 0.997 
+LECG_PATPE - Sec signal peptide predicted. Most likely cleavage site: 1 - 17 [FAA-AC] - Reliability score: 0.991 
+LMBPG_METGU - Sec signal peptide predicted. Most likely cleavage site: 1 - 19 [RYA-RM] - Reliability score: 0.948 
+LY6C2_MOUSE - Sec signal peptide predicted. Most likely cleavage site: 1 - 26 [AQG-LQ] - Reliability score: 0.993 
+MEP1_COCP7 - Sec signal peptide predicted. Most likely cleavage site: 1 - 18 [AAA-AP] - Reliability score: 0.992 
+ML1P_MANSE - Sec signal peptide predicted. Most likely cleavage site: 1 - 18 [TLA-EE] - Reliability score: 0.996 
+MRNP_PINMG - Sec signal peptide predicted. Most likely cleavage site: 1 - 19 [VSS-QG] - Reliability score: 0.994 
+NLTP1_APIGR - Sec signal peptide predicted. Most likely cleavage site: 1 - 25 [AVV-EG] - Reliability score: 0.983 
+NXL1_AUSLA - TM segment predicted: 5 - 25 - Reliability score: 0.938 
+NXS1_MICCO - Sec signal peptide predicted. Most likely cleavage site: 1 - 21 [GNS-LI] - Reliability score: 0.903 
+NXS2_MICCO - Sec signal peptide predicted. Most likely cleavage site: 1 - 22 [NTA-NT] - Reliability score: 0.994 
+NXS3_MICCO - TM segment predicted: 5 - 25 - Reliability score: 0.779 
+NXS51_MICAT - TM segment predicted: 4 - 24 - Reliability score: 0.807 
+NXS57_MICAT - TM segment predicted: 4 - 24 - Reliability score: 0.846 
+NXS44_MICAT - Sec signal peptide predicted. Most likely cleavage site: 1 - 21 [GNT-RI] - Reliability score: 0.963 
+NXS52_MICAT - Sec signal peptide predicted. Most likely cleavage site: 1 - 21 [GHT-LI] - Reliability score: 0.906 
+NXS59_MICAT - Sec signal peptide predicted. Most likely cleavage site: 1 - 21 [GNS-LI] - Reliability score: 0.913 
+NXS63_MICAT - Sec signal peptide predicted. Most likely cleavage site: 1 - 26 [CYV-SE] - Reliability score: 0.968 
+NXS66_MICAT - Sec signal peptide predicted. Most likely cleavage site: 1 - 21 [GHT-LI] - Reliability score: 0.921 
+NXS65_MICAT - Sec signal peptide predicted. Most likely cleavage site: 1 - 21 [GHT-VT] - Reliability score: 0.969 
+NXSM1_DENPO - Sec signal peptide predicted. Most likely cleavage site: 1 - 21 [GYS-LK] - Reliability score: 0.955 
+OC116_CHICK - Sec signal peptide predicted. Most likely cleavage site: 1 - 27 [ARA-RG] - Reliability score: 0.999 
+OXLA2_CROAD - Sec signal peptide predicted. Most likely cleavage site: 1 - 19 [SCA-HD] - Reliability score: 0.998 
+OXLA_APLCA - Sec signal peptide predicted. Most likely cleavage site: 1 - 18 [VHA-DG] - Reliability score: 1.000 
+OXLA_BOTPA - Sec signal peptide predicted. Most likely cleavage site: 1 - 19 [SCA-DD] - Reliability score: 1.000 
+OXLA_BUNFA - Sec signal peptide predicted. Most likely cleavage site: 1 - 19 [SCA-DD] - Reliability score: 0.989 
+OXLA_DABRR - Sec signal peptide predicted. Most likely cleavage site: 1 - 19 [SCA-DD] - Reliability score: 0.999 
+OXLA_NAJAT - Sec signal peptide predicted. Most likely cleavage site: 1 - 19 [SCA-DD] - Reliability score: 0.994 
+PA2A1_DABRR - Sec signal peptide predicted. Most likely cleavage site: 1 - 22 [QFA-EM] - Reliability score: 0.963 
+PA2A1_ECHCA - TM segment predicted: 6 - 26 - Reliability score: 0.930 
+PA2A2_DABSI - TM segment predicted: 5 - 25 - Reliability score: 0.918 
+PA2A2_VIPRE - TM segment predicted: 3 - 21 - Reliability score: 0.921 
+PA2A3_VIPRE - Sec signal peptide predicted. Most likely cleavage site: 1 - 20 [LFQ-FG] - Reliability score: 0.808 
+PA2AA_CROVV - TM segment predicted: 6 - 26 - Reliability score: 0.888 
+PA2AA_DABSI - Sec signal peptide predicted. Most likely cleavage site: 1 - 22 [QFA-EM] - Reliability score: 0.961 
+PA2AA_TRIPE - Sec signal peptide predicted. Most likely cleavage site: 1 - 20 [LLQ-FE] - Reliability score: 0.840 
+PA2AA_TRIST - TM segment predicted: 4 - 21 - Reliability score: 0.870 
+PA2AB_CROVV - Sec signal peptide predicted. Most likely cleavage site: 1 - 20 [LVQ-FE] - Reliability score: 0.820 
+PA2AD_CROVV - TM segment predicted: 5 - 25 - Reliability score: 0.949 
+PA2AD_TRIST - Sec signal peptide predicted. Most likely cleavage site: 1 - 20 [LLQ-FE] - Reliability score: 0.791 
+PA2AE_CROVV - Sec signal peptide predicted. Most likely cleavage site: 1 - 20 [LVQ-FE] - Reliability score: 0.819 
+PA2AF_TRIST - Sec signal peptide predicted. Most likely cleavage site: 1 - 20 [LMQ-FE] - Reliability score: 0.832 
+PA2A_BOTER - Sec signal peptide predicted. Most likely cleavage site: 1 - 19 [SLV-QF] - Reliability score: 0.851 
+PA2A_BOTJR - TM segment predicted: 4 - 21 - Reliability score: 0.942 
+PA2A_BOTPA - Sec signal peptide predicted. Most likely cleavage site: 1 - 20 [LVQ-FE] - Reliability score: 0.852 
+PA2A_MACLN - TM segment predicted: 5 - 25 - Reliability score: 0.875 
+PA2A_TRIBO - TM segment predicted: 5 - 25 - Reliability score: 0.933 
+PA2A_TRIGS - TM segment predicted: 6 - 26 - Reliability score: 0.942 
+PA2B1_DABRR - Sec signal peptide predicted. Most likely cleavage site: 1 - 22 [QFA-RM] - Reliability score: 0.887 
+PA2B1_DABSI - Sec signal peptide predicted. Most likely cleavage site: 1 - 22 [QFA-RL] - Reliability score: 0.891 
+PA2B1_PROFL - Sec signal peptide predicted. Most likely cleavage site: 1 - 16 [VDG-SL] - Reliability score: 0.815 
+PA2B1_PROEL - Sec signal peptide predicted. Most likely cleavage site: 1 - 16 [VEG-SL] - Reliability score: 0.847 
+PA2B2_DABRR - TM segment predicted: 4 - 21 - Reliability score: 0.961 
+PA2B2_PROFL - TM segment predicted: 5 - 22 - Reliability score: 0.943 
+PA2BB_SISCT - TM segment predicted: 4 - 21 - Reliability score: 0.947 
+PA2BN_CROVV - Sec signal peptide predicted. Most likely cleavage site: 1 - 20 [LLQ-FN] - Reliability score: 0.827 
+PA2B_BOTSC - TM segment predicted: 4 - 21 - Reliability score: 0.943 
+PA2B_BUNFA - Sec signal peptide predicted. Most likely cleavage site: 1 - 19 [LGA-AN] - Reliability score: 0.991 
+PA2B_TRIBO - TM segment predicted: 5 - 25 - Reliability score: 0.923 
+PA2B_TRIPE - TM segment predicted: 5 - 25 - Reliability score: 0.923 
+PA2B_VIPRE - TM segment predicted: 5 - 25 - Reliability score: 0.980 
+PA2HA_TRIPE - Sec signal peptide predicted. Most likely cleavage site: 1 - 16 [VEG-SV] - Reliability score: 0.841 
+PA2HB_MICTN - Sec signal peptide predicted. Most likely cleavage site: 1 - 29 [PQA-LN] - Reliability score: 0.985 
+PA2HB_TRIBO - Sec signal peptide predicted. Most likely cleavage site: 1 - 16 [VEG-SV] - Reliability score: 0.854 
+PA2HB_TRIPE - Sec signal peptide predicted. Most likely cleavage site: 1 - 16 [VEG-SV] - Reliability score: 0.845 
+PA2HB_PROMU - Sec signal peptide predicted. Most likely cleavage site: 1 - 16 [VEG-NL] - Reliability score: 0.828 
+PA2HD_TRIST - Sec signal peptide predicted. Most likely cleavage site: 1 - 16 [VEG-HL] - Reliability score: 0.827 
+PA2HE_TRIST - Sec signal peptide predicted. Most likely cleavage site: 1 - 16 [VEG-SV] - Reliability score: 0.876 
+PA2HF_TRIST - Sec signal peptide predicted. Most likely cleavage site: 1 - 16 [VEG-GV] - Reliability score: 0.815 
+PA2HG_TRIST - Sec signal peptide predicted. Most likely cleavage site: 1 - 16 [VEG-SV] - Reliability score: 0.876 
+PA2HH_TRIST - Sec signal peptide predicted. Most likely cleavage site: 1 - 16 [VEG-SL] - Reliability score: 0.963 
+PA2HI_TRIST - Sec signal peptide predicted. Most likely cleavage site: 1 - 19 [SLV-QL] - Reliability score: 0.856 
+PA2HP_PROMU - Sec signal peptide predicted. Most likely cleavage site: 1 - 16 [VEG-SV] - Reliability score: 0.909 
+PA2_PANIM - No signal peptide predicted - Reliability score: 0.998 
+PAG15_BOVIN - Sec signal peptide predicted. Most likely cleavage site: 1 - 29 [FPA-GS] - Reliability score: 0.992 
+PEPA3_HUMAN - Sec signal peptide predicted. Most likely cleavage site: 1 - 18 [IMY-KV] - Reliability score: 0.899 
+PEPA4_HUMAN - Sec signal peptide predicted. Most likely cleavage site: 1 - 18 [IMY-KV] - Reliability score: 0.883 
+PEPA5_HUMAN - Sec signal peptide predicted. Most likely cleavage site: 1 - 18 [IMY-KV] - Reliability score: 0.883 
+PEPP_ALLCE - TM segment predicted: 8 - 28 - Reliability score: 0.850 
+PFI_PTIFI - Sec signal peptide predicted. Most likely cleavage site: 1 - 21 [ALT-HD] - Reliability score: 0.974 
+PRIO_BOBOX - TM segment predicted: 6 - 24 - Reliability score: 0.952 
+SAA1_HUMAN - Sec signal peptide predicted. Most likely cleavage site: 1 - 28 [GEA-FD] - Reliability score: 0.958 
+SCA1_ANDAM - Sec signal peptide predicted. Most likely cleavage site: 1 - 22 [CQA-FL] - Reliability score: 0.631 
+SCA2_ANDAM - Sec signal peptide predicted. Most likely cleavage site: 1 - 22 [CQA-FP] - Reliability score: 0.966 
+SLA_PROJR - Sec signal peptide predicted. Most likely cleavage site: 1 - 23 [TGA-DC] - Reliability score: 0.995 
+SLB_PROJR - Sec signal peptide predicted. Most likely cleavage site: 1 - 23 [TGA-DC] - Reliability score: 0.997 
+SLJA_PROJR - Sec signal peptide predicted. Most likely cleavage site: 1 - 23 [TGA-DF] - Reliability score: 0.990 
+SLJB_PROJR - Sec signal peptide predicted. Most likely cleavage site: 1 - 23 [IGA-GF] - Reliability score: 0.940 
+SLRA_BITRH - Sec signal peptide predicted. Most likely cleavage site: 1 - 23 [TGA-DE] - Reliability score: 0.999 
+SLRB_BITRH - Sec signal peptide predicted. Most likely cleavage site: 1 - 23 [TGA-DQ] - Reliability score: 0.998 
+SNO1_TYRJA - Sec signal peptide predicted. Most likely cleavage site: 1 - 22 [SQA-SS] - Reliability score: 0.988 
+SOL5_ALTSO - Sec signal peptide predicted. Most likely cleavage site: 1 - 19 [VVG-HS] - Reliability score: 0.966 
+SX12F_RHOJU - Sec signal peptide predicted. Most likely cleavage site: 1 - 19 [ECK-EG] - Reliability score: 0.972 
+THCAS_CANSA - TM segment predicted: 5 - 25 - Reliability score: 0.958 
+TIG_DROME - Sec signal peptide predicted. Most likely cleavage site: 1 - 18 [CQG-YE] - Reliability score: 0.880 
+TMED9_RAT - No signal peptide predicted - Reliability score: 0.850 
+TTR52_CAEEL - Sec signal peptide predicted. Most likely cleavage site: 1 - 20 [VLS-KT] - Reliability score: 0.972 
+TX30_ANDCR - Sec signal peptide predicted. Most likely cleavage site: 1 - 17 [VYS-DR] - Reliability score: 0.994 
+TXVE_BITAR - Sec signal peptide predicted. Most likely cleavage site: 1 - 24 [VQG-EV] - Reliability score: 0.953 
+VA5_VESMG - Sec signal peptide predicted. Most likely cleavage site: 1 - 23 [SEA-NN] - Reliability score: 0.993 
+VCO3_OPHHA - Sec signal peptide predicted. Most likely cleavage site: 1 - 22 [SHG-AL] - Reliability score: 0.972 
+VKT1_WALAE - Sec signal peptide predicted. Most likely cleavage site: 1 - 17 [LWA-EL] - Reliability score: 0.998 
+VKT2_WALAE - Sec signal peptide predicted. Most likely cleavage site: 1 - 17 [LWA-EL] - Reliability score: 0.999 
+VKT4_WALAE - Sec signal peptide predicted. Most likely cleavage site: 1 - 17 [LWA-EL] - Reliability score: 0.999 
+VKTA_MICTN - Sec signal peptide predicted. Most likely cleavage site: 1 - 24 [VSS-QI] - Reliability score: 0.992 
+VKTK1_DABRR - Sec signal peptide predicted. Most likely cleavage site: 1 - 17 [LWA-EL] - Reliability score: 0.994 
+VKTK2_DABRR - Sec signal peptide predicted. Most likely cleavage site: 1 - 17 [LWA-EL] - Reliability score: 0.997 
+VKT_MACLN - Sec signal peptide predicted. Most likely cleavage site: 1 - 17 [LWA-EL] - Reliability score: 0.969 
+YWP1_CANAL - Sec signal peptide predicted. Most likely cleavage site: 1 - 21 [TLA-QD] - Reliability score: 0.999 
+ZP3_CHICK - Sec signal peptide predicted. Most likely cleavage site: 1 - 29 [SWA-AR] - Reliability score: 0.935 
+sp|E1C065|CEP41_CHICK - No signal peptide predicted - Reliability score: 0.190 
+sp|Q2KIP2|HASP_BOVIN - No signal peptide predicted - Reliability score: 0.190 
+sp|Q8L8A5|GIF1_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|F4J4Y5|MD26A_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|Q1EBV7|BASS2_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|P0CT42|TF27_SCHPO - No signal peptide predicted - Reliability score: 0.190 
+sp|F4J9Q6|FKB43_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|Q5ANB1|WOR2_CANAL - No signal peptide predicted - Reliability score: 0.190 
+sp|Q0WV25|TBA4_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|C5DE55|GATB_LACTC - No signal peptide predicted - Reliability score: 0.190 
+sp|Q4KWZ7|REV1_CHICK - No signal peptide predicted - Reliability score: 0.190 
+sp|F1NPG5|CENPT_CHICK - No signal peptide predicted - Reliability score: 0.190 
+sp|Q8S950|NACK1_TOBAC - No signal peptide predicted - Reliability score: 0.190 
+sp|Q9FNZ5|NIMI1_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|C8Z7W7|RRT5_YEAS8 - No signal peptide predicted - Reliability score: 0.190 
+sp|C5DJL7|SLD7_LACTC - No signal peptide predicted - Reliability score: 0.190 
+sp|Q9LQU2|PCR1_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|A6ZR25|TDA2_YEAS7 - No signal peptide predicted - Reliability score: 0.190 
+sp|Q9FX93|CXE4_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|E9EUE6|AMPP1_METAR - No signal peptide predicted - Reliability score: 0.190 
+sp|F4HW65|STIL1_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|C7GWJ7|RRT14_YEAS2 - No signal peptide predicted - Reliability score: 0.190 
+sp|P0CP90|PPIL2_CRYNJ - No signal peptide predicted - Reliability score: 0.190 
+sp|Q9VQF9|SNAPN_DROME - No signal peptide predicted - Reliability score: 0.190 
+sp|Q94BN0|BT2_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|Q0VBY0|CMC4_BOVIN - No signal peptide predicted - Reliability score: 0.192 
+sp|Q94AG6|SAMC1_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|E7KBW4|SHO1_YEASA - No signal peptide predicted - Reliability score: 0.190 
+sp|F4KH89|SRS8_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|Q9FLY5|GNL1_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|D3ZDX9|MCIN_RAT - No signal peptide predicted - Reliability score: 0.190 
+sp|Q9SQT4|NDA8A_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|C8VJ35|TRM5_EMENI - No signal peptide predicted - Reliability score: 0.190 
+sp|Q9SAB1|HSP7Q_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|A7TGA7|SHU2_VANPO - No signal peptide predicted - Reliability score: 0.190 
+sp|C8Z3V4|MAP2_YEAS8 - No signal peptide predicted - Reliability score: 0.190 
+sp|Q6H5L4|TPP7_ORYSJ - No signal peptide predicted - Reliability score: 0.190 
+sp|O48528|OP163_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|Q9LRH7|ABAMS_PEA - No signal peptide predicted - Reliability score: 0.190 
+sp|B5VLV2|YRA2_YEAS6 - No signal peptide predicted - Reliability score: 0.190 
+sp|Q8LFJ6|NRPBA_ARATH - No signal peptide predicted - Reliability score: 0.191 
+sp|O81432|Y4409_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|P0CJ43|OCISB_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|P0DI26|CSPL5_PTEAA - No signal peptide predicted - Reliability score: 0.190 
+sp|B3H469|Y4261_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|J9R393|MTS13_SELML - No signal peptide predicted - Reliability score: 0.190 
+sp|A5PJY4|TM138_BOVIN - No signal peptide predicted - Reliability score: 0.190 
+sp|P0DI13|SA1B2_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|D2WKD8|AT1A2_PIG - No signal peptide predicted - Reliability score: 0.190 
+sp|Q945B6|AOP1L_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|G2TRM3|YAOJ_SCHPO - No signal peptide predicted - Reliability score: 0.191 
+sp|E3RIP0|SHO1_PYRTT - No signal peptide predicted - Reliability score: 0.190 
+sp|Q8L968|ITPA_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|E1BNG3|ASCC3_BOVIN - No signal peptide predicted - Reliability score: 0.190 
+sp|Q45FA5|SRPK_PHYPO - No signal peptide predicted - Reliability score: 0.190 
+sp|P0CQ39|SYM1_CRYNB - No signal peptide predicted - Reliability score: 0.190 
+sp|B8AEC1|NRP2_ORYSI - No signal peptide predicted - Reliability score: 0.190 
+sp|Q7ZXK9|NLE1_XENLA - No signal peptide predicted - Reliability score: 0.190 
+sp|B9RXW0|TPS7_RICCO - No signal peptide predicted - Reliability score: 0.190 
+sp|Q56YW9|TBB2_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|P0CM13|DRE2_CRYNB - No signal peptide predicted - Reliability score: 0.190 
+sp|Q9LT24|Y3985_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|Q9LQ27|TPS22_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|P0CQ43|RAS_CRYNB - No signal peptide predicted - Reliability score: 0.190 
+sp|Q9FZH5|MPI2_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|P0DKM0|COA3_DROME - No signal peptide predicted - Reliability score: 0.190 
+sp|P0CN84|GLNA_CRYNJ - No signal peptide predicted - Reliability score: 0.190 
+sp|A1D6S8|GATB_NEOFI - No signal peptide predicted - Reliability score: 0.190 
+sp|P0DJH9|RD3L_HUMAN - No signal peptide predicted - Reliability score: 0.190 
+sp|P0DI11|SP13B_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|H2E7T5|SQMT1_BOTBR - No signal peptide predicted - Reliability score: 0.190 
+sp|P0CN60|ETFA_CRYNJ - No signal peptide predicted - Reliability score: 0.190 
+sp|B6TYV8|CNR2_MAIZE - No signal peptide predicted - Reliability score: 0.190 
+sp|Q8IKG4|DXR_PLAF7 - No signal peptide predicted - Reliability score: 0.190 
+sp|G2TRL2|NEW1_SCHPO - No signal peptide predicted - Reliability score: 0.191 
+sp|C3ZAH2|MTND_BRAFL - No signal peptide predicted - Reliability score: 0.190 
+sp|Q38820|TI232_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|P0CO08|SYF1_CRYNJ - No signal peptide predicted - Reliability score: 0.190 
+sp|Q6Z234|RIBA1_ORYSJ - No signal peptide predicted - Reliability score: 0.190 
+sp|G2TRR3|TAM12_SCHPO - No signal peptide predicted - Reliability score: 0.192 
+sp|C7GTR2|BBP1_YEAS2 - No signal peptide predicted - Reliability score: 0.190 
+sp|Q5XI33|CIDEC_RAT - No signal peptide predicted - Reliability score: 0.190 
+sp|C5E4F2|AIM14_ZYGRC - No signal peptide predicted - Reliability score: 0.190 
+sp|D3ZEF4|CUL7_RAT - No signal peptide predicted - Reliability score: 0.190 
+sp|B0JYS7|RU1C_XENTR - No signal peptide predicted - Reliability score: 0.190 
+sp|Q3TAP4|AP5B1_MOUSE - No signal peptide predicted - Reliability score: 0.190 
+sp|Q9C5S1|MKP1_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|B0XXK5|GATB_ASPFC - No signal peptide predicted - Reliability score: 0.190 
+sp|A1DG66|AMPP3_NEOFI - No signal peptide predicted - Reliability score: 0.190 
+sp|A6ZRI9|RTC4_YEAS7 - No signal peptide predicted - Reliability score: 0.190 
+sp|M0ZYF3|INDA1_SOLTU - No signal peptide predicted - Reliability score: 0.190 
+sp|P0CR07|DBP10_CRYNB - No signal peptide predicted - Reliability score: 0.190 
+sp|Q6NQD9|MD19B_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|Q767K6|DHX16_PIG - No signal peptide predicted - Reliability score: 0.190 
+sp|Q6BMD6|M28P1_DEBHA - No signal peptide predicted - Reliability score: 0.190 
+sp|B1MTJ4|SETD3_CALMO - No signal peptide predicted - Reliability score: 0.190 
+sp|A1DA61|FTMD_NEOFI - No signal peptide predicted - Reliability score: 0.190 
+sp|Q9XHZ8|Y1178_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|Q9SIA1|MATE8_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|Q9FJL3|FKB65_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|D8T2C0|CSPL1_SELML - No signal peptide predicted - Reliability score: 0.190 
+sp|Q5AJ71|CAN_CANAL - No signal peptide predicted - Reliability score: 0.190 
+sp|Q8LPI9|PAI3_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|Q6FK06|AIM44_CANGA - No signal peptide predicted - Reliability score: 0.190 
+sp|P0CM98|CWC25_CRYNJ - No signal peptide predicted - Reliability score: 0.190 
+sp|P0CX16|YE076_YEAST - No signal peptide predicted - Reliability score: 0.190 
+sp|Q9SJR5|GRF3_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|P0DI46|CASP2_RAPSA - No signal peptide predicted - Reliability score: 0.190 
+sp|B6Q1K5|STS1_PENMQ - No signal peptide predicted - Reliability score: 0.190 
+sp|D3UEM3|SHE3_YEAS8 - No signal peptide predicted - Reliability score: 0.190 
+sp|C7YY76|ATP25_NECH7 - No signal peptide predicted - Reliability score: 0.190 
+sp|O65679|PILR3_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|C7GMH9|BL1S4_YEAS2 - No signal peptide predicted - Reliability score: 0.190 
+sp|P0CM40|ATG9_CRYNJ - No signal peptide predicted - Reliability score: 0.190 
+sp|Q8RY16|PEX6_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|Q9LIS1|CR26L_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|A1D3E2|UTP25_NEOFI - No signal peptide predicted - Reliability score: 0.190 
+sp|Q8LDD3|CUT1D_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|Q94BT9|ATOX1_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|A8CDT2|BAS_BRUGY - No signal peptide predicted - Reliability score: 0.190 
+sp|B5RTE0|CMC4_DEBHA - No signal peptide predicted - Reliability score: 0.190 
+sp|F7H9X2|TRIM2_CALJA - No signal peptide predicted - Reliability score: 0.190 
+sp|Q7KLV9|PSD11_DROME - No signal peptide predicted - Reliability score: 0.190 
+sp|Q9LNW1|RAA2B_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|Q94AU7|GCA3_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|Q5JM04|KAT3_ORYSJ - No signal peptide predicted - Reliability score: 0.190 
+sp|C8Z692|KRE28_YEAS8 - No signal peptide predicted - Reliability score: 0.190 
+sp|C5E4I6|BLI1_ZYGRC - No signal peptide predicted - Reliability score: 0.190 
+sp|G2TRQ0|TAM13_SCHPO - No signal peptide predicted - Reliability score: 0.190 
+sp|D4ANR0|FCJ1_ARTBC - No signal peptide predicted - Reliability score: 0.190 
+sp|Q9UV63|TREPH_PLESA - No signal peptide predicted - Reliability score: 0.190 
+sp|Q5VSB7|SODF2_ORYSJ - No signal peptide predicted - Reliability score: 0.190 
+sp|Q8GZQ3|PNP1_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|A8NSD1|THI4_COPC7 - No signal peptide predicted - Reliability score: 0.190 
+sp|Q059U7|INTU_MOUSE - No signal peptide predicted - Reliability score: 0.190 
+sp|B6HDT2|RRG9_PENCW - No signal peptide predicted - Reliability score: 0.190 
+sp|Q6IRQ9|AP15A_XENLA - No signal peptide predicted - Reliability score: 0.190 
+sp|D1FP53|LIN_MEDTR - No signal peptide predicted - Reliability score: 0.190 
+sp|P0CQ35|PURA_CRYNB - No signal peptide predicted - Reliability score: 0.190 
+sp|C4Y1F8|MAP2_CLAL4 - No signal peptide predicted - Reliability score: 0.190 
+sp|F4K493|CLSY2_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|Q9C8L2|FAP3_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|A4S3R2|GUF1_OSTLU - No signal peptide predicted - Reliability score: 0.190 
+sp|Q58VP7|PCS_ALOAR - No signal peptide predicted - Reliability score: 0.190 
+sp|E4ZUJ1|RTC5_LEPMJ - No signal peptide predicted - Reliability score: 0.190 
+sp|Q550F6|DCX_DICDI - No signal peptide predicted - Reliability score: 0.190 
+sp|Q759K9|OSW5_ASHGO - No signal peptide predicted - Reliability score: 0.190 
+sp|B1WC58|COM1_RAT - No signal peptide predicted - Reliability score: 0.190 
+sp|B3MDA3|FEN1_DROAN - No signal peptide predicted - Reliability score: 0.190 
+sp|Q8JIS6|TBX6_DANRE - No signal peptide predicted - Reliability score: 0.190 
+sp|Q6AWY8|GRF1_ORYSJ - No signal peptide predicted - Reliability score: 0.190 
+sp|C8ZI80|RTC5_YEAS8 - No signal peptide predicted - Reliability score: 0.190 
+sp|B6GWX1|MZM1_PENCW - No signal peptide predicted - Reliability score: 0.190 
+sp|P0CP70|ATG1_CRYNJ - No signal peptide predicted - Reliability score: 0.190 
+sp|C5PA86|ARO1_COCP7 - No signal peptide predicted - Reliability score: 0.190 
+sp|Q9FPJ8|RB45A_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|Q94AP3|WAT1_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|Q8RV79|SOT11_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|Q9STE3|U76E4_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|Q9FL08|WTR42_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|Q9VW09|LTN1_DROME - No signal peptide predicted - Reliability score: 0.190 
+sp|Q84L08|GONS4_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|Q8GYN9|MENB_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|B6QC06|LIS12_PENMQ - No signal peptide predicted - Reliability score: 0.190 
+sp|O81498|U72E3_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|E7F9T0|MICA1_DANRE - No signal peptide predicted - Reliability score: 0.190 
+sp|Q944H5|MTM1_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|C5DSV0|RTC1_ZYGRC - No signal peptide predicted - Reliability score: 0.190 
+sp|E1BVR9|HENMT_CHICK - No signal peptide predicted - Reliability score: 0.190 
+sp|P0CP34|NST1_CRYNJ - No signal peptide predicted - Reliability score: 0.190 
+sp|G5EGA5|FAT2_CAEEL - No signal peptide predicted - Reliability score: 0.190 
+sp|Q9WVR8|MEN1_RAT - No signal peptide predicted - Reliability score: 0.190 
+sp|C6K7I2|IMA8_PIG - No signal peptide predicted - Reliability score: 0.190 
+sp|B9DHT4|ARIA_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|P0CP64|GWT1_CRYNJ - No signal peptide predicted - Reliability score: 0.190 
+sp|P0CO35|IPPK_CRYNB - No signal peptide predicted - Reliability score: 0.190 
+sp|Q9LTJ1|MBD6_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|B8K1V7|MHX_ARAHH - No signal peptide predicted - Reliability score: 0.190 
+sp|G2TRL5|NEW2_SCHPO - No signal peptide predicted - Reliability score: 0.190 
+sp|Q94521|DNAT_DROME - No signal peptide predicted - Reliability score: 0.190 
+sp|P0CP01|MYO1_CRYNB - No signal peptide predicted - Reliability score: 0.190 
+sp|Q4WMU1|MTAP_ASPFU - No signal peptide predicted - Reliability score: 0.190 
+sp|F8WFD2|NPIA3_HUMAN - No signal peptide predicted - Reliability score: 0.190 
+sp|Q0WQN4|RAA6B_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|B1AYB6|MBD5_MOUSE - No signal peptide predicted - Reliability score: 0.190 
+sp|D7TCD0|MTNA_VITVI - No signal peptide predicted - Reliability score: 0.190 
+sp|P0CO49|KMO_CRYNB - No signal peptide predicted - Reliability score: 0.190 
+sp|B8P4B0|LIS11_POSPM - No signal peptide predicted - Reliability score: 0.190 
+sp|Q59W62|GIN4_CANAL - No signal peptide predicted - Reliability score: 0.190 
+sp|F4JGZ1|MED16_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|O80905|S40A1_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|A1DJ20|FTMT3_NEOFI - No signal peptide predicted - Reliability score: 0.190 
+sp|C0NU79|M28P1_AJECG - No signal peptide predicted - Reliability score: 0.190 
+sp|A2ARJ3|TM236_MOUSE - No signal peptide predicted - Reliability score: 0.190 
+sp|E7F6F9|KLHL3_DANRE - No signal peptide predicted - Reliability score: 0.190 
+sp|Q9SSW1|AZF1_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|Q28CZ7|ISPD_XENTR - No signal peptide predicted - Reliability score: 0.190 
+sp|A5E7J0|COA3_LODEL - No signal peptide predicted - Reliability score: 0.192 
+sp|D3K5L7|PCH2_PIG - No signal peptide predicted - Reliability score: 0.190 
+sp|Q9M9A5|PCR6_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|P0DH78|RN224_HUMAN - No signal peptide predicted - Reliability score: 0.190 
+sp|Q0E079|RIBA2_ORYSJ - No signal peptide predicted - Reliability score: 0.190 
+sp|Q9SCP6|U73D1_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|C8ZIM0|AIM44_YEAS8 - No signal peptide predicted - Reliability score: 0.190 
+sp|A1CAL7|SHO1_ASPCL - No signal peptide predicted - Reliability score: 0.190 
+sp|Q8LR63|FLP2_ORYSJ - No signal peptide predicted - Reliability score: 0.190 
+sp|G2TRT4|NEW25_SCHPO - No signal peptide predicted - Reliability score: 0.190 
+sp|Q84KI1|T14H_TAXCU - No signal peptide predicted - Reliability score: 0.190 
+sp|F4HVM3|WTR10_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|Q6DIY3|2ABD_XENTR - No signal peptide predicted - Reliability score: 0.190 
+sp|F4KF27|MDA2_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|Q9LEB4|RBP45_NICPL - No signal peptide predicted - Reliability score: 0.190 
+sp|Q5BKW8|SIM12_DANRE - No signal peptide predicted - Reliability score: 0.190 
+sp|Q84PB3|IF4G1_ORYSJ - No signal peptide predicted - Reliability score: 0.190 
+sp|Q8T8L8|ALG10_DROME - No signal peptide predicted - Reliability score: 0.190 
+sp|Q10S27|VDAC6_ORYSJ - No signal peptide predicted - Reliability score: 0.190 
+sp|A6ZUG8|CHO2_YEAS7 - No signal peptide predicted - Reliability score: 0.190 
+sp|P0CP83|PPIH_CRYNB - No signal peptide predicted - Reliability score: 0.190 
+sp|Q67XD9|CINV2_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|F1SPM8|AAK1_PIG - No signal peptide predicted - Reliability score: 0.190 
+sp|O59845|KCY_LENED - No signal peptide predicted - Reliability score: 0.190 
+sp|Q9LK53|Y3319_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|F4IDI6|BRG2_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|Q0U2C0|ATP25_PHANO - No signal peptide predicted - Reliability score: 0.190 
+sp|B8NI03|HYPC_ASPFN - No signal peptide predicted - Reliability score: 0.190 
+sp|Q6TXG9|SFR1_RAT - No signal peptide predicted - Reliability score: 0.190 
+sp|D4PHA7|WSCD2_MOUSE - No signal peptide predicted - Reliability score: 0.190 
+sp|Q751J2|SHO1_ASHGO - No signal peptide predicted - Reliability score: 0.190 
+sp|P0CQ16|LONM_CRYNJ - No signal peptide predicted - Reliability score: 0.190 
+sp|D4A8G9|ZFY26_RAT - No signal peptide predicted - Reliability score: 0.190 
+sp|Q750K6|YFH7_ASHGO - No signal peptide predicted - Reliability score: 0.190 
+sp|Q6K602|SWT15_ORYSJ - No signal peptide predicted - Reliability score: 0.190 
+sp|P0DM59|UNAG_ANGJA - No signal peptide predicted - Reliability score: 0.190 
+sp|Q9SHV7|MD15C_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|Q9M358|UVSSA_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|Q9SIJ5|RADL2_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|B2WFD4|CHO2_PYRTR - No signal peptide predicted - Reliability score: 0.190 
+sp|Q9SRU2|BIG_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|F4KAS1|FLS4_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|Q2QLI6|MP701_ORYSJ - No signal peptide predicted - Reliability score: 0.190 
+sp|C5DQW8|GATB_ZYGRC - No signal peptide predicted - Reliability score: 0.190 
+sp|C0HJF4|VKT2_HETCR - No signal peptide predicted - Reliability score: 0.196 
+sp|A7XUK7|AGGL_SCLSC - No signal peptide predicted - Reliability score: 0.190 
+sp|Q9FIB6|PS12A_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|Q8S8A0|GDU4_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|Q9VY99|NNAD_DROME - No signal peptide predicted - Reliability score: 0.190 
+sp|P0DJ13|RL7_TETTH - No signal peptide predicted - Reliability score: 0.190 
+sp|F1Q575|NNRD_DANRE - No signal peptide predicted - Reliability score: 0.190 
+sp|F4I8U3|Y1056_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|Q94K66|ELIP2_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|Q9SYK9|U74E2_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|F4JI46|RGAP2_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|Q6BGW4|SRR1_DEBHA - No signal peptide predicted - Reliability score: 0.190 
+sp|C7GUH8|EXO5_YEAS2 - No signal peptide predicted - Reliability score: 0.190 
+sp|B4IKJ4|SNMP1_DROSE - No signal peptide predicted - Reliability score: 0.190 
+sp|P91079|SPTC1_CAEEL - No signal peptide predicted - Reliability score: 0.190 
+sp|Q69UP7|LOL1_ORYSJ - No signal peptide predicted - Reliability score: 0.190 
+sp|B6QG01|AMPP1_PENMQ - No signal peptide predicted - Reliability score: 0.190 
+sp|P0CM82|COQ4_CRYNJ - No signal peptide predicted - Reliability score: 0.190 
+sp|B5VHP4|SHO1_YEAS6 - No signal peptide predicted - Reliability score: 0.190 
+sp|C0SCV1|AMPP1_PARBP - No signal peptide predicted - Reliability score: 0.190 
+sp|Q7XK44|PIRL3_ORYSJ - No signal peptide predicted - Reliability score: 0.190 
+sp|P0CL96|ESF2_CRYNJ - No signal peptide predicted - Reliability score: 0.190 
+sp|P0CX38|RS6B_YEAST - No signal peptide predicted - Reliability score: 0.190 
+sp|Q2LC84|NUMB_RAT - No signal peptide predicted - Reliability score: 0.190 
+sp|P0CQ64|CWC24_CRYNJ - No signal peptide predicted - Reliability score: 0.190 
+sp|E2RBS6|SETD3_CANFA - No signal peptide predicted - Reliability score: 0.190 
+sp|Q9CAB8|PXG5_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|B8B8C5|ALFL9_ORYSI - No signal peptide predicted - Reliability score: 0.190 
+sp|F4KFT6|REML3_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|Q9FI96|U76C3_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|Q6NVF0|OCRL_MOUSE - No signal peptide predicted - Reliability score: 0.190 
+sp|E1BB52|CDK13_BOVIN - No signal peptide predicted - Reliability score: 0.190 
+sp|O22199|P4KG1_ARATH - No signal peptide predicted - Reliability score: 0.190 
+sp|Q22663|GLB26_CAEEL - No signal peptide predicted - Reliability score: 0.190 
+sp|A5E5Y6|AIM11_LODEL - No signal peptide predicted - Reliability score: 0.190 
+sp|A7EWX9|AGGL_SCLS1 - No signal peptide predicted - Reliability score: 0.190 
+sp|Q9JL61|RFX5_MOUSE - No signal peptide predicted - Reliability score: 0.190 
+sp|Q4WAW5|FTMC_ASPFU - No signal peptide predicted - Reliability score: 0.190 
+sp|Q8VIP2|MLXPL_RAT - No signal peptide predicted - Reliability score: 0.190 
