@@ -479,8 +479,9 @@ colnames(all_preds) <- c("real",
                          "signal-hsmm-1997",
                          "signal-hsmm-1990")
 HMeasure(all_preds[, "real"], all_preds[, -1])[["metrics"]][, c("AUC", "H")]
+
 auc(c(rep(TRUE, 140), rep(FALSE, 280)), 
-    as.numeric(round(eval_signalhsmm[, "prob.sig"], 0) > 0))
+   eval_signalhsmm[, "prob.sig"])
 
 
 
