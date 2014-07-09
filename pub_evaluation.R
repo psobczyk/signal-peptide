@@ -382,10 +382,11 @@ signal_hsmm <- function(list_prot, aa_group, pipar, tpmpar,
 }
 
 #READ AND PREPROCESS DATA ------------------------------------
-#select:(keyword:signal) AND reviewed:yes AND created:[1950 TO 2010] AND taxonomy:"Eukaryota [2759]" AND annotation:(type:signal confidence:experimental)
-#3676 proteins
+select:(keyword:signal) AND reviewed:yes AND created:[1950 TO 2010] AND taxonomy:"Eukaryota [2759]" AND annotation:(type:signal confidence:experimental)
+3676 proteins
 pos_train <- read_uniprot("pub_pos_train.txt", euk = TRUE)
-
+pos_train_hard <- read_uniprot("pos_hard_data.txt", euk = TRUE)
+pos_train_hardest <- read_uniprot("pos_hardest_data.txt", euk = TRUE)
 #code below commented - uncomment if there is a need for changing data set
 # #(keyword:signal) AND reviewed:yes AND created:[2011 TO 2014] AND taxonomy:"Eukaryota [2759]" AND annotation:(type:signal confidence:experimental)
 # #140 proteins
@@ -441,7 +442,8 @@ eval_philius <- read_philius("eval_philius.xml")
 
 #BENCHMARK - signal-hsmm ------------------------------------
 eval_signalhsmm <- signal_hsmm_train(pos_train, read.fasta("pub_benchmark.fasta"), aa5)
-
+eval_signalhsmm2 <- signal_hsmm_train(pos_train_hard, read.fasta("pub_benchmark.fasta"), aa5)
+eval_signalhsmm3 <- signal_hsmm_train(pos_train_hardest, read.fasta("pub_benchmark.fasta"), aa5)
 
 all_preds <- data.frame(c(rep(TRUE, 140), rep(FALSE, 280)),
                    eval_predtat[, "signal.peptide"],
@@ -452,7 +454,9 @@ all_preds <- data.frame(c(rep(TRUE, 140), rep(FALSE, 280)),
                    eval_predsi[, "signal.peptide"],
                    eval_phobius[, "signal.peptide"],
                    eval_philius[, "signal.peptide"],
-                   eval_signalhsmm[, "prob.sig"])
+                   eval_signalhsmm[, "prob.sig"],
+                   eval_signalhsmm2[, "prob.sig"],
+                   eval_signalhsmm3[, "prob.sig"])
 colnames(all_preds) <- c("real", 
                          "predtat", 
                          "signalp41notm",
@@ -462,7 +466,9 @@ colnames(all_preds) <- c("real",
                          "predsi",
                          "phobius",
                          "philius",
-                         "signal-hsmm")
+                         "signal-hsmm",
+                         "signal-hsmm2",
+                         "signal-hsmm3")
+HMeasure(all_preds[, "real"], all_preds[, -1])[["metrics"]][, c("AUC", "H")]
 
-xtable(HMeasure(all_preds[, "real"], all_preds[, -1])[["metrics"]][, c("AUC", "H")])
 
