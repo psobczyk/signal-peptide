@@ -1,6 +1,7 @@
 library(seqinr)
 library(XML)
-# library(hmeasure)
+library(hmeasure)
+library(pROC)
 
 #READ UNIPROT DATA -----------------------------
 #helper function to get seqs from  .txt files
@@ -363,7 +364,7 @@ signal_hsmm_train <- function(train_data, test_data, aa_group, max.length = 32) 
   decisions <- signal_hsmm(test_data, aa_group, pipar = pipar, tpmpar = tpmpar, od = od, 
               overall.probs.log = overall.probs.log, params = params)
   #change output to normal decision
-  cbind(prob.sig = exp(tmp[,1] - tmp[,2]), 
+  cbind(prob.sig = exp(decisions[,1] - decisions[,2]), 
         sig.end = decisions[, 3])
 }
 
@@ -478,6 +479,8 @@ colnames(all_preds) <- c("real",
                          "signal-hsmm-1997",
                          "signal-hsmm-1990")
 HMeasure(all_preds[, "real"], all_preds[, -1])[["metrics"]][, c("AUC", "H")]
-auc(c(rep(TRUE, 140), rep(FALSE, 280)), eval_signalhsmm4[, "prob.sig"])
+auc(c(rep(TRUE, 140), rep(FALSE, 280)), 
+    as.numeric(round(eval_signalhsmm[, "prob.sig"], 0) > 0))
+
 
 
