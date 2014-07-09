@@ -1,6 +1,6 @@
 library(seqinr)
 library(XML)
-library(hmeasure)
+# library(hmeasure)
 
 #READ UNIPROT DATA -----------------------------
 #helper function to get seqs from  .txt files
@@ -332,6 +332,7 @@ measure_region <- function(region, max.length = 32) {
 
 
 signal_hsmm_train <- function(train_data, test_data, aa_group, max.length = 32) {
+  train_data <- lapply(train_data, toupper)
   ts <- calc_t(train_data, aa_group)
   
   t1 <- ts[["t1"]]
@@ -358,14 +359,18 @@ signal_hsmm_train <- function(train_data, test_data, aa_group, max.length = 32) 
                  (t2/sum(t2))[1:4],
                  (t3/sum(t3))[1:4],
                  (t4/sum(t4))[1:4]), 4, byrow = TRUE)
-  signal_hsmm(test_data, aa_group, pipar = pipar, tpmpar = tpmpar, od = od, 
+  
+  decisions <- signal_hsmm(test_data, aa_group, pipar = pipar, tpmpar = tpmpar, od = od, 
               overall.probs.log = overall.probs.log, params = params)
+  #change output to normal decision
+  cbind(prob.sig = exp(tmp[,1] - tmp[,2]), 
+        sig.end = decisions[, 3])
 }
 
 signal_hsmm <- function(list_prot, aa_group, pipar, tpmpar, 
                         od, overall.probs.log, params, max.length = 50) { 
   t(vapply(list_prot, function(prot) {
-    probka <- as.numeric(degenerate(prot, aa_group)[1:max.length])
+    probka <- as.numeric(degenerate(toupper(prot), aa_group)[1:max.length])
     probka <- na.omit(probka)
     viterbi.res <- duration.viterbi(probka, pipar, tpmpar, od, params)
     viterbi_path <- viterbi.res[["path"]]
@@ -437,15 +442,17 @@ eval_philius <- read_philius("eval_philius.xml")
 #BENCHMARK - signal-hsmm ------------------------------------
 eval_signalhsmm <- signal_hsmm_train(pos_train, read.fasta("pub_benchmark.fasta"), aa5)
 
-all_preds <- cbind(c(rep(TRUE, 140), rep(FALSE, 280)),
-                   eval_predtat["signal.peptide"],
-                   eval_signalp41notm["signal.peptide"],
-                   eval_signalp41tm["signal.peptide"],
-                   eval_signalp3nn["signal.peptide"],
-                   eval_signalp3hmm["signal.peptide"],
-                   eval_predsi["signal.peptide"],
-                   eval_phobius["signal.peptide"],
-                   eval_philius["signal.peptide"])
+
+all_preds <- data.frame(c(rep(TRUE, 140), rep(FALSE, 280)),
+                   eval_predtat[, "signal.peptide"],
+                   eval_signalp41notm[, "signal.peptide"],
+                   eval_signalp41tm[, "signal.peptide"],
+                   eval_signalp3nn[, "signal.peptide"],
+                   eval_signalp3hmm[, "signal.peptide"],
+                   eval_predsi[, "signal.peptide"],
+                   eval_phobius[, "signal.peptide"],
+                   eval_philius[, "signal.peptide"],
+                   eval_signalhsmm[, "prob.sig"])
 colnames(all_preds) <- c("real", 
                          "predtat", 
                          "signalp41notm",
@@ -454,6 +461,8 @@ colnames(all_preds) <- c("real",
                          "signalp3hmm",
                          "predsi",
                          "phobius",
-                         "philius")
+                         "philius",
+                         "signal-hsmm")
 
-HMeasure(all_preds[["real"]], all_preds[-1])[["metrics"]]
+xtable(HMeasure(all_preds[, "real"], all_preds[, -1])[["metrics"]][, c("AUC", "H")])
+
