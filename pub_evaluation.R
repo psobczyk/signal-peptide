@@ -500,14 +500,7 @@ colnames(all_preds) <- c("real",
 HMeasure(all_preds[, "real"], all_preds[, -1])[["metrics"]][, c("AUC", "H")]
 auc(c(rep(TRUE, 140), rep(FALSE, 280)), eval_signalhsmm4[, "prob.sig"])
 
-<<<<<<< HEAD
-
 # debug_dat <- lapply(c(150, 200, 3000), function(i)
 #   signal_hsmm_train(pos_train[1:i], read.fasta("pub_benchmark.fasta"), aa5))
-=======
-# test_res <- sapply(5:15*200, function(i) {
-#   tmp_preds <- signal_hsmm_train(pos_train[1:i], read.fasta("pub_benchmark.fasta"), aa5)
-#   auc(c(rep(TRUE, 140), rep(FALSE, 280)), 
-#       tmp_preds[, "prob.sig"])
-# })
->>>>>>> 1e01bd37b930d28ee9b1a2a70ca3269f6856d91c
+
+
