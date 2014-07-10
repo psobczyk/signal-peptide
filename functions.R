@@ -172,10 +172,25 @@ calc_t <- function(list_prots, aa_list) {
     rest <- c(rest, list_prots[[i]][region_starts[4]:length(list_prots[[i]])])
   }
   
-  t1 <- table(degenerate(n_region, aa_list))
-  t2 <- table(degenerate(h_region, aa_list))
-  t3 <- table(degenerate(c_region, aa_list))
-  t4 <- table(degenerate(rest, aa_list))
+  t1 <- rep(0, length(aa_list))
+  temp <- table(degenerate(n_region, aa_list))
+  t1[as.numeric(names(temp))] <- temp
+  names(t1) <- 1:length(aa_list)
+  
+  t2 <- rep(0, length(aa_list))
+  temp <- table(degenerate(h_region, aa_list))
+  t2[as.numeric(names(temp))] <- temp
+  names(t2) <- 1:length(aa_list)
+  
+  t3 <- rep(0, length(aa_list))
+  temp <- table(degenerate(c_region, aa_list))
+  t3[as.numeric(names(temp))] <- temp
+  names(t3) <- 1:length(aa_list)
+  
+  t4 <- rep(0, length(aa_list))
+  temp <- table(degenerate(rest, aa_list))
+  t4[as.numeric(names(temp))] <- temp
+  names(t4) <- 1:length(aa_list)
   
   len_c <- nhc[, "cs"] - nhc[, "start_c"]
   len_h <- nhc[, "start_c"] - nhc[, "start_h"]

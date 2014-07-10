@@ -106,7 +106,7 @@ test_size <- 120 #real number of test size is two times larger
 train_pos <- read_uniprot("euk.txt", euk = TRUE)
 train_neg <- read.fasta("euk_not.fasta", seqtype = "AA")
 
-hundred_repsD <- pblapply(1:1000, function(unnecessary_argument) {
+hundred_repsD <- pblapply(1:1000, function(unnecessary_argument) { try({
   ind_pos <- sample(1:length(train_pos))
   ind_neg <- sample(1:length(train_neg))
   
@@ -122,9 +122,9 @@ hundred_repsD <- pblapply(1:1000, function(unnecessary_argument) {
   characteristics <- analyze_bihmm(res, ets)
   cs <- data.frame(real.cs = real_cs, pred.cs = res[1:test_size, 3])
   list(chars = characteristics, cs = cs)
-})
+})})
 
-hundred_repsD2 <- pblapply(1:1000, function(unnecessary_argument) {
+hundred_repsD2 <- pblapply(1:1000, function(unnecessary_argument) { try({
   ind_pos <- sample(1:length(train_pos))
   ind_neg <- sample(1:length(train_neg))
   
@@ -140,37 +140,51 @@ hundred_repsD2 <- pblapply(1:1000, function(unnecessary_argument) {
   characteristics <- analyze_bihmm(res, ets)
   cs <- data.frame(real.cs = real_cs, pred.cs = res[1:test_size, 3])
   list(chars = characteristics, cs = cs)
-})
+})})
 wrongs <- sapply(hundred_repsD2, class) == "try-error"
 
 #special ets for signal.hsmm
+test_pos <- read_uniprot("test_pos.txt", euk = TRUE)
 ets <- c(rep(0, length(test_pos)), rep(1, length(test_neg)))
 test_neg <- lapply(read.fasta("test_neg.fasta", seqtype = "AA"), toupper)
 # test_neg <- test_neg[sapply(test_neg[1:100], length) > 100]
-test_pos <- read_uniprot("test_pos.txt", euk = TRUE)
 final_res <- signal_hsmm_train(train_pos, append(test_pos, test_neg), aa5)
 signal_hsmmD <- analyze_bihmm(final_res, ets)
 
 
 save(hundred_repsD, hundred_repsD2, signal_hsmmD, wrongs, file = "duration_signal_data.Rdata")
 
-error_seeking <- pblapply(1:1000, function(unnecessary_argument) {
-  ind_pos <- sample(1:length(train_pos))
-  ind_neg <- sample(1:length(train_neg))
-  
-  train_dat <- train_pos[ind_pos[1:train_size]] 
-  test_dat <- c(train_pos[ind_pos[(train_size + 1):(train_size + test_size)]],
-                train_neg[ind_neg[1:test_size]])
-  
-  ets <- c(rep(0, test_size), rep(1, test_size))
-  real_cs <- sapply(train_pos[ind_pos[(train_size + 1):(train_size + test_size)]], 
-                    function(protein) attr(protein, "sig")[2])
-  #training
-  res <- signal_hsmm_train(train_dat, test_dat, aa2)
-  characteristics <- analyze_bihmm(res, ets)
-  cs <- data.frame(real.cs = real_cs, pred.cs = res[1:test_size, 3])
-  list(chars = characteristics, cs = cs, ind_pos = ind_pos, ind_neg = ind_neg)
-})
+# train_size <- 120
+# test_size <- 1 #real number of test size is two times larger
+# error_seeking <- pblapply(1:length(train_neg), function(k) { try({
+#   ind_pos <- sample(1:length(train_pos))
+#   ind_neg <- sample(1:length(train_neg))
+#   
+#   train_dat <- train_pos[ind_pos[1:train_size]] 
+#   test_dat <- c(train_pos[ind_pos[(train_size + 1):(train_size + test_size)]], train_neg[k])
+# #                train_neg[ind_neg[1:test_size]])
+#   
+#   ets <- c(rep(0, test_size), rep(1, test_size))
+#   real_cs <- sapply(train_pos[ind_pos[(train_size + 1):(train_size + test_size)]], 
+#                     function(protein) attr(protein, "sig")[2])
+#   #training
+#   res <- signal_hsmm_train(train_dat, test_dat, aa2)
+#   characteristics <- analyze_bihmm(res, ets)
+#   cs <- data.frame(real.cs = real_cs, pred.cs = res[1:test_size, 3])
+#   list(chars = characteristics, cs = cs, ind_pos = ind_pos, ind_neg = ind_neg)
+# })})
+# 
+# save(error_seeking, file = "error_seeking.Rdata")
 
-save(error_seeking, file = "error_seeking.Rdata")
-
+# train_size <- 120
+# test_size <- 1 #real number of test size is two times larger
+# for(k in 1:length(train_neg)){
+#   ind_pos <- sample(1:length(train_pos))
+#   train_dat <- train_pos[ind_pos[1:train_size]] 
+#   test_dat <- c(train_pos[ind_pos[(train_size + 1):(train_size + test_size)]], train_neg[k])
+#   ets <- c(rep(0, test_size), rep(1, test_size))
+#   real_cs <- sapply(train_pos[ind_pos[(train_size + 1):(train_size + test_size)]], 
+#                     function(protein) attr(protein, "sig")[2])
+#   res <- signal_hsmm_train(train_dat, test_dat, aa2)
+#   print(k)
+# }

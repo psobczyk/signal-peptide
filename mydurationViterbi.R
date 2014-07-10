@@ -2,7 +2,6 @@
 
 duration.viterbi <- function(probka, pipar, tpmpar, od, params){
   max.duration <- dim(params)[1]
-  
   viterbi <- matrix(nrow=length(probka), ncol=4)
   psi <- matrix(nrow=length(probka), ncol=4)
   dura <- matrix(nrow=length(probka), ncol=4)
@@ -36,6 +35,12 @@ duration.viterbi <- function(probka, pipar, tpmpar, od, params){
           }
           duration <- log(params[d,j])
           responses <- sum(log(od[j,probka[(i-d+1):i]]))
+          #print(probka[(i-d+1):i])
+          #print(od[j,probka[(i-d+1):i]])
+          #print(previous)
+          #print(transition)
+          #print(duration)
+          #print(responses)
           if(previous + transition + duration + responses>max){
             max = previous + transition + duration + responses
             max.i = k
@@ -54,7 +59,7 @@ duration.viterbi <- function(probka, pipar, tpmpar, od, params){
   i = length(probka)-1
   last = length(probka)
   while(i>1){
-    if(last-i <= dura[last, path[last]]){
+    if(last-i < dura[last, path[last]]){
       path[i] = path[last]
     }
     else{
