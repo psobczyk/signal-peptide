@@ -291,10 +291,25 @@ calc_t <- function(list_prots, aa_list) {
     rest <- c(rest, list_prots[[i]][region_starts[4]:length(list_prots[[i]])])
   }
   
-  t1 <- table(degenerate(n_region, aa_list))
-  t2 <- table(degenerate(h_region, aa_list))
-  t3 <- table(degenerate(c_region, aa_list))
-  t4 <- table(degenerate(rest, aa_list))
+  t1 <- rep(0, length(aa_list))
+  temp <- table(degenerate(n_region, aa_list))
+  t1[as.numeric(names(temp))] <- temp
+  names(t1) <- 1:length(aa_list)
+  
+  t2 <- rep(0, length(aa_list))
+  temp <- table(degenerate(h_region, aa_list))
+  t2[as.numeric(names(temp))] <- temp
+  names(t2) <- 1:length(aa_list)
+  
+  t3 <- rep(0, length(aa_list))
+  temp <- table(degenerate(c_region, aa_list))
+  t3[as.numeric(names(temp))] <- temp
+  names(t3) <- 1:length(aa_list)
+  
+  t4 <- rep(0, length(aa_list))
+  temp <- table(degenerate(rest, aa_list))
+  t4[as.numeric(names(temp))] <- temp
+  names(t4) <- 1:length(aa_list)
   
   len_c <- nhc[, "cs"] - nhc[, "start_c"]
   len_h <- nhc[, "start_c"] - nhc[, "start_h"]
@@ -362,10 +377,14 @@ signal_hsmm_train <- function(train_data, test_data, aa_group, max.length = 32) 
                  (t4/sum(t4))[1:4]), 4, byrow = TRUE)
   
   decisions <- signal_hsmm(test_data, aa_group, pipar = pipar, tpmpar = tpmpar, od = od, 
-              overall.probs.log = overall.probs.log, params = params)
+                           overall.probs.log = overall.probs.log, params = params)
   #change output to normal decision
   cbind(prob.sig = exp(decisions[,1] - decisions[,2]), 
         sig.end = decisions[, 3])
+  #debug version of output
+#   list(prob.sig = exp(decisions[,1] - decisions[,2]), 
+#        sig.end = decisions[, 3], pipar = pipar, tpmpar = tpmpar, od = od, 
+#        overall.probs.log = overall.probs.log, params = params, lengths = lengths)
 }
 
 signal_hsmm <- function(list_prot, aa_group, pipar, tpmpar, 
@@ -453,18 +472,18 @@ eval_signalhsmm3 <- signal_hsmm_train(pos_train_hardest, read.fasta("pub_benchma
 eval_signalhsmm4 <- signal_hsmm_train(pos_train_ultrahard, read.fasta("pub_benchmark.fasta"), aa5)
 
 all_preds <- data.frame(c(rep(TRUE, 140), rep(FALSE, 280)),
-                   eval_predtat[, "signal.peptide"],
-                   eval_signalp41notm[, "signal.peptide"],
-                   eval_signalp41tm[, "signal.peptide"],
-                   eval_signalp3nn[, "signal.peptide"],
-                   eval_signalp3hmm[, "signal.peptide"],
-                   eval_predsi[, "signal.peptide"],
-                   eval_phobius[, "signal.peptide"],
-                   eval_philius[, "signal.peptide"],
-                   eval_signalhsmm[, "prob.sig"],
-                   eval_signalhsmm2[, "prob.sig"],
-                   eval_signalhsmm3[, "prob.sig"],
-                   eval_signalhsmm4[, "prob.sig"])
+                        eval_predtat[, "signal.peptide"],
+                        eval_signalp41notm[, "signal.peptide"],
+                        eval_signalp41tm[, "signal.peptide"],
+                        eval_signalp3nn[, "signal.peptide"],
+                        eval_signalp3hmm[, "signal.peptide"],
+                        eval_predsi[, "signal.peptide"],
+                        eval_phobius[, "signal.peptide"],
+                        eval_philius[, "signal.peptide"],
+                        eval_signalhsmm[, "prob.sig"],
+                        eval_signalhsmm2[, "prob.sig"],
+                        eval_signalhsmm3[, "prob.sig"],
+                        eval_signalhsmm4[, "prob.sig"])
 colnames(all_preds) <- c("real", 
                          "predtat", 
                          "signalp41notm",
@@ -479,9 +498,8 @@ colnames(all_preds) <- c("real",
                          "signal-hsmm-1997",
                          "signal-hsmm-1990")
 HMeasure(all_preds[, "real"], all_preds[, -1])[["metrics"]][, c("AUC", "H")]
-
-auc(c(rep(TRUE, 140), rep(FALSE, 280)), 
-   eval_signalhsmm[, "prob.sig"])
+auc(c(rep(TRUE, 140), rep(FALSE, 280)), eval_signalhsmm4[, "prob.sig"])
 
 
-
+# debug_dat <- lapply(c(150, 200, 3000), function(i)
+#   signal_hsmm_train(pos_train[1:i], read.fasta("pub_benchmark.fasta"), aa5))
